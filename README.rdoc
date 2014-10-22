@@ -1,28 +1,16 @@
-== README
+Workflow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+check out the dev branch
 
-Things you may want to cover:
+create a new branch with `git checkout -b my_feature_name`
 
-* Ruby version
+create tests
 
-* System dependencies
+make changes and commits. It is ok to push with `git push origin my_feature_name` even if tests fail
 
-* Configuration
+once feature is complete and tests pass, submit a pull request back into dev
 
-* Database creation
+another team member must review the code and provide feedback
 
-* Database initialization
+if the code is ready to ship, the reviewer marks a :ship: and merges the pull request
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
