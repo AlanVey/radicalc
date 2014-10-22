@@ -33,3 +33,6 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
+# User authentication
+gem 'devise'
+
