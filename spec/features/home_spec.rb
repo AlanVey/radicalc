@@ -11,9 +11,13 @@ feature 'Someone visits the home page' do
     expect(page).to have_content 'Welcome to RadiCalc'
   end
 
-  scenario 'blah blah blah' do
-    @user = FactoryGirl.create(:user)
-    
+  scenario 'and login' do
+    visit '/'
+    fill_in 'Email', with: '123@gmail.com'
+    fill_in 'Password', with: '1234567890'
+    click_button 'Sign up'
+
+    expect(page).to have_content 'Welcome'
   end
 
 end
