@@ -18,7 +18,7 @@ feature 'Someone visits the home page' do
     User.create(:email => 'user@example.com', :password => 'password')
   end
 
-  scenario 'and logins n' do
+  scenario 'and logins in' do
     visit '/'
     within 'div.session' do
       fill_in 'Email', with: 'user@example.com'

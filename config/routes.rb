@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   
   root 'home#index'
-  get 'dashboard/index', to: 'dashboard#index', as: 'dashboard'
+  get 'dashboard', to: 'subjects#index', as: 'dashboard'
 
 end
