@@ -20,14 +20,12 @@
 	<div id="reg_login_container">
           <a class="hiddenanchor" id="toregister"></a>
           <a class="hiddenanchor" id="tologin"></a>
-	    <div id="wrapper">
-              <div id="login" class="animate form">
-                <%= render template: 'devise/registrations/new' %>
-              </div>
-              <div id="register" class="animate form">
-                <%= render template: 'devise/sessions/new' %>
-              </div>
-	    </div> <!-- end wrapper -->
+          <div id="login" class="animate form">
+            <%= render template: 'devise/registrations/new' %>
+          </div>
+          <div id="register" class="animate form">
+            <%= render template: 'devise/sessions/new' %>
+          </div>
         </div>  
       </section>
     </div> <!-- end reg/login forms -->
