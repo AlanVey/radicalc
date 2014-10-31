@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="cbp-spmenu-push">
+<body>
   
 <p id='notice'><%= notice %></p>
 <%= yield %>

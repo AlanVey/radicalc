@@ -1,11 +1,3 @@
-<%= render 'layouts/sidemenu' %>
-
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-
-<%=link_to 'Log out', destroy_user_session_path, :method => :delete  %>
-
-<script>  
   var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 
   showLeftPush = document.getElementById( 'showLeftPush' ),
@@ -16,4 +8,3 @@
     classie.toggle( body, 'cbp-spmenu-push-toright' );
     classie.toggle( menuLeft, 'cbp-spmenu-open' );
   };
-</script>

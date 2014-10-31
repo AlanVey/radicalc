@@ -2,11 +2,6 @@
 
 /* Global Styles */
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
 .container {
   background: #fff image-url('comptree.png') no-repeat;
   background-size: cover;
@@ -83,19 +78,11 @@ a.hiddenanchor{
 }
 
 #wrapper h1{
-	font-size: 48px;
-	color: rgb(6, 106, 117);
-	padding: 2px 0 10px 0;
-	font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
-	font-weight: bold;
-	text-align: center;
-	padding-bottom: 30px;
-}
-/** For the moment only webkit supports the background-clip:text; */
-#wrapper h1 {
-	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
 	font-size: 35px;
 	font-weight: normal;
+	text-align: center;
+	padding-bottom: 30px;
+	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
 	color: rgba(26,89,120,0.9);
 }
 
@@ -179,7 +166,6 @@ input {
 .inner-addon .glyphicon {
   color: rgba(26,89,120,0.9);
   font-size: 20px;
-  font-family: 'Glyphicons Halflings';
   position: absolute;
   padding: 5px;
   pointer-events: none;
