@@ -1,4 +1,6 @@
+
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+<button class="btn btn-lg" id="showLeftPush"><span class="glyphicon glyphicon-list"></span></button>
   <h3>
   <a href="#" id="my-profile">
     <%= image_tag('user.png', id: 'my-profile-pic', class: 'img-circle') %>
