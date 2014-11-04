@@ -20,8 +20,7 @@
 
 .page-main {
   position: absolute;
-  top:0px;
-
+  left:90px;
 }
 
 html, body {

@@ -1,5 +1,5 @@
 <%= render 'layouts/sidemenu' %>
- <DIV style="position: absolute; top:0px; left:90px; width:200px; height:25px">
+ <DIV class="page-main">
   <div class="container">
     <div class="row" id="dashboardmain">
       <div class="col-xs-1">
