@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
-# Use mysql as the database for Active Record
-gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,13 +23,23 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Used for deployment to heroku
+# Remember to precompile assets before pushing
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'mysql2'
 end
 
 # User authentication
 gem 'devise'
 
+# quaestio-it integration
+gem 'curb'
