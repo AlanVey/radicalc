@@ -40,3 +40,6 @@ end
 
 # User authentication
 gem 'devise'
+
+# quaestio-it integration
+gem 'curb'
