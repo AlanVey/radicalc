@@ -20,7 +20,22 @@
 
 .page-main {
   position: absolute;
+  margin-top:0; 
   left:90px;
+}
+
+.alert {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+}
+
+.close {
+  left: -30px;
+}
+
+#notice {
+  margin: 10px;
 }
 
 html, body {
