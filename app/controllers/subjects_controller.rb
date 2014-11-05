@@ -14,7 +14,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
-    @subject = Subject.new
+    @subject = Subject.new(parent_id: params[:parent_id])
   end
 
   # GET /subjects/1/edit
@@ -24,7 +24,12 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
+    if params[:subject][:parent_id].to_i > 0
+      parent = Subject.find_by_id(params[:subject].delete(:parent_id))
+      @subject = parent.children.build(subject_params)
+    else
+      @subject = Subject.new(subject_params)
+    end
 
     respond_to do |format|
       if @subject.save
