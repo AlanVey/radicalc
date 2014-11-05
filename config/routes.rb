@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :subjects, only: [:index, :create, :edit, :destroy]
+  resources :subjects, only: [:create, :edit, :update, :destroy]
 
   devise_for :users
   
