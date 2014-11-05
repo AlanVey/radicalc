@@ -7,7 +7,7 @@ feature 'someone visits the dashboard' do
     click_link 'New Subject'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
-    fill_in 'User', with: 'U1'
+    fill_in 'User', with: 1
     click_button 'Create Subject'
     expect(Subject.all.count).to eq(1)
     expect(Subject.first.name).to eq('N1')
@@ -20,7 +20,7 @@ feature 'someone visits the dashboard' do
     click_link 'New Subject'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
-    fill_in 'User', with: 'U1'
+    fill_in 'User', with: 1
     click_button 'Create Subject'
     click_link 'Back'
     click_link 'New Subject'
@@ -40,7 +40,7 @@ feature 'someone visits the dashboard' do
     click_link 'New Subject'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
-    fill_in 'User', with: 'U1'
+    fill_in 'User', with: 1
     click_button 'Create Subject'
     click_link 'Back'
     click_link 'Show'
@@ -70,7 +70,7 @@ feature 'someone visits the dashboard' do
     click_link 'New Subject'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
-    fill_in 'User', with: 'U1'
+    fill_in 'User', with: 1
     click_button 'Create Subject'
     click_link 'Back'
 
@@ -96,6 +96,74 @@ feature 'someone visits the dashboard' do
     expect(Subject.second.parent_id).to eq(Subject.first.id)
     expect(Subject.third.name).to eq('N3')
     expect(Subject.third.parent_id).to eq(Subject.first.id)
+  end
+
+  scenario 'and creates a parent and a child, checks if child\'s page has link to parent\'s page' do
+    visit '/dashboard'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N1'
+    fill_in 'Body', with: 'B1'
+    fill_in 'User', with: 1
+    click_button 'Create Subject'
+    click_link 'Back'
+    click_link 'Show'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N2'
+    fill_in 'Body', with: 'B2'
+    fill_in 'User', with: 'U2'
+    click_button 'Create Subject'
+
+    expect(page).to have_content 'Parent:'
+    click_link 'N1'
+    expect(page).to have_content 'N1'
+    expect(page).to have_content 'B1'
+    expect(page).to have_content 1
+  end
+
+
+  scenario 'and creates a parent and a child, checks if child\'s page has link to parent\'s page' do
+    visit '/dashboard'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N1'
+    fill_in 'Body', with: 'B1'
+    fill_in 'User', with: 1
+    click_button 'Create Subject'
+    click_link 'Back'
+    click_link 'Show'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N2'
+    fill_in 'Body', with: 'B2'
+    fill_in 'User', with: 'U2'
+    click_button 'Create Subject'
+
+    click_link 'N1'
+    expect(page).to have_content 'Children:'
+    click_link 'N2'
+    expect(page).to have_content 'N2'
+    expect(page).to have_content 'B2'
+    expect(page).to have_content 2
+  end
+
+  scenario 'and creates a parent and a child, checks that only the parent\'s page is accessible from the dashbord' do
+    visit '/dashboard'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N1'
+    fill_in 'Body', with: 'B1'
+    fill_in 'User', with: 1
+    click_button 'Create Subject'
+    click_link 'Back'
+    click_link 'Show'
+    click_link 'New Subject'
+    fill_in 'Name', with: 'N2'
+    fill_in 'Body', with: 'B2'
+    fill_in 'User', with: 'U2'
+    click_button 'Create Subject'
+
+    click_link 'N1'
+    click_link 'Back'
+    expect(page).not_to have_content 'N2'
+    expect(page).not_to have_content 'B2'
+    expect(page).not_to have_content 2
   end
 
 end
