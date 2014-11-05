@@ -36,3 +36,6 @@ end
 # User authentication
 gem 'devise'
 
+#Hierarchical structure for subjects
+gem 'closure_tree'
+
