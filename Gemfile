@@ -43,3 +43,6 @@ gem 'devise'
 
 # quaestio-it integration
 gem 'curb'
+#Hierarchical structure for subjects
+gem 'closure_tree'
+

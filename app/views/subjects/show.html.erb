@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subject.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @subject.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @subject.user_id %>
+</p>
+
+<% if @subject.parent != nil %>
+<p>
+  <strong>Parent:</strong>
+  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
+</p>
+<% end %>
+
+<% if @subject.children.count > 0 %>
+<p>
+  <strong>Children:</strong>
+  <% @subject.children.each do|child| %>
+      <p>
+        <%= link_to child.name, show_subject_path(child.id) %>
+      </p>
+  <% end %>
+</p>
+
+<% end %>
+
+<p>
+<%= link_to 'New Subject', new_subject_path(@subject.id) %>
+</p>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', dashboard_path %>
