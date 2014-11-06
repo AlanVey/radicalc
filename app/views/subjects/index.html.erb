@@ -12,7 +12,7 @@
 
   <tbody>
     <% @subjects.each do |subject| %>
-        <% if subject.parent_id == nil %>
+        <% if subject.parent_id.nil? %>
           <tr>
             <td><%= subject.name %></td>
             <td><%= subject.body %></td>
