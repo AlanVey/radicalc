@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <title>Radicalc profile page</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/landing.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-faces.css" />
+    <link rel="stylesheet" type="text/css" href="css/sidemenu.css" />
+    <link rel="stylesheet" type="text/css" href="css/style4.css" />
+    <link rel="stylesheet" type="text/css" href="css/profile.css" />
+  </head>
+  
+  <body>
+  
+    <section class="header">
+      <h2>Profile Page</h1>
+    </section>
+    
+    <section class="profile-section">
+    
+      <div class="container profile-block">
+        <div class="row">
+          <div class="col-xs-4">
+            <img class="img-circle"  id="profilepic" src="images/user.jpg"></img><br/>
+            <button class="btn btn-primary" id="send-message">Send message</button>
+          </div>
+          <div class="col-xs-8">
+            <h3>John Smith</h3>
+            <p><strong>College: </strong>Imperial College London<br/>
+            <strong>Department: </strong>Computing<br/>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-block">
+        <h2>Subscriptions</h2>
+        		<ul class="ch-grid">
+	  <li>
+            <h3>Imperial College</h3>
+	    <div class="ch-item"><img class="img-circle ch-img" src="images/Imperial-College-London-Shield.gif"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go to Question Feed</button>
+	  </li>
+
+	  	  <li>
+            <h3>DoC</h3>
+	    <div class="ch-item">	<img class="img-circle ch-img" src="images/doc.png"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Intro to AI</h3>
+	    <div class="ch-item">	<img class="img-circle ch-img" src="images/topic.png"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item">	<img class="img-circle ch-img" src="images/topic.png"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item">	<img class="img-circle ch-img" src="images/topic.png"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item">	<img class="img-circle ch-img" src="images/topic.png"/>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+
+
+	</ul>
+      </div>
+      
+      <div class="profile-block">
+        <h2>Proficiencies</h2>
+      </div>
+      
+      <div class="profile-block">
+        <h2>Contacts</h2>
+        <p>You currently have no contacts</p>
+      </div>
+      
+    </section>
+    
+  </body>
+</html>

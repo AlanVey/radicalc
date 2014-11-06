@@ -12,13 +12,10 @@
   
 <div class="alert alert-info alert-dismissable" role="alert">
 
-<p><%= content_tag (:p, notice, id: 'notice') if notice %><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
+<p id="notice"><%= notice %><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
 </div>
 <%= yield %>
 
 </body>
 </html>
 
-<script>
- if (
-</script>

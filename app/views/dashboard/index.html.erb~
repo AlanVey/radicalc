@@ -1,20 +1,218 @@
+<%= javascript_include_tag('boostrap-modal.js') %>
+<%= javascript_include_tag('boostrap.js') %>
+
 <%= render 'layouts/sidemenu' %>
  <DIV class="page-main">
+          <div>
 
-    <div class="row" id="dashboardmain">
-      <div class="col-xs-1">
-      </div>
-   
-      <div class="col-xs-10">
-        <h1>Dashboard#index</h1>
-        <p>Find me in app/views/dashboard/index.html.erb</p>
-      </div>
 
-      <div class="col-xs-1">
-      </div>
+	<section class="header">	
+	<h1>Hello, <strong>John</strong>!</h1>
+	<p>Welcome to the RadiCalc homepage. Here you can see which topics you are currently subscribed to and which you have been invited to join.</p>
+        </section>
 
-    </div> <!-- end row -->
-<!-- end container -->
+				
+          <section class="awaiting">
+        <h2>Awaiting Confirmation
+          
+        </h2>
+        <div class="container">
+        <div class="row">
+        <div class="col-xs-8">
+        <p>You have been invited to subscribe to the following topics</p>
+        </div>
+        <div class="col-xs-4">
+        <button class="btn btn-primary newsubscribe" href="#test_modal" data-toggle="modal">+ Subscribe to New Topic</button>
+			  </div>
+			  </div>
+			  </div>
+			  
+			  <div class="modal fade" id="test_modal">
+			  <div class="modal-body">
+          <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>Modal Header</h3>
+  </div>
+  <div class="modal-content">
+    <p>Test Modal</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+  </div>
+</div>
+
+	<ul class="ch-grid">
+	  <li>
+            <h3>Compilers</h3>
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Subscribe</button>
+	  </li>
+	  	  <li>
+            <h3>Models of Computation</h3>
+            
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Subscribe</button>
+	  </li>
+
+
+	</ul>
+          </section>			
+
+	<section class="mytopics">
+        <h2>My Topics
+          
+        </h2>
+        <div class="container">
+        <div class="row">
+        <div class="col-xs-8">
+        <p>You have been invited to subscribe to the following topics</p>
+        </div>
+        <div class="col-xs-4">
+        <button class="btn btn-primary newsubscribe" href="#test_modal" data-toggle="modal">+ Subscribe to New Topic</button>
+			  </div>
+			  </div>
+			  </div>
+			  
+			  <div class="modal fade" id="test_modal">
+          <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>Modal Header</h3>
+  </div>
+  <div class="modal-body">
+    <p>Test Modal</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+			
+		<ul class="ch-grid">
+	  <li>
+            <h3>Imperial College</h3>
+	    <div class="ch-item"><%= image_tag('Imperial-College-London-Shield.gif', class: 'img-circle ch-img') %>"	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go to Question Feed</button>
+	  </li>
+
+	  	  <li>
+            <h3>DoC</h3>
+	    <div class="ch-item"><%= image_tag('doc.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Intro to AI</h3>
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+	  	  <li>
+            <h3>Other Topic</h3>
+	    <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	    <div class="ch-info-wrap">
+	    <div class="ch-info">
+            <div class="ch-info-front"></div>
+            <div class="ch-info-back">
+	      <h3>
+                <a href="#">View Course Page</a>
+	      </h3>
+            </div>	
+            </div>
+	    </div>
+	    </div>
+      <button class="btn btn-default">Go To Question Feed</button>
+	  </li>
+
+
+	</ul>
+        </section>
+
+
 </DIV>
 
 <script>  

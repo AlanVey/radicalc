@@ -1,0 +1,26 @@
+.profile-section {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+}
+
+.profile-block {
+  padding-top: 40px;
+}
+
+#profilepic {
+position: relative;
+margin-bottom: 20px;
+
+
+}
+
+#send-message{
+position: relative;
+
+}
+
+.col-xs-4 {
+text-align: center;
+min-width: 170px;
+   }
