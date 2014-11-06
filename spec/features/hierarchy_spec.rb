@@ -2,6 +2,14 @@ require 'rails_helper'
 
 feature 'someone visits the dashboard' do
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    visit '/#toregister'
+    fill_in 'email-login', with: @user.email
+    fill_in 'password-login', with: @user.password
+    click_button 'Sign in'
+  end
+
   scenario 'and creates a hierarchy with one subject' do
     visit '/dashboard'
     click_link 'New Subject'
@@ -12,7 +20,6 @@ feature 'someone visits the dashboard' do
     expect(Subject.first.name).to eq('N1')
     expect(Subject.first.parent_id).to eq(nil)
   end
-
 
   scenario 'and creates two hierarchies with one subject each' do
     visit '/dashboard'

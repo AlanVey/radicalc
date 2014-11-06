@@ -9,9 +9,9 @@ feature 'Someone visits the dashboard' do
   end
 
   scenario 'and wants to see a subject' do
-    FactoryGirl.create(:subject)
+    @subject = FactoryGirl.create(:subject)
     visit '/dashboard'
-    click_link 'Show'
+    click_link @subject.name
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'Body:'
     expect(page).to have_content 'User:'

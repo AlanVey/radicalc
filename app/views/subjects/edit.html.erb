@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @subject %> |
-<%= link_to 'Back', dashboard_path %>
+<%= link_to 'Back', :back %><br>
+<%= link_to 'Destroy', @subject, method: :delete %>

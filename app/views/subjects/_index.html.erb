@@ -1,6 +1,6 @@
 <h1>Listing subjects</h1>
 
-<table>
+<table class='table' >
   <thead>
     <tr>
       <th>Name</th>
@@ -14,12 +14,9 @@
     <% @subjects.each do |subject| %>
         <% if subject.parent_id.nil? %>
           <tr>
-            <td><%= subject.name %></td>
+            <td><%= link_to subject.name, subject %></td>
             <td><%= subject.body %></td>
             <td><%= subject.user.email %></td>
-            <td><%= link_to 'Show', subject %></td>
-            <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-            <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
     <% end %>
