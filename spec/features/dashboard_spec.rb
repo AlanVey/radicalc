@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'Someone visits the dashboard' do
 
+  before(:each) do
+    sign_in
+  end
+
   scenario 'and adds a subject' do
     visit '/dashboard'
     click_link 'New Subject'
