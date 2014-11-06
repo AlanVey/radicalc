@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   # GET /subjects
@@ -30,6 +31,8 @@ class SubjectsController < ApplicationController
     else
       @subject = Subject.new(subject_params)
     end
+
+    @subject.user = current_user
 
     respond_to do |format|
       if @subject.save
@@ -74,6 +77,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :body, :user_id)
+      params.require(:subject).permit(:name, :body)
     end
 end
