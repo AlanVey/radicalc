@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'home#index'
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -16,4 +16,10 @@ Rails.application.routes.draw do
                                     passwords: 'passwords', 
                                     sessions: 'sessions' }
 
+  # User Profile routes ======================================================= 
+  get '/profile/edit', to: 'profiles#edit', as: 'edit_profile'
+  get '/profile', to:'profiles#show', as: 'profile'
+  patch '/profile', to: 'profiles#update', as: 'update_profile'
+  post '/profile', to: 'profiles#create', as: 'create_profile'
+  
 end

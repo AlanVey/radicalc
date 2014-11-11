@@ -1,0 +1,20 @@
+<p>
+  <strong>First name:</strong>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.user.email %>
+</p>
+
+<p>
+  <%= image_tag @profile.photo.display, :size => "300x300" %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %>
