@@ -184,7 +184,7 @@ font-weight: bold;
 
 .cbp-spmenu-push-toright {
 	left: 240px;
-	width: 50%;
+	width: 80%;
 }
 
 .cbp-spmenu-push-toleft {

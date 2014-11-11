@@ -18,7 +18,7 @@
     <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
 
-<p><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+<p id="forgotpass"><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
 <p class="signin button"><%= f.submit "Sign in" %></p>
 <% end %>

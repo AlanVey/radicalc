@@ -12,8 +12,11 @@
     <div class="container profile-block">
       <div class="row">
         <div class="col-xs-4">
-          <img class="img-circle"  id="profilepic" src="images/user.jpg"></img><br/>
-          <button class="btn btn-primary" id="send-message">Send message</button>
+          <img class="img-circle"  id="profilepic" src="images/user.png"></img><br/>
+          <button class="btn btn-primary" id="Edit Profile">Edit Profile</button>
+          
+          <%= button_to "Edit Profile".html_safe, :id => "Edit Profile", :class => "btn btn-primary", 'edit_profile.html.erb', :relative => true, :method => :get %>
+          
         </div>
         <div class="col-xs-8">
           <h3>John Smith</h3>

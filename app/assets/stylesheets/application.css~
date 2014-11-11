@@ -26,6 +26,7 @@
 
 .alert {
   margin-top: 0;
+  margin-left: 80px;
   padding: 0;
   width: 70%;
 }
@@ -42,6 +43,10 @@
 html, body {
   margin: 0;
   padding: 0;
+}
+
+a {
+  font-style: normal, !important; 
 }
 
 

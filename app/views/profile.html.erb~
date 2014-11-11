@@ -12,8 +12,11 @@
     <div class="container profile-block">
       <div class="row">
         <div class="col-xs-4">
-          <img class="img-circle"  id="profilepic" src="images/user.jpg"></img><br/>
-          <button class="btn btn-primary" id="send-message">Send message</button>
+          <img class="img-circle"  id="profilepic" src="images/user.png"></img><br/>
+          <button class="btn btn-primary" id="Edit Profile">Edit Profile</button>
+          
+          <%= button_to "Edit Profile".html_safe, :id => "Edit Profile", :class => "btn btn-primary", 'edit_profile.html.erb', :relative => true%>
+          
         </div>
         <div class="col-xs-8">
           <h3>John Smith</h3>
@@ -86,19 +89,49 @@
             <button class="btn btn-default">Go To Question Feed</button>
 	        </li>
 
+	  	    <li>
+            <h3>Other Topic</h3>
+	            <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	              <div class="ch-info-wrap">
+	                <div class="ch-info">
+                    <div class="ch-info-front"></div>
+                    <div class="ch-info-back">
+	                    <h3><a href="#">View Course Page</a></h3>
+                    </div>	
+                  </div>
+	              </div>
+	            </div>
+            <button class="btn btn-default">Go To Question Feed</button>
+	        </li>
+	        
+	  	    <li>
+            <h3>Other Topic</h3>
+	            <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	              <div class="ch-info-wrap">
+	                <div class="ch-info">
+                    <div class="ch-info-front"></div>
+                    <div class="ch-info-back">
+	                    <h3><a href="#">View Course Page</a></h3>
+                    </div>	
+                  </div>
+	              </div>
+	            </div>
+            <button class="btn btn-default">Go To Question Feed</button>
+	        </li>
+
 	      </ul>
-      </div>
+    </div>
       
-      <div class="profile-block">
-        <h2>Proficiencies</h2>
-      </div>
+    <div class="profile-block">
+      <h2>Proficiencies</h2>
+    </div>
       
-      <div class="profile-block">
-        <h2>Contacts</h2>
+    <div class="profile-block">
+      <h2>Contacts</h2>
         <p>You currently have no contacts</p>
-      </div>
+    </div>
       
-    </section>
+  </section>
 </DIV>
     
 <script>  
