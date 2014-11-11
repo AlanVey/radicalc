@@ -20,6 +20,4 @@ Rails.application.routes.draw do
   get '/profile/edit', to: 'profiles#edit', as: 'edit_profile'
   get '/profile', to:'profiles#show', as: 'profile'
   patch '/profile', to: 'profiles#update', as: 'update_profile'
-  post '/profile', to: 'profiles#create', as: 'create_profile'
-  
 end

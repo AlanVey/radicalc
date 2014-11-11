@@ -10,17 +10,6 @@ class ProfilesController < ApplicationController
   def edit
   end
 
-  # POST /profile
-  def create
-    @profile = Profile.new(profile_params)
-
-    if @profile.save
-      redirect_to @profile, notice: 'Profile was successfully created.'
-    else
-      redirect_to :back, notice: 'An error occured creating your profile.'
-    end
-  end
-
   # PATCH /profile
   def update
     if @profile.update(profile_params)

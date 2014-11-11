@@ -6,11 +6,4 @@ class User < ActiveRecord::Base
   
   has_one :profile
   has_many :subjects
-
-  after_create :create_user_profile
-
-
-  def create_user_profile
-    Profile.create(:user_id => self.id)
-  end
 end
