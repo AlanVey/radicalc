@@ -4,6 +4,9 @@
   <a href="#" id="my-profile">
     <%= image_tag('user.png', id: 'my-profile-pic', class: 'img-circle') %>
     John Smith
+    
+    <%= link_to "#{image_tag('user.png', id: 'my-profile-pic', class: 'img-circle')} John Smith".html_safe, 'profile.html.erb', :relative => true, :id => "my-profile"%>
+        
   </a>
   </h3>
 
