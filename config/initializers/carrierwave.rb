@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
 
-  if Rails.env.deployment?
+  if Rails.env.production?
     config.fog_credentials = {
       # Configuration for Amazon S3
       :provider              => 'AWS',
@@ -17,14 +17,4 @@ CarrierWave.configure do |config|
   end
 end
 
-=begin
-
-heroku config:add 
-
-S3_KEY         = AKIAI2GFGIII6MDPRG6Q 
-S3_SECRET      = AAJQxCgE2LtS70uDzc5AKwtQQVA+wBvC072qj5IK
-S3_REGION      = Ireland 
-S3_ASSET_URL   = http://assets.example.com/ 
-S3_BUCKET_NAME = radicalc/profile_pics
-
-=end
+# heroku config:add S3_KEY=AKIAI2GFGIII6MDPRG6Q S3_SECRET=AAJQxCgE2LtS70uDzc5AKwtQQVA+wBvC072qj5IK S3_REGION=Ireland S3_ASSET_URL=http://assets.example.com/ S3_BUCKET_NAME=radicalc/profile_pics
