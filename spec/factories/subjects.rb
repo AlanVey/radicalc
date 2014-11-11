@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :subject do
     name "MyString"
     body "MyText"
-    user
+    user_id 1
   end
 end

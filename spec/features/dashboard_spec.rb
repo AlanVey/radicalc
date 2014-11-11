@@ -3,19 +3,18 @@ require 'rails_helper'
 feature 'Someone visits the dashboard' do
 
   before(:each) do
-    sign_in
+    @user = sign_in
   end
 
   scenario 'and adds a subject' do
     visit '/dashboard'
-    click_link 'New Subject'
+    click_link 'Add a New Topic'
     expect(page).to have_content 'Create new subject!'
   end
 
   scenario 'and wants to see a subject' do
-    @subject = FactoryGirl.create(:subject)
-    visit '/dashboard'
-    click_link @subject.name
+    @subject = FactoryGirl.create(:subject, user_id: @user.id)
+    visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'Body:'
     expect(page).to have_content 'User:'
