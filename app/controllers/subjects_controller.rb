@@ -3,7 +3,6 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   # GET /subjects/1
-  # GET /subjects/1.json
   def show
   end
 
@@ -17,7 +16,6 @@ class SubjectsController < ApplicationController
   end
 
   # POST /subjects
-  # POST /subjects.json
   def create
     if params[:subject][:parent_id].to_i > 0
       parent = Subject.find_by_id(params[:subject].delete(:parent_id))
@@ -39,7 +37,6 @@ class SubjectsController < ApplicationController
   end
 
   # PATCH/PUT /subjects/1
-  # PATCH/PUT /subjects/1.json
   def update
     respond_to do |format|
       if @subject.update(subject_params)
@@ -52,7 +49,6 @@ class SubjectsController < ApplicationController
   end
 
   # DELETE /subjects/1
-  # DELETE /subjects/1.json
   def destroy
     @subject.destroy
     respond_to do |format|

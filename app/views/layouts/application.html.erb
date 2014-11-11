@@ -10,10 +10,11 @@
 
 
   
-<div class="alert alert-info alert-dismissable" role="alert">
-
-<p id="notice"><%= notice %><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
-</div>
+<% if not notice.nil? %>
+  <div class="alert alert-info alert-dismissable" role="alert">
+    <p id="notice"><%= notice %><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
+  </div>
+<% end %>
 <%= yield %>
 
 </body>
