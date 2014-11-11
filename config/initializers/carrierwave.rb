@@ -13,5 +13,3 @@ CarrierWave.configure do |config|
     config.fog_directory    = ENV['S3_BUCKET_NAME']
   end
 end
-
-# heroku config:add S3_KEY=AKIAI2GFGIII6MDPRG6Q S3_SECRET=AAJQxCgE2LtS70uDzc5AKwtQQVA+wBvC072qj5IK S3_REGION=Ireland S3_ASSET_URL=http://assets.example.com/ S3_BUCKET_NAME=radicalc/profile_pics
