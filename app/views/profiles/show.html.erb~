@@ -1,9 +1,4 @@
 <DIV class="page-main">
-  
-  <section class="header">
-    <h2>Profile Page</h1>
-  </section>
-
   <p>
     <strong>First name:</strong>
     <%= @profile.first_name %>

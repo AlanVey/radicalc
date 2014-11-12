@@ -3,7 +3,7 @@
   <h3>
   <div id="my-profile">
     
-    <%= link_to "#{image_tag(current_user.profile.photo.display, id: 'my-profile-pic', class: 'img-circle')}".html_safe, profile_path, :id => "my-profile" %>
+    <%= link_to "#{image_tag(current_user.profile.photo.display, id: 'my-profile-pic', class: 'img-circle')}" current_user.profile.name.html_safe, profile_path, :id => "my-profile" %>
     
     <%= link_to current_user.profile.name, profile_path, :id => "my-profile" %>
   </div>

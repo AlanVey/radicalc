@@ -73,6 +73,7 @@
 }
 
 #my-profile {
+  word-wrap: break-word;
   font-size: 30px;
   font-weight: lighter;
   color: white;

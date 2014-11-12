@@ -35,7 +35,7 @@
     </div>
   <% end %>
 
-  <%= button_to "Account settings", edit_user_registration_path, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %><br>
+  <%= link_to "Account settings", edit_user_registration_path %><br>
 
   <%= button_to 'Back', @profile, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
 

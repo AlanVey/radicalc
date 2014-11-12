@@ -229,11 +229,13 @@ input {
 p.login.button,
 p.signin.button{
 	text-align: right;
-
+  font-style: normal;
 }
 
 p#forgotpass {
   margin-bottom: -20px;
+  font-style: normal;
+  font-size: 16px;
 }
 
 
@@ -241,6 +243,7 @@ p#forgotpass {
 
 p.change_link{
 	position: absolute;
+	font-style: normal;
 	color: rgb(127, 124, 124);
 	left: 0px;
 	height: 20px;
