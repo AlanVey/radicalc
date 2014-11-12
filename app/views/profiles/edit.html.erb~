@@ -17,10 +17,10 @@
       </div>
     <% end %>
 
-    <div class="field">
+    <div class="field"><p>
       <%= f.label :first_name %><br>
       <%= f.text_field :first_name %>
-    </div>
+    </p></div>
     <div class="field">
       <%= f.label :last_name %><br>
       <%= f.text_field :last_name %>
@@ -35,7 +35,7 @@
     </div>
   <% end %>
 
-  <%= link_to "Account settings", edit_user_registration_path %><br>
+  <%= button_to "Account settings", edit_user_registration_path, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %><br>
 
   <%= button_to 'Back', @profile, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
 

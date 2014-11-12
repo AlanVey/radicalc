@@ -17,21 +17,21 @@
       </div>
     <% end %>
 
-    <div class="field">
+    <div class="field"><p>
       <%= f.label :first_name %><br>
       <%= f.text_field :first_name %>
-    </div>
-    <div class="field">
+    </p></div>
+    <div class="field"><p>
       <%= f.label :last_name %><br>
       <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
+    </p></div>
+    <div class="field"><p>
       <%= f.label :photo %><br>
       <%= image_tag @profile.photo.display, :size => "300x300" %><br>
       <%= f.file_field :photo %>
-    </div>
+    </p></div>
     <div class="actions">
-      <%= f.submit %>
+      <p><%= f.submit %></p>
     </div>
   <% end %>
 
