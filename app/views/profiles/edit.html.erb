@@ -27,7 +27,7 @@
     </p></div>
     <div class="form-entry"><p class = "mini-p">
       <%= f.label :photo %><br>
-      <%= image_tag @profile.photo.display, :size => "300x300" %><br>
+      <%= image_tag @profile.photo.display, :size => "300x300", :class => "img-circle", :id => "profilepic"%><br>
       <%= f.file_field :photo %>
     </p></div>
     <div class="actions">
