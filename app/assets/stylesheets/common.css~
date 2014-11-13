@@ -23,6 +23,10 @@
   float: left;
 }
 
+ul {
+  list-style-type: none;
+}
+
 td {
   width: 200px;
   padding-right: 50px;
