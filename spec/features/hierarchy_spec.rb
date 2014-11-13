@@ -4,15 +4,12 @@ feature 'someone visits the dashboard' do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    visit '/#toregister'
-    fill_in 'email-login', with: @user.email
-    fill_in 'password-login', with: @user.password
-    click_button 'Sign in'
+    sign_in @user
   end
 
   scenario 'and creates a hierarchy with one subject' do
     visit '/dashboard'
-    click_link 'New Subject'
+    click_link 'Add a New Topic'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
@@ -23,12 +20,12 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates two hierarchies with one subject each' do
     visit '/dashboard'
-    click_link 'New Subject'
+    click_link 'Add a New Topic'
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
     click_link 'Back'
-    click_link 'New Subject'
+    click_link 'Add a New Topic'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
     click_button 'Create Subject'
@@ -41,12 +38,10 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates a hierarchy with child, parent, grandparent' do
     visit '/dashboard'
-    click_link 'New Subject'
+    find(:xpath, "//a[@href='/subjects/new']", :text =>"Add a New Topic").click
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
-    click_link 'Back'
-    click_link 'Show'
     click_link 'New Subject'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
@@ -68,20 +63,18 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates a hierarchy with a parent and two children' do
     visit '/dashboard'
-    click_link 'New Subject'
+    find(:xpath, "//a[@href='/subjects/new']", :text =>"Add a New Topic").click
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
-    click_link 'Back'
 
-    find(:xpath, "//a[@href='/subjects/#{Subject.first.id}']", :text =>"Show").click
     click_link 'New Subject'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
     click_button 'Create Subject'
-    click_link 'Back'
 
-    find(:xpath, "//a[@href='/subjects/#{Subject.first.id}']", :text =>"Show").click
+    click_link 'N1'#the name of the parent
+
     click_link 'New Subject'
     fill_in 'Name', with: 'N3'
     fill_in 'Body', with: 'B3'
@@ -98,12 +91,11 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates a parent and a child, checks if child\'s page has link to parent\'s page' do
     visit '/dashboard'
-    click_link 'New Subject'
+    find(:xpath, "//a[@href='/subjects/new']", :text =>"Add a New Topic").click
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
-    click_link 'Back'
-    click_link 'Show'
+
     click_link 'New Subject'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
@@ -118,12 +110,11 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates a parent and a child, checks if child\'s page has link to parent\'s page' do
     visit '/dashboard'
-    click_link 'New Subject'
+    find(:xpath, "//a[@href='/subjects/new']", :text =>"Add a New Topic").click
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
-    click_link 'Back'
-    click_link 'Show'
+
     click_link 'New Subject'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
@@ -138,12 +129,11 @@ feature 'someone visits the dashboard' do
 
   scenario 'and creates a parent and a child, checks that only the parent\'s page is accessible from the dashbord' do
     visit '/dashboard'
-    click_link 'New Subject'
+    find(:xpath, "//a[@href='/subjects/new']", :text =>"Add a New Topic").click
     fill_in 'Name', with: 'N1'
     fill_in 'Body', with: 'B1'
     click_button 'Create Subject'
-    click_link 'Back'
-    click_link 'Show'
+
     click_link 'New Subject'
     fill_in 'Name', with: 'N2'
     fill_in 'Body', with: 'B2'
