@@ -35,7 +35,7 @@
     classie.toggle( this, 'active' );
     classie.toggle( body, 'cbp-spmenu-push-toright' );
     classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    classie.toggleClass( icon, 'glyphicon-circle-arrow-left');
+    classie.toggleClass( icon, 'glyphicon-arrow-left');
     classie.toggleClass( icon, 'glyphicon-list' );
   };
 </script>

@@ -7,15 +7,15 @@
   <section class="profile-section">
     <div class="container profile-block">
       <div class="row">
-        <div class="col-xs-4">
-          <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle" %>
+        <div class="col-xs-6" id="profile-block-left">
+          <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle", :id => "profilepic" %>
           <br/>
 
 
           <%= link_to 'Edit Profile', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
         </div>
         
-        <div class="col-xs-8">
+        <div class="col-xs-6">
         </br>
         </br>
         </br>                 
@@ -47,19 +47,4 @@
 </DIV>
 
 <%= render 'layouts/sidemenu' %>
-<script>  
-  var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 
-  showLeftPush = document.getElementById( 'showLeftPush' ),
-  body = document.body;
-    
-  classie.add( showLeftPush, 'active' );
-  classie.add( body, 'cbp-spmenu-push-toright' );
-  classie.add( menuLeft, 'cbp-spmenu-open' );
-  
-  showLeftPush.onclick = function() {
-    classie.toggle( this, 'active' );
-    classie.toggle( body, 'cbp-spmenu-push-toright' );
-    classie.toggle( menuLeft, 'cbp-spmenu-open' );
-  };
-</script>

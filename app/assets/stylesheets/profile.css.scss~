@@ -3,19 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile-section {
-  position: absolute;
-  left: 20%;
-  right: 20%;
+
 }
 
 .profile-block {
   padding-top: 40px;
 }
 
-#profilepic {
-position: relative;
-margin-bottom: 20px;
+#profile-block-left {
+  text-align: center;
+}
 
+
+#profilepic {
 
 }
 

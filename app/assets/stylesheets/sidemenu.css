@@ -3,10 +3,29 @@
 #showLeftPush {
   position: absolute;
   left:240px;
-  color: rgb(95, 155, 198);;
+  color: rgb(61, 157, 179);
   background: rgb(247, 247, 247);
+  font-size: 30px;
+  border-bottom: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+  border-right: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+  outline: none;
+}
 
-    font-size: 30px;
+#showLeftPush:hover {
+  color: rgba(26,89,120,0.9);
+  background: rgb(240, 240, 240);
 }
 
 .cbp-spmenu {
@@ -48,11 +67,6 @@
   color: rgba(26,89,120,0.9);
   background: rgb(240, 240, 240);
   text-decoration: none;
-}
-
-.cbp-spmenu a:active {
-	background: #afdefa;
-	color: #47a3da;
 }
 
 #my-profile {
