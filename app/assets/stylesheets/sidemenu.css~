@@ -34,7 +34,6 @@
 }
 
 .profile-name:hover {
-  color: white;
 }
 
 .menu-link {
@@ -62,7 +61,6 @@
   color: white;
   padding-top: 15px;
   padding-bottom: 15px; 
-  margin-bottom: 10px;
   background: rgb(61, 157, 179);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 3px;

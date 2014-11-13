@@ -3,29 +3,46 @@
   <section class="header">
     <h2>Profile Page</h1>
   </section>
-
-  <p>
-    <strong>First name:</strong>
-    <%= @profile.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= @profile.last_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= @profile.user.email %>
-  </p>
-
-  <p>
-    <%= image_tag @profile.photo.display, :size => "300x300" %>
-  </p>
-
-  <%= button_to 'Edit', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
   
-  <%= button_to 'Home', dashboard_path, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
+  <section class="profile-section">
+    <div class="container profile-block">
+      <div class="row">
+        <div class="col-xs-4">
+          <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle" %>
+          <br/>
+
+
+          <%= link_to 'Edit Profile', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
+        </div>
+        
+        <div class="col-xs-8">
+        </br>
+        </br>
+        </br>                 
+          <p class = "mini-p">
+            <strong>First name:</strong>
+            <%= @profile.first_name %>
+          </p>
+
+          <p class = "mini-p">
+            <strong>Last name:</strong>
+            <%= @profile.last_name %>
+          </p>
+
+          <p class = "mini-p">
+            <strong>Email:</strong>
+            <%= @profile.user.email %>
+          </p>
+          
+          <br/>
+          <br/>
+          <%= button_to "Account settings", edit_user_registration_path, :id => "Edit Profile", :class => "btn btn-default", :relative => true, :method => :get %>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
   
 </DIV>
 

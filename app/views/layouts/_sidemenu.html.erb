@@ -1,26 +1,25 @@
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 <button class="btn btn-lg" id="showLeftPush"><span class="glyphicon glyphicon-list"></span></button>
-  <h3>
+
   <div id="my-profile">
     
-    <%= link_to "#{image_tag(current_user.profile.photo.display, id: 'my-profile-pic', class: 'img-circle')}".html_safe, profile_path, :id => "my-profile" %>
+    <%= link_to "#{image_tag(current_user.profile.photo.display, id: 'my-profile-pic', class: 'img-circle')}".html_safe, profile_path%>
     
-    <%= link_to current_user.profile.name, profile_path, :id => "my-profile" %>
+    <%= link_to current_user.profile.name, profile_path, :class=> 'profile-name' %>
   </div>
-  </h3>
 
-  <a href="#">
+  <div class = "menu-link">
     <span class="glyphicon glyphicon-th"></span>
-    My Topics
-  </a>
-  <a href="#">
+    <%= link_to 'My Topics', dashboard_path, :relative => true, :method => :get %>
+  </div>
+  <div class = "menu-link">
     <span class="glyphicon glyphicon-plus"></span>
     <%= link_to 'Add a New Topic', new_root_subject_path %>
-  </a>
-  <a href="#">
+  </div>
+  <div class = "menu-link">
     <span class="glyphicon glyphicon-envelope"></span>
     Mailbox
-  </a>
+  </div>
 
 <button class="btn btn-default" id="logoutbtn">
   <%=link_to 'Log out', destroy_user_session_path, :method => :delete, id: 'logout' %>

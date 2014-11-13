@@ -17,30 +17,28 @@
       </div>
     <% end %>
 
-    <div class="field"><p>
+    <div class="form-entry"><p class = "mini-p">
       <%= f.label :first_name %><br>
       <%= f.text_field :first_name %>
     </p></div>
-    <div class="field">
+    <div class="form-entry"><p class = "mini-p">
       <%= f.label :last_name %><br>
       <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
+    </p></div>
+    <div class="form-entry"><p class = "mini-p">
       <%= f.label :photo %><br>
       <%= image_tag @profile.photo.display, :size => "300x300" %><br>
       <%= f.file_field :photo %>
-    </div>
+    </p></div>
     <div class="actions">
-      <%= f.submit %>
+      <p><%= f.submit %></p>
     </div>
   <% end %>
 
   <%= button_to "Account settings", edit_user_registration_path, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %><br>
 
-  <%= button_to 'Back', @profile, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
+  <%= link_to 'Back To Profile', @profile, :class => "btn btn-default", :relative => true, :method => :get %>
 
-  <%= button_to 'Home', dashboard_path, :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>  
-  
 </DIV>
 
 <%= render 'layouts/sidemenu' %>

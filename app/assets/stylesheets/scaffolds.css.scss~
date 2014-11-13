@@ -10,7 +10,7 @@ pre {
 
 .field_with_errors {
   padding: 2px;
-  color: red;
+  background-color: red;
   display: table;
 }
 

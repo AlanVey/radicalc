@@ -7,13 +7,13 @@
   <%= f.fields_for :profile do |p| %>
     <%= p.label :first_name %><br />
     <div class="inner-addon left-addon">
-      <span class="glyphicon glyphicon-envelope"></span>
+      <span class="glyphicon glyphicon-user"></span>
       <%= p.text_field :first_name, autofocus: true, placeholder: "John", required: "required" %>
     </div>
 
     <%= p.label :last_name %><br />
       <div class="inner-addon left-addon">
-      <span class="glyphicon glyphicon-envelope"></span>
+      <span class="glyphicon glyphicon-user"></span>
       <%= p.text_field :last_name, autofocus: true, placeholder: "Smith", required: "required" %>
     </div>
   <% end %>

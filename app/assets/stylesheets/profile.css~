@@ -1,11 +1,7 @@
-// Place all the styles related to the Profile controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .profile-section {
   position: absolute;
-  left: 10%;
-  right: 10%;
+  left: 20%;
+  right: 20%;
 }
 
 .profile-block {
