@@ -23,8 +23,8 @@
   float: left;
 }
 
-ul {
-  list-style-type: none;
+.vcenter {
+  margin-top: 15px;
 }
 
 td {
