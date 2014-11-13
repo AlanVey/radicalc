@@ -130,7 +130,7 @@ p input[type=submit],
 	        transition: all 0.2s linear;
 }
 
-input[type=file] button,
+p input[type=file] a,
 .btn-default {
 	display: inline;
 	color: rgb(29, 162, 193);
