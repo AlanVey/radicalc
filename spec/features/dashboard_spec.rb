@@ -8,7 +8,10 @@ feature 'Someone visits the dashboard' do
 
   scenario 'and adds a subject' do
     visit '/dashboard'
+
     click_link 'Add a New Topic'
+    # first(:link, 'Add a New Topic').click
+
     expect(page).to have_content 'Create new subject!'
   end
 

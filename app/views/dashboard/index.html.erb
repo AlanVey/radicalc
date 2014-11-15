@@ -2,28 +2,31 @@
 <%= javascript_include_tag('boostrap.js') %>
 
 <%= render 'layouts/sidemenu' %>
+
  <DIV class="page-main">
-          
   <div>
-	  <section class="header">	
+	  <section class="header">
 	    <h1>Hello, <strong><%= current_user.profile.first_name %></strong>!</h1>
 	      <p>Welcome to the RadiCalc homepage. Here you can see which topics you are currently subscribed to and which you have been invited to join.</p>
     </section>
 
-				
     <section class="awaiting">
+      <!-- -->
       <h2>Awaiting Confirmation</h2>
       <div class="container">
         <div class="row">
+
           <div class="col-xs-8">
             <p>You have been invited to subscribe to the following topics</p>
           </div>
+
           <div class="col-xs-4">
             <button class="btn btn-primary newsubscribe" href="#test_modal" data-toggle="modal">+ Subscribe to New Topic</button>
 		      </div>
 	      </div>
 	    </div>
-		    
+
+      <!-- -->
 	    <div class="modal fade" id="test_modal">
 		    <div class="modal-body">
           <div class="modal-header">
@@ -38,6 +41,7 @@
               </div>
             </body>
           </div>
+
   
           <div class="modal-content">
             <div class="container">
@@ -146,27 +150,30 @@
         </div>
       </div>
 
+      <!-- -->
 	    <ul class="ch-grid">
 	      <li>
           <h3>Compilers</h3>
-	        <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+
+	        <div class="ch-item">
+            <%= image_tag('topic.png', class: 'img-circle ch-img') %>
 	          <div class="ch-info-wrap">
 	            <div class="ch-info">
                 <div class="ch-info-front"></div>
                 <div class="ch-info-back">
-	                <h3>
-                    <a class="underline-link">View Course Page</a>
-	                </h3>
+	                <h3><a class="underline-link">View Course Page</a></h3>
                 </div>	
               </div>
 	          </div>
 	        </div>
+
           <button class="btn btn-default">Subscribe</button>
 	      </li>
 	      
 	      <li>
           <h3>Models of Computation</h3>      
-	        <div class="ch-item"><%= image_tag('topic.png', class: 'img-circle ch-img') %>	
+	        <div class="ch-item">
+            <%= image_tag('topic.png', class: 'img-circle ch-img') %>
 	          <div class="ch-info-wrap">
 	            <div class="ch-info">
                 <div class="ch-info-front"></div>
@@ -228,8 +235,7 @@
           </div>
           <%= link_to 'Go to Question Feed', '', class: "btn btn-default" %>
         </li>
-
   	  </ul>
     </section>
-          
+  </div>
 </DIV>

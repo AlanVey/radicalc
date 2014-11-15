@@ -14,10 +14,10 @@
 </p>
 
 <% if @subject.parent != nil %>
-<p>
-  <strong>Parent:</strong>
-  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
-</p>
+  <p>
+    <strong>Parent:</strong>
+    <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
+  </p>
 <% end %>
 
 <% if @subject.children.count > 0 %>
@@ -33,7 +33,7 @@
 <% end %>
 
 <p>
-<%= link_to 'New Subject', new_subject_path(@subject.id) %>
+  <%= link_to 'New Subject', new_subject_path(@subject.id) %>
 </p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
