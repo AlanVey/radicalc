@@ -33,7 +33,8 @@
 <% end %>
 
 <p>
-<%= link_to 'New Subject', new_subject_path(@subject.id) %>
+<%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
+<%= link_to 'Questions', questions_path(kind: 'General') %>
 </p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
