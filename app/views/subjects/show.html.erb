@@ -33,7 +33,12 @@
 <% end %>
 
 <p>
+<<<<<<< HEAD
   <%= link_to 'New Subject', new_subject_path(@subject.id) %>
+=======
+<%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
+<%= link_to 'Questions', questions_path(kind: 'General') %>
+>>>>>>> 17ac159fbef8e88c756dd34956e2d23ea03da1b2
 </p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |

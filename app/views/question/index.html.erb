@@ -1,0 +1,6 @@
+<% @questions.each do |q| %>
+  <iframe src= <%= q.uri %> width=770 height=700></iframe><br>
+<% end %>
+
+<br><br>
+<%= link_to 'New Question', new_general_question_path %>
