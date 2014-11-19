@@ -5,9 +5,6 @@ class Subject < ActiveRecord::Base
   #administrator
   belongs_to :user
   has_many :questions
-  #regular users
-  has_many :users, through: :membership
-
   acts_as_tree
 
 
