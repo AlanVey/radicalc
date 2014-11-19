@@ -1,3 +1,5 @@
+<% if @subject.users.include? current_user %>
+
 <p>
   <strong>Name:</strong>
   <%= @subject.name %>
@@ -43,3 +45,5 @@
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', dashboard_path %><br>
+
+<% end %>

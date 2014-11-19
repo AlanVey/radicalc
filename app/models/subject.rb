@@ -2,8 +2,11 @@ class Subject < ActiveRecord::Base
   validates_presence_of :name, :body, :user_id, :debate_type
   validate :debate_type_is_technical_or_management?
 
+  #administrator
   belongs_to :user
   has_many :questions
+  #regular users
+  has_many :users, through: :membership
 
   acts_as_tree
 

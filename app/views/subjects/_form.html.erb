@@ -25,6 +25,11 @@
     <%= f.text_area :body %>
   </div>
 
+  <div class="field">
+    <%= f.check_box :debate_type, {}, "technical", "management" %>
+    <%= f.label :debate_type, "technical" %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
