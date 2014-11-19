@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115190922) do
+ActiveRecord::Schema.define(version: 20141118180432) do
 
   create_table "profiles", force: true do |t|
     t.string   "first_name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141115190922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.string   "debate_type"
   end
 
   create_table "users", force: true do |t|

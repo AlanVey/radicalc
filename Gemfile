@@ -27,7 +27,7 @@ gem 'spring',        group: :development
 # Remember to precompile assets before pushing
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+  #gem 'pg'
 end
 
 group :development, :test do
