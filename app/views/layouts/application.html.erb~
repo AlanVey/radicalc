@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
   <title>Radicalc</title>
@@ -20,6 +20,7 @@
 </body>
 </html>
 
+
 <script>  
   var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 
@@ -35,7 +36,7 @@
     classie.toggle( this, 'active' );
     classie.toggle( body, 'cbp-spmenu-push-toright' );
     classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    classie.toggleClass( icon, 'glyphicon-arrow-left');
+    classie.toggleClass( icon, 'glyphicon-circle-arrow-left');
     classie.toggleClass( icon, 'glyphicon-list' );
   };
 </script>

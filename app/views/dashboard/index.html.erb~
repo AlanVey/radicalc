@@ -215,6 +215,7 @@
               </div>
             </div>
           </div>
+          <%= link_to 'Go to Question Feed', '', class: "btn btn-default" %>
         </li>
         
         <li>
@@ -229,6 +230,7 @@
               </div>
             </div>
           </div>
+          <%= link_to 'Go to Question Feed', '', class: "btn btn-default" %>
         </li>
   	  </ul>
     </section>
