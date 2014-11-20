@@ -9,7 +9,7 @@
 		<iframe src= <%= q.uri %> width=770 height=700></iframe><br>
 	<% end %>
 
-	<%= link_to '<strong>+</strong> New Question'.html_safe, new_general_question_path, :class => "btn btn-primary" %>
+	<%= link_to '<span class="glyphicon glyphicon-plus-sign"></span>  New Question'.html_safe, new_general_question_path, :class => "btn btn-primary" %>
 
 </div>
 
