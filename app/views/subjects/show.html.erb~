@@ -59,10 +59,9 @@
 <% end %>
   </section>
   <br/>
-
-  <p class="mini-p">
-    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
-  </p>
+<p class="mini-p">
+<%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+</p>
 
 </div>
 

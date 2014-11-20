@@ -9,7 +9,7 @@
           <div class="ch-info">
             <div class="ch-info-front"></div>
             <div class="ch-info-back">
-              <h3><%= link_to 'View Topic Page', subject_path(subject.id), :class => "underline-link" %></h3>
+              <h3><a class="underline-link"><%= link_to 'View Topic Page', subject_path(subject.id) %></h3>
             </div>  
           </div>
         </div>

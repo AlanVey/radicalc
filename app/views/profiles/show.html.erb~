@@ -1,7 +1,7 @@
 <DIV class="page-main">
   
   <section class="header">
-    <h2>Profile Page</h1>
+    <h1>Profile Page</h1>
   </section>
   
   <section class="profile-section">
@@ -11,10 +11,9 @@
           <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle", :id => "profilepic" %>
           <br/>
 
-
           <%= link_to 'Edit Profile', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
         </div>
-        
+
         <div class="col-xs-6">
         </br>
         </br>

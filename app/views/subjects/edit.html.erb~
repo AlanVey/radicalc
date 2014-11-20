@@ -8,7 +8,7 @@
 
 	<br/>
 	<p class="mini-p">
-		<%= link_to 'Delete this topic', @subject, method: :delete %>
+		<%= link_to 'Destroy', @subject, method: :delete %>
 	</p> <br/>
 
 	<p class="mini-p">
