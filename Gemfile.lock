@@ -28,6 +28,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    authority (3.0.0)
+      activesupport (>= 3.0.0)
+      rake (>= 0.8.7)
     bcrypt (3.1.7)
     builder (3.2.2)
     capybara (2.4.3)
@@ -156,6 +159,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    rolify (3.4.1)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -214,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authority
   capybara
   carrierwave
   closure_tree
@@ -229,6 +234,7 @@ DEPENDENCIES
   mysql2
   rails (= 4.1.6)
   rails_12factor
+  rolify
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

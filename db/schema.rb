@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118180432) do
+ActiveRecord::Schema.define(version: 20141120013825) do
+
+  create_table "group_memberships", force: true do |t|
+    t.string  "member_type"
+    t.integer "member_id"
+    t.integer "group_id"
+    t.string  "group_name"
+    t.string  "membership_type"
+  end
+
+  add_index "group_memberships", ["group_id"], name: "index_group_memberships_on_group_id", using: :btree
+  add_index "group_memberships", ["group_name"], name: "index_group_memberships_on_group_name", using: :btree
+  add_index "group_memberships", ["member_id", "member_type"], name: "index_group_memberships_on_member_id_and_member_type", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string "type"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "first_name"
@@ -32,6 +48,17 @@ ActiveRecord::Schema.define(version: 20141118180432) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "subject_hierarchies", id: false, force: true do |t|
     t.integer "ancestor_id",   null: false
@@ -69,5 +96,12 @@ ActiveRecord::Schema.define(version: 20141118180432) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_roles", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end

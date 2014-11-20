@@ -50,4 +50,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
-
+#for user privileges
+gem 'authority'
+#for user roles
+gem 'rolify'
