@@ -107,17 +107,6 @@
 }
 
 #logout {
-display: inline-block;
-  font-weight: 600;
-
-  color: rgb(29, 162, 193);
-background: transparent;
-border: 0;
-padding: 0;
-text-decoration: none;
-}
-
-#logoutbtn {
   right: 10px;
   bottom: 15px;
   position: absolute;

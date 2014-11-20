@@ -8,23 +8,18 @@
     <%= link_to current_user.profile.name, profile_path, :class=> 'profile-name' %>
   </div>
 
-  <div class = "menu-link">
-    <span class="glyphicon glyphicon-th"></span>
-    <%= link_to 'My Topics', dashboard_path, :relative => true, :method => :get %>
-  </div>
-  <div class = "menu-link">
-    <span class="glyphicon glyphicon-plus"></span>
-    <%= link_to 'Add a New Topic', new_root_subject_path %>
-  </div>
+
+    
+    <%= link_to '<span class="glyphicon glyphicon-th"></span> My Topics'.html_safe , dashboard_path, :relative => true, :method => :get, :class => "menu-link" %>
+
+    <%= link_to '<span class="glyphicon glyphicon-plus"></span> Add a New Topic'.html_safe, new_root_subject_path, :class => "menu-link"%>
+
   <div class = "menu-link">
     <span class="glyphicon glyphicon-envelope"></span>
     Mailbox
   </div>
 
-<button class="btn btn-default" id="logoutbtn">
-  <%=link_to 'Log out', destroy_user_session_path, :method => :delete, id: 'logout' %>
-    <span class="glyphicon glyphicon-log-out"></span>
-</button>
+  <%=link_to 'Log out' '<span class="glyphicon glyphicon-log-out"></span>'.html_safe, destroy_user_session_path, :method => :delete, class: 'btn btn-default', id: 'logout' %>
 
 
 </nav>

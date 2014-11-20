@@ -6,7 +6,14 @@
   color: rgb(61, 157, 179);
   background: rgb(247, 247, 247);
   font-size: 30px;
-  border: 1px solid rgba(147, 184, 189,0.8);
+  border-bottom: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+  border-right: 1px solid rgba(147, 184, 189,0.8);
 	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
 	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
 	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
@@ -99,18 +106,9 @@
   margin-right: 7px;
 }
 
+
+
 #logout {
-display: inline-block;
-  font-weight: 600;
-
-  color: rgb(29, 162, 193);
-background: transparent;
-border: 0;
-padding: 0;
-text-decoration: none;
-}
-
-#logoutbtn {
   right: 10px;
   bottom: 15px;
   position: absolute;
