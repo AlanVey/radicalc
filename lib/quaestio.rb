@@ -57,27 +57,6 @@ class Quaestio
     def basic_queries(uri, id)
       c = initCurb(uri)
       c.http_post(uri, Curl::PostField.content("debate_id", id))
-      c
+      c.response_code == 200
     end
 end
-
-=begin
-
-newDebate - Request to create a new debate in ARG-System
-POST: http://www.quaestio-it.com/api/newDebate
-Parameters:
-question: Question written by user.
-tags:  Tag list  selected by user.
-user_name: username of user involved in operation.
-user_data: First name and surname of user involved in operation.
-user_expertise: level of expertise of user involved in operation.
-
-modifyDebate - Request to modify an existing debate
-POST: ttp://www.quaestio-it.com/api/modifyDebate
-Parameters:
-debate_id: Debate ID
-user_name: username of user involved in operation.
-user_data: First name and surname of user involved in operation.
-user_expertise: level of expertise of user involved in operation.
-  
-=end
