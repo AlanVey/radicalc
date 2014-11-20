@@ -17,26 +17,25 @@
 <% end %>
 <%= yield %>
 
+  <script>
+    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+
+        showLeftPush = document.getElementById( 'showLeftPush' ),
+        body = document.body,
+        icon = document.getElementById('menuIcon');
+
+    classie.add( showLeftPush, 'active' );
+    classie.add( body, 'cbp-spmenu-push-toright' );
+    classie.add( menuLeft, 'cbp-spmenu-open' );
+
+    showLeftPush.onclick = function() {
+      classie.toggle( this, 'active' );
+      classie.toggle( body, 'cbp-spmenu-push-toright' );
+      classie.toggle( menuLeft, 'cbp-spmenu-open' );
+      classie.toggleClass( icon, 'glyphicon-circle-arrow-left');
+      classie.toggleClass( icon, 'glyphicon-list' );
+    };
+  </script>
+
 </body>
 </html>
-
-<!--
-<script>  
-  var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-
-  showLeftPush = document.getElementById( 'showLeftPush' ),
-  body = document.body,
-  icon = document.getElementById('menuIcon');
-    
-  classie.add( showLeftPush, 'active' );
-  classie.add( body, 'cbp-spmenu-push-toright' );
-  classie.add( menuLeft, 'cbp-spmenu-open' );
-  
-  showLeftPush.onclick = function() {
-    classie.toggle( this, 'active' );
-    classie.toggle( body, 'cbp-spmenu-push-toright' );
-    classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    classie.toggleClass( icon, 'glyphicon-circle-arrow-left');
-    classie.toggleClass( icon, 'glyphicon-list' );
-  };
-</script> -->

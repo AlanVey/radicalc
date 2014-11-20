@@ -7,14 +7,15 @@
   <section class="profile-section">
     <div class="container profile-block">
       <div class="row">
-        <div class="col-xs-6" id="profile-block-left">
-          <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle", :id => profilepic %>
-          <br/>
-
+        <!-- TODO :: This part is breaking -->
+        <div class="col-xs-6" id="profile-block-left"> -->
+          <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle"#, :id => profilepic %>
+          </br>
+          <!-- This is the end of the Error -->
 
           <%= link_to 'Edit Profile', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
         </div>
-        
+
         <div class="col-xs-6">
         </br>
         </br>
