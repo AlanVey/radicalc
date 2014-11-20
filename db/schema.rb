@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120013825) do
+ActiveRecord::Schema.define(version: 20141120023256) do
 
   create_table "group_memberships", force: true do |t|
     t.string  "member_type"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20141120013825) do
   create_table "subjects", force: true do |t|
     t.string   "name"
     t.text     "body"
-    t.integer  "user_id"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"

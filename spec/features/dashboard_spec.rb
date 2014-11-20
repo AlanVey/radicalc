@@ -16,7 +16,7 @@ feature 'Someone visits the dashboard' do
   end
 
   scenario 'and wants to see a subject' do
-    @subject = FactoryGirl.create(:subject, user_id: @user.id)
+    @subject = FactoryGirl.create(:subject, author_id: @user.id)
     visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'Body:'

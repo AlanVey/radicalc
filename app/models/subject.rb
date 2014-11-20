@@ -1,9 +1,10 @@
 class Subject < ActiveRecord::Base
-  validates_presence_of :name, :body, :user_id, :debate_type
+  validates_presence_of :name, :body, :author_id, :debate_type
   validate :debate_type_is_technical_or_management?
 
-  #administrator
-  belongs_to :user
+  resourcify
+  include Authority::Abilities
+  belongs_to :author, class_name: 'User'
   has_many :questions
   acts_as_tree
 

@@ -16,7 +16,7 @@ RSpec.describe Subject, :type => :model do
   end
 
   it 'has a user id' do
-    expect(FactoryGirl.build(:subject, user_id: nil)).not_to be_valid
+    expect(FactoryGirl.build(:subject, author_id: nil)).not_to be_valid
   end
 
   it 'has a debate_type' do

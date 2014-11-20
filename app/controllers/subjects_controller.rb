@@ -24,7 +24,7 @@ class SubjectsController < ApplicationController
       @subject = Subject.new(subject_params)
     end
 
-    @subject.user = current_user
+    @subject.author = current_user
 
     respond_to do |format|
       if @subject.save
