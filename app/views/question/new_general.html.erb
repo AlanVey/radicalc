@@ -6,14 +6,16 @@
 
 	<%= form_for @question, url: create_general_question_path do |f| %>
 	  <% if @question.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+	    <div id="error_explanation" class="alert alert-danger">
+	      <span class="glyphicon glyphicon-exclamation-sign"></span>
+              <span><strong><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</strong>
 
 	      <ul>
 	        <% @question.errors.full_messages.each do |message| %>
 		      <li><%= message %></li>
 	        <% end %>
 	      </ul>
+              </span>
 	    </div>
 	  <% end %>
 

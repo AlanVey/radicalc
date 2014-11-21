@@ -1,3 +1,8 @@
+.img-circle {
+  margin-bottom: 20px;
+}
+
+
 .ch-grid {
 	margin: 5px 0 0 0;
 	padding: 0;
@@ -23,13 +28,8 @@
   float: left;
 }
 
-<<<<<<< HEAD
 .vcenter {
-  margin-top: 2%;
-=======
-ul {
-  list-style-type: none;
->>>>>>> 88af8d8e9f34e4b7e1ec7a4727893f9c72c2efb1
+  margin-top: 15px;
 }
 
 td {
