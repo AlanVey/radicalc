@@ -101,7 +101,7 @@ feature 'someone visits the dashboard' do
     fill_in 'Body', with: 'B2'
     click_button 'Create Subject'
 
-    expect(page).to have_content 'Parent:'
+    expect(page).to have_content 'Parent Topic:'
     click_link 'N1'
     expect(page).to have_content 'N1'
     expect(page).to have_content 'B1'
@@ -121,7 +121,7 @@ feature 'someone visits the dashboard' do
     click_button 'Create Subject'
 
     click_link 'N1'
-    expect(page).to have_content 'Children:'
+    expect(page).to have_content 'Subtopics:'
     click_link 'N2'
     expect(page).to have_content 'N2'
     expect(page).to have_content 'B2'
