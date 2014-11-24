@@ -4,12 +4,19 @@
     <h2>Question Feed</h2>
   </section>
 
+  Maybe make these links tabs?<br>
+  <%= link_to 'General Debate', questions_path(kind: 'General') %> ---
+  <%= link_to 'Technical Debate', questions_path(kind: 'Technical') %> ---
+  <%= link_to 'Test Debate', questions_path(kind: 'Test') %><br><br>
 
+  <h3>Questions</h3>
 	<% @questions.each do |q| %>
 		<%= link_to q.title, show_question_path(question_id: q.id) %><br>
 	<% end %>
 
-	<%= link_to '<strong>+</strong> New Question'.html_safe, new_general_question_path, :class => "btn btn-primary" %>
+  <br><br>
+
+	<%= link_to '<strong>+</strong> New Question'.html_safe, new_question_path(kind: @kind), :class => "btn btn-primary" %>
 
 </div>
 

@@ -13,11 +13,9 @@ Rails.application.routes.draw do
     
   # Question routes =========================================================
   get 'subjects/:id/question/:kind', to: 'question#index', as: 'questions'
+  get 'subjects/:id/question/new/:kind', to: 'question#new', as: 'new_question'
   get 'subjects/:id/question/show/:question_id', to: 'question#show', as: 'show_question'
-  get 'subjects/:id/question/new/general', to: 'question#new_general', as: 'new_general_question'
-  get 'subjects/:id/question/new/technical', to: 'question#new_technical', as: 'new_technical_question'
-  post 'subjects/:id/question/general', to: 'question#create_general', as: 'create_general_question'
-  post 'subjects/:id/question/technical', to: 'question#create_technical', as: 'create_technical_question'
+  post 'subjects/:id/question/create/:kind', to: 'question#create', as: 'create_question'
 
   # User routes ===============================================================
   devise_for :users, controllers: { registrations: 'registrations', 
