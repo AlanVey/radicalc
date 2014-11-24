@@ -1,5 +1,5 @@
 class QuestionController < ApplicationController
-  before_action :set_kind, only: [:index, :new, :create]
+  before_action :set_kind
 
   def index
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])

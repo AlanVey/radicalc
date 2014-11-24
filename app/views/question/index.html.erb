@@ -1,7 +1,7 @@
 <div class="page-main">
 
   <section class="header">
-    <h2>Question Feed</h2>
+    <h2><%= @kind %> Question Feed</h2>
   </section>
 
   Maybe make these links tabs?<br>
@@ -11,7 +11,7 @@
 
   <h3>Questions</h3>
 	<% @questions.each do |q| %>
-		<%= link_to q.title, show_question_path(question_id: q.id) %><br>
+		<%= link_to q.title, show_question_path(question_id: q.id, kind: @kind) %><br>
 	<% end %>
 
   <br><br>
