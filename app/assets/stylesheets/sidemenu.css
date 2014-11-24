@@ -1,5 +1,41 @@
 /* General styles for all menus */
 
+.account-dropdown-toggle, 
+.account-dropdown-toggle:focus,
+.account-dropdown-toggle:active  {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.dropdown-menu {
+  background: rgb(230, 230, 230);
+  border: 2px solid rgba(147, 184, 189,0.8);
+  margin-left: 20px;
+  padding: 10px 15px 15px 15px;
+}
+
+.dropdown-menu li {
+    font-size: 16px;
+  padding: 0;
+}
+
+.divider {
+  border-top: 1px solid rgb(61, 157, 179);
+}
+
+.dropdown-menu > li > a {
+  padding: 0;
+  color: rgb(61, 157, 179);
+}
+
+.dropdown-menu > li > a:hover {
+  background: transparent;
+  color: rgb(57, 191, 215);
+}
+
 #showLeftPush {
   position: absolute;
   left:240px;
@@ -54,6 +90,7 @@
 
 .profile-name:hover {
   color: white;
+  text-decoration: underline;
 }
 
 .menu-link {
@@ -95,10 +132,6 @@
 	   -moz-transition: all 0.2s linear;
 	     -o-transition: all 0.2s linear;
 	        transition: all 0.2s linear;
-}
-
-#my-profile:hover {
-  text-decoration: underline;
 }
 
 .cbp-spmenu .glyphicon {
