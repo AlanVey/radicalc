@@ -17,6 +17,18 @@ Rails.application.routes.draw do
   get 'subjects/:id/question/:kind/show/:question_id', to: 'question#show', as: 'show_question'
   post 'subjects/:id/question/create/:kind', to: 'question#create', as: 'create_question'
 
+  # Tests routes ==============================================================
+  get 'subjects/:id/tests', to:'test#index', as: 'tests'
+  get 'subjects/:id/tests/new', to:'test#new', as: 'new_test'
+  get 'subjects/:id/tests/show/:test_id', to:'test#show', as: 'show_test'
+  post 'subjects/:id/tests/create', to:'test#create', as: 'create_test'
+
+  # Tests questions routes ====================================================
+  get 'subjects/:id/tests/show/:test_id/question/show/:question_id', to: 'test_questions#show', as: 'show_test_question'
+  get 'subjects/:id/tests/show/:test_id/question/new', to: 'test_questions#new', as: 'new_test_question'
+  post 'subjects/:id/tests/show/:test_id/question/create', to: 'test_questions#create', as: 'create_test_question'
+  delete 'subjects/:id/tests/show/:test_id/question/delete/:question_id', to: 'test_questions#destroy', as: 'delete_test_question'
+
   # User routes ===============================================================
   devise_for :users, controllers: { registrations: 'registrations', 
                                     passwords: 'passwords', 

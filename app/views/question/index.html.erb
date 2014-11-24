@@ -7,7 +7,10 @@
   Maybe make these links tabs?<br>
   <%= link_to 'General Debate', questions_path(kind: 'General') %> ---
   <%= link_to 'Technical Debate', questions_path(kind: 'Technical') %> ---
-  <%= link_to 'Test Debate', questions_path(kind: 'Test') %><br><br>
+  <%= link_to 'Test Debate', questions_path(kind: 'Test') %> ---
+  <%= link_to 'Tests', tests_path %>
+
+  <br><br>
 
   <h3>Questions</h3>
 	<% @questions.each do |q| %>

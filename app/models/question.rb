@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
   validate :valid_kind?
 
   def valid_kind?
-    unless ['General', 'Technical', 'Test'].include?(self.kind)
+    unless ['General', 'Technical', 'Test', 'Test Question'].include?(self.kind)
       errors.add(:kind, 'invalid for the type of question')
     end
   end
