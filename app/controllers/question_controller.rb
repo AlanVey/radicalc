@@ -4,6 +4,10 @@ class QuestionController < ApplicationController
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])
   end
 
+  def show
+    @uri = Question.find(params[:question_id]).uri
+  end
+
   def new_general
     @question = Question.new
   end
@@ -16,9 +20,11 @@ class QuestionController < ApplicationController
     @question = create_question('General')
 
     if @question.save
-      redirect_to :back, notice: 'General question successfully created'
+      redirect_to questions_path(kind: 'General'), 
+        notice: 'General question successfully created'
     else
-      render :new_general, notice: 'An error occured saving your question'
+      render :new_general, 
+        notice: 'An error occured saving your question'
     end
   end
 
@@ -26,9 +32,11 @@ class QuestionController < ApplicationController
     @question = create_question('Technical')
 
     if @question.save
-      redirect_to :back, notice: 'Technical question successfully created'
+      redirect_to questions_path(kind: 'Technical'), 
+        notice: 'Technical question successfully created'
     else
-      render :new_technical, notice: 'An error occured saving your question'
+      render :new_technical, 
+        notice: 'An error occured saving your question'
     end
   end
 
