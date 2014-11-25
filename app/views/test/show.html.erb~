@@ -33,7 +33,7 @@
 
 <br>
 
-<%= link_to '<strong>+</strong> New Test question'.html_safe, new_test_question_path, :class => "btn btn-primary" %><br><br>
+<%= link_to '<strong>+</strong> New Test question'.html_safe, new_test_question_path, :class => "btn btn-primary" %><br>
 <%= link_to 'Back', tests_path, :class => "btn btn-default" %>
 
 </div>

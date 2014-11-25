@@ -12,14 +12,10 @@
 </ul>
 
   <h3><%= @kind %> Questions</h3>
-  
-  <ul class="list-group">	
-    <% @questions.each do |q| %>
-	    <li class="list-group-item">
-        <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind) %>
-      </li>
-	  <% end %>
-  </ul>
+	<% @questions.each do |q| %>
+		<%= link_to q.title, show_question_path(question_id: q.id, kind: @kind) %><br>
+	<% end %>
+
   <br><br>
 
 	<%= link_to '<strong>+</strong> New Question'.html_safe, new_question_path(kind: @kind), :class => "btn btn-primary" %>

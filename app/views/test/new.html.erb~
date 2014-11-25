@@ -16,20 +16,20 @@
     </div>
   <% end %>
 
-  <div class="form-entry">
+  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="form-entry">
+  <div class="field">
     <%= f.label :kind %><br>
     <%= f.text_field :kind %>
   </div>
   <div class="actions">
-    <p><%= f.submit %></p>
+    <%= f.submit %>
   </div>
 <% end %>
 
-<%= link_to 'Back', tests_path, :class => "btn btn-default" %>
+<%= link_to 'Back', tests_path %>
 
 </div>
 

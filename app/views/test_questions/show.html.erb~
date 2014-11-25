@@ -1,5 +1,3 @@
-<div class="page-main">
-
 <h1><%= @test_question.title %></h1>
 
 <p>
@@ -15,8 +13,5 @@
 
 <iframe src= <%= @uri %> width=770 height=900></iframe><br>
 
-<%= link_to 'Back', show_test_path, :class => "btn btn-default" %>
-
-</div>
-
+<%= link_to 'Back', show_test_path %>
 <%= render 'layouts/sidemenu' %>

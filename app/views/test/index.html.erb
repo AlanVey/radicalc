@@ -1,3 +1,16 @@
+<div class="page-main">
+
+  <section class="header">
+    <h2>Question Feed</h2>
+  </section>
+
+<ul class="nav nav-tabs">
+  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > <%= link_to 'General Debate', questions_path(kind: 'General') %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>><%= link_to 'Technical Debate', questions_path(kind: 'Technical') %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Test')) %>><%= link_to 'Test Debate', questions_path(kind: 'Test') %></li>
+  <li class= <%= "active" if current_page?(tests_path) %>><%= link_to 'Tests', tests_path %></li>
+</ul>
+
 <h3>Listing Tests</h3>
 
 <table class="table">
@@ -20,5 +33,9 @@
 </table>
 
 <br><br>
-<%= link_to 'New Test', new_test_path %><br>
-<%= link_to 'Back', questions_path(kind:'General') %>
+<%= link_to '<strong>+</strong> New Test'.html_safe, new_test_path, :class => "btn btn-primary" %><br>
+<!-- <%= link_to 'Back', questions_path(kind:'General') %> -->
+
+</div>
+
+<%= render 'layouts/sidemenu' %>

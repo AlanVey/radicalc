@@ -12,6 +12,7 @@ pre {
   color: red;
   font-size: 16px;
   padding-bottom: 0;
+  padding-top: 15px;
   display: inline;
 }
 
