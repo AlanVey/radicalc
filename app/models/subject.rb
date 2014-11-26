@@ -4,4 +4,8 @@ class Subject < ActiveRecord::Base
   has_many :questions
 
   acts_as_tree
+
+  def get_ancestors
+    [ self ] + self.ancestors
+  end
 end

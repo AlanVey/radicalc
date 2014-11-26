@@ -1,7 +1,15 @@
 <div class="page-main">
 
   <section class="header">
-    <h2>Question Feed</h2>
+    <h2>
+      <% @subject.get_ancestors.each do |s| %>
+        <% if s == @subject.get_ancestors.last %>
+          <%= link_to s.name, show_subject_path(s) %>
+        <% else %>
+          <%= link_to s.name, show_subject_path(s) %> -----
+        <% end %>
+      <% end %>
+    </h2>
   </section>
 
 <ul class="nav nav-tabs">
