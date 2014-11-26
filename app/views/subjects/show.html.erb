@@ -1,12 +1,20 @@
 <div class="page-main">
   <section class="header">
     <h2>
-      <% @subject.get_ancestors.each do |s| %>
-        <% if s == @subject.get_ancestors.last %>
-          <%= link_to s.name, show_subject_path(s) %>
+      <% @subject.get_ancestors.each do |s| %> 
+        <% if s == @subject.get_ancestors.first %>
+           <% if s == @subject.get_ancestors.last %>
+             <%= s.name %>
+           <% else %>
+             <%= s.name %> <p> << </p>
+           <% end %>
         <% else %>
-          <%= link_to s.name, show_subject_path(s) %> -----
-        <% end %>
+           <% if s == @subject.get_ancestors.last %>
+             <p><%= link_to s.name, show_subject_path(s) %> </p>
+           <% else %>
+             <p><%= link_to s.name, show_subject_path(s) %> << </p>
+           <% end %>
+         <% end %>
       <% end %>
     </h2>
   </section>
@@ -49,8 +57,7 @@
   </section>
 
   <br/>
-  <section class="whatever">
-    
+ 
 
    <section>
     <h2>Discussions and Tests</h2>
@@ -82,18 +89,18 @@
 
    </section>
 
-    <% if @subject.children.count > 0 %>
-      <section>
+   <section>
         <h2>Subtopics</h2>
+    <% if @subject.children.count > 0 %>
         <ul class="list-group subtopics">
         <% @subject.children.each do |child| %>
             <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
         <% end %>
         </ul>
-      </section>
+        <% else %>
+        <p>This topic has no subtopics</p>
     <% end %>
-  </section>
-
+   </section>
   <p>
     <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
    

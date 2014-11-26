@@ -2,12 +2,20 @@
 
   <section class="header">
     <h2>
-      <% @subject.get_ancestors.each do |s| %>
-        <% if s == @subject.get_ancestors.last %>
-          <%= link_to s.name, show_subject_path(s) %>
+      <% @subject.get_ancestors.each do |s| %> 
+        <% if s == @subject.get_ancestors.first %>
+           <% if s == @subject.get_ancestors.last %>
+             <%= s.name %>
+           <% else %>
+             <%= s.name %> <p> << </p>
+           <% end %>
         <% else %>
-          <%= link_to s.name, show_subject_path(s) %> -----
-        <% end %>
+           <% if s == @subject.get_ancestors.last %>
+             <p><%= link_to s.name, show_subject_path(s) %> </p>
+           <% else %>
+             <p><%= link_to s.name, show_subject_path(s) %> << </p>
+           <% end %>
+         <% end %>
       <% end %>
     </h2>
   </section>
