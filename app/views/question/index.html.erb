@@ -15,15 +15,14 @@
   
   <ul class="list-group">	
     <% @questions.each do |q| %>
-	    <li class="list-group-item">
-        <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind) %>
-      </li>
+        <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind), :class=>"list-group-item" %>
 	  <% end %>
   </ul>
   <br><br>
 
 	<%= link_to '<strong>+</strong> New Question'.html_safe, new_question_path(kind: @kind), :class => "btn btn-primary" %>
-
+  <br/><br/>
+  <%= link_to 'Back', subject_path, :class=>"btn btn-default" %>
 </div>
 
 <%= render 'layouts/sidemenu' %>

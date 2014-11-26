@@ -11,7 +11,6 @@
           <br/>
           <%= link_to 'Edit Topic', edit_subject_path(@subject), :class => "btn btn-primary" %>
         </div>
-        </br></br></br>
 
         <div class="col-xs-6">
           <p>
@@ -20,13 +19,21 @@
           </p>
 
           <p>
-            <strong>User:</strong>
+            <strong>Admin:</strong>
             <%= @subject.user.email %>
+          </p>   
+       
+          <p>
+            <strong>Description:</strong>
+            <%= @subject.body %>
           </p>
 
-          <br/>
-
-          <%= link_to 'Go To Questions', questions_path(kind: 'General'), :class => "btn btn-default" %>
+					<% if @subject.parent != nil %>
+						<p>
+						  <strong>Parent Topic:</strong>
+						  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
+						</p>
+					<% end %>
 
         </div>
       </div>
@@ -35,32 +42,54 @@
 
   <br/>
   <section class="whatever">
-    <p class="mini-p">
-      <strong>Description:</strong>
-      <%= @subject.body %>
-    </p>
+    
 
-    <% if @subject.parent != nil %>
-      <p>
-        <strong>Parent Topic:</strong>
-        <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
-      </p>
-    <% end %>
+   <section>
+    <h2>Discussions and Tests</h2>
+
+    <p class="mini-p">
+    <%= link_to 'General Discussion', questions_path(kind: 'General'), :class => "btn btn-default" %> 
+    General questions about the course 
+    </p>
+     <br/>
+     
+    <p class="mini-p">
+    <%= link_to 'Technical Discussion', questions_path(kind: 'Technical'), :class => "btn btn-default" %>
+    Questions relating to technical content of the course
+    </p>
+    <br/>
+
+     <p class="mini-p">
+     <%= link_to 'Tests', tests_path, :class => "btn btn-default" %>
+    Assessed tests set by the course admin
+    </p>
+    <br/>
+
+    <p class="mini-p">
+     <%= link_to 'Test Discussion', questions_path(kind: 'Test'), :class => "btn btn-default" %>
+    Questions about the assessed tests
+    </p>
+    <br/>
+
+
+   </section>
 
     <% if @subject.children.count > 0 %>
-      <p>
-        <strong>Subtopics:</strong>
+      <section>
+        <h2>Subtopics</h2>
+        <ul class="list-group subtopics">
         <% @subject.children.each do |child| %>
-        <p> <%= link_to child.name, show_subject_path(child.id) %> </p>
-      <% end %>
-      </p>
+            <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
+        <% end %>
+        </ul>
+      </section>
     <% end %>
   </section>
-  <br/>
 
   <p>
-    <%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
-    <%= link_to 'Questions', questions_path(kind: 'General') %>
+    <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
+   
+<!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
   </p>
 
 
