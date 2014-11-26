@@ -2,6 +2,7 @@ class QuestionController < ApplicationController
   before_action :set_kind
 
   def index
+    @subject   = Subject.find(params[:id])
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])
   end
 

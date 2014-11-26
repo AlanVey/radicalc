@@ -1,7 +1,8 @@
 class TestController < ApplicationController
   
   def index
-    @tests = Test.where(subject_id: params[:id])
+    @subject = Subject.find(params[:id])
+    @tests   = Test.where(subject_id: params[:id])
   end
 
   def new
