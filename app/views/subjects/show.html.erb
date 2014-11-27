@@ -1,3 +1,6 @@
+
+<% if current_user.can_update?(@subject) %>
+
 <p>
   <strong>Name:</strong>
   <%= @subject.name %>
@@ -44,3 +47,11 @@
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', dashboard_path %><br>
+
+<% else %>
+
+<p>
+  <strong>You do not have permission to see this page.</strong>
+</p>
+
+<% end %>
