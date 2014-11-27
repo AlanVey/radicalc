@@ -25,6 +25,7 @@ class SubjectsController < ApplicationController
     end
 
     @subject.author = current_user
+    current_user.add_role :admin, @subject
 
     respond_to do |format|
       if @subject.save
