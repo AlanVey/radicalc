@@ -38,4 +38,7 @@
 
 </div>
 
+<%= link_to 'Answers (For teacher)', answers_path(test_id:@test.id) %> <br>
+<%= link_to 'Answers (For Student)', show_answer_path(test_id:@test.id) %>
+
 <%= render 'layouts/sidemenu' %>

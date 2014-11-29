@@ -5,9 +5,11 @@ class Question < ActiveRecord::Base
   validates_presence_of :user_id, :subject_id, :debate_id, :uri, :kind, :title
   validate :valid_kind?
 
-  def valid_kind?
-    unless ['General', 'Technical', 'Test', 'Test Question'].include?(self.kind)
-      errors.add(:kind, 'invalid for the type of question')
+
+  private
+    def valid_kind?
+      unless ['General', 'Technical', 'Test', 'Test Question'].include?(self.kind)
+        errors.add(:kind, 'invalid for the type of question')
+      end
     end
-  end
 end

@@ -1,0 +1,35 @@
+<% unless @answer.value.nil? %>
+  <p>
+    <strong>File:</strong>
+    <%= @answer.value %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @answer.status %>
+  </p>
+<% end %>
+
+<%= form_for @answer, url: upload_answer_path(test_id:@test) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'File' %><br>
+    <%= f.file_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', show_test_path(id:@test.subject.id) %>

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   post 'subjects/:id/tests/show/:test_id/question/create', to: 'test_questions#create', as: 'create_test_question'
   delete 'subjects/:id/tests/show/:test_id/question/delete/:question_id', to: 'test_questions#destroy', as: 'delete_test_question'
 
+  # Answers routes ============================================================
+  get 'question/show/:test_id/answers', to:'answers#index', as:'answers'
+  get 'question/show/:test_id/answer/show', to:'answers#show', as:'show_answer'
+  post 'question/show/:test_id/answer/upload', to:'answers#upload', as:'upload_answer'
+  patch 'question/show/:test_id/answer/upload', to:'answers#reupload'
+
   # User routes ===============================================================
   devise_for :users, controllers: { registrations: 'registrations', 
                                     passwords: 'passwords', 

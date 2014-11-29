@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :subjects
   has_many :questions
+  has_many :answers
 end
