@@ -6,7 +6,7 @@
   <% if @test.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign"></span>
-      <span><strong><%= pluralize(@test.errors.count, "error") %> prohibited this subject from being saved:</strong>
+      <span><strong><%= pluralize(@test.errors.count, "error") %> prohibited this subject from being saved:</strong></span>
 
       <ul>
       <% @test.errors.full_messages.each do |message| %>

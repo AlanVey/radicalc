@@ -1,4 +1,6 @@
-<h1>Listing answers for test named: <%= @test.title %></h1>
+<div class="page-main">
+
+<h2>Listing answers for <%= @test.title %></h2>
 
 <table class='table'>
   <thead>
@@ -15,7 +17,7 @@
         <td><%= answer.user.email %></td>
         <td><%= answer.status %></td>
         <% unless answer.value.nil? %>
-          <td><%= link_to 'Download', answer.value.url, :target => '_blank' %></td>
+          <td><%= link_to 'Download', answer.value.url, :target => '_blank', :class => "btn btn-primary" %></td>
         <% end %>
       </tr>
     <% end %>
@@ -23,3 +25,7 @@
 </table>
 
 <br>
+
+</div>
+
+<%= render 'layouts/sidemenu' %>

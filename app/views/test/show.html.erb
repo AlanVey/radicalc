@@ -34,11 +34,13 @@
 <br>
 
 <%= link_to '<strong>+</strong> New Test question'.html_safe, new_test_question_path, :class => "btn btn-primary" %><br><br>
+<%= link_to 'Answers (For teacher)', answers_path(test_id:@test.id), :class => "btn btn-primary" %>
+<%= link_to 'Answers (For Student)', show_answer_path(test_id:@test.id), :class => "btn btn-primary" %>
+<br><br>
 <%= link_to 'Back', tests_path, :class => "btn btn-default" %>
 
 </div>
 
-<%= link_to 'Answers (For teacher)', answers_path(test_id:@test.id) %> <br>
-<%= link_to 'Answers (For Student)', show_answer_path(test_id:@test.id) %>
+
 
 <%= render 'layouts/sidemenu' %>
