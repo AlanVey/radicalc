@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   include Authority::UserAbilities
-  has_many :subjects, foreign_key: :author_id
+  has_many :subjects, foreign_key: :user_id
 
   has_one :profile
   has_many :questions

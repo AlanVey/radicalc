@@ -1,5 +1,4 @@
-
-<% if current_user.can_update?(@subject) %>
+<% if @subject.readable_by?(current_user) %>
 
 <p>
   <strong>Name:</strong>
@@ -17,7 +16,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @subject.author.email %>
+  <%= @subject.user.email %>
 </p>
 
 <% if @subject.parent != nil %>
@@ -36,12 +35,12 @@
       </p>
   <% end %>
 </p>
-
 <% end %>
 
 <p>
-
-<%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
+  <% if @subject.updatable_by?(current_user) %>
+      <%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
+  <% end %>
 <%= link_to 'Questions', questions_path(kind: 'General') %>
 </p>
 

@@ -24,11 +24,13 @@ class SubjectsController < ApplicationController
       @subject = Subject.new(subject_params)
     end
 
-    @subject.author = current_user
-    current_user.add_role :admin, @subject
+    @subject.user = current_user
 
     respond_to do |format|
       if @subject.save
+
+        current_user.add_role :admin, @subject
+
         format.html { redirect_to @subject, 
                       notice: 'Subject was successfully created.' }
       else

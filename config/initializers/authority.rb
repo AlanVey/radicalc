@@ -38,10 +38,10 @@ Authority.configure do |config|
   #
   # Defaults are as follows:
   #
-  config.abilities =  {
+   config.abilities =  {
   #   :create => 'creatable',
      :read   => 'readable',
-  #   :update => 'updatable',
+     :update => 'updatable',
   #   :delete => 'deletable'
   }
 

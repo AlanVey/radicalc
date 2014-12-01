@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :subject do
     name "MyString"
     body "MyText"
-    author_id 1
+    user_id 1
     debate_type "technical"
   end
 end
