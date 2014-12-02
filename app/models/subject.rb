@@ -8,7 +8,6 @@ class Subject < ActiveRecord::Base
   has_many :questions
   acts_as_tree
 
-
   def debate_type_is_technical_or_management?
     unless debate_type == 'technical' || debate_type == 'management'
       errors.add(:debate_type, "unrecognized type of node")
@@ -21,6 +20,10 @@ class Subject < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def get_ancestors
+    [ self ] + self.ancestors
   end
 
 end

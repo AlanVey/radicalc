@@ -48,6 +48,7 @@ right: 10%;
 
 a {
   color: rgb(29, 162, 193);
+  font-style: normal;
 }
 
 a:hover {
@@ -73,7 +74,7 @@ p {
 }
 
 .form-entry {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -432,3 +433,39 @@ color: white;
 	.tfclear{
 		clear:both;
 	}
+
+.nav-tabs > li > a {
+	color: rgb(95, 155, 198);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-tabs > li > a:hover {
+  color: rgba(26,89,120,0.9);
+}
+
+.nav-tabs > li.active > a,
+ .nav-tabs > li.active > a:hover {
+  color: rgba(26,89,120,0.9);
+}
+
+a.list-group-item {
+  font-size: 16px;
+  color: rgb(95, 155, 198); 
+}
+
+a.list-group-item:hover {
+  color: rgba(26,89,120,0.9);
+}
+
+.subtopics {
+  margin-left: 30px;
+  width: 70%;
+}
+
+h2 > p {
+  display: inline;
+  font-size: 25px;
+  font-style: normal;
+  color: rgba(26,89,120,0.9);
+}

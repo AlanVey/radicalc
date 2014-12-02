@@ -1,6 +1,20 @@
-<h1>Editing subject</h1>
+<div class="page-main">
 
-<%= render 'form' %>
+  <section class="header">
+		<h2>Edit Topic</h2>
+  </section>
 
-<%= link_to 'Back', :back %><br>
-<%= link_to 'Destroy', @subject, method: :delete %>
+	<%= render 'form' %>
+
+	<br/>
+	<p class="mini-p">
+		<%= link_to 'Delete this topic', @subject, method: :delete %>
+	</p> <br/>
+
+	<p class="mini-p">
+  	<%= link_to 'Back', :back, :class => "btn btn-default" %>
+	</p>
+
+</div>
+
+<%= render 'layouts/sidemenu' %>

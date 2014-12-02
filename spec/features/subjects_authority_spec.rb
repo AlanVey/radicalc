@@ -16,12 +16,15 @@ feature 'there are three users, one of which creates a subject' do
     sign_in @user1
     visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'Name:'
-    sign_out @user1
+
+    log_out
+
     sign_in @user2
     visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'Name:'
-    click_button 'Sign out'
-    sign_out @user2
+
+    log_out
+
     sign_in @user3
     visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'You do not have permission to see this page.'

@@ -1,38 +1,36 @@
 class QuestionController < ApplicationController
+  before_action :set_kind
 
   def index
+    @subject   = Subject.find(params[:id])
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])
   end
 
-  def new_general
+  def show
+    @uri = Question.find(params[:question_id]).uri
+  end
+
+  def new
     @question = Question.new
   end
 
-  def new_technical
-    @question = Question.new
-  end
-
-  def create_general
-    @question = create_question('General')
+  def create
+    @question = create_question(@kind)
 
     if @question.save
-      redirect_to :back, notice: 'General question successfully created'
+      redirect_to questions_path(kind: @kind), 
+        notice: "#{@kind} question successfully created"
     else
-      render :new_general, notice: 'An error occured saving your question'
-    end
-  end
-
-  def create_technical
-    @question = create_question('Technical')
-
-    if @question.save
-      redirect_to :back, notice: 'Technical question successfully created'
-    else
-      render :new_technical, notice: 'An error occured saving your question'
+      render :new, 
+        notice: 'An error occured saving your question'
     end
   end
 
   private
+
+    def set_kind
+      @kind = params[:kind]
+    end
 
     def create_question(kind)
       quaestio = Quaestio.new
@@ -49,5 +47,4 @@ class QuestionController < ApplicationController
 
       question    
     end
-
 end

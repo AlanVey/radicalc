@@ -22,4 +22,8 @@ module SessionHelpers
       click_button 'Sign up'
     end
   end
+
+  def log_out
+    find(:xpath, "//a[@id='logout']", :text =>"Log out").click
+  end
 end

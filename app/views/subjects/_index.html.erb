@@ -4,18 +4,16 @@
       <h3><%= subject.name %></h3>
       
       <div class="ch-item">
-        <%= image_tag('Imperial-College-London-Shield.gif', class: 'img-circle ch-img') %>
+        <%= image_tag('topic.png', class: 'img-circle ch-img') %>
         <div class="ch-info-wrap">
           <div class="ch-info">
             <div class="ch-info-front"></div>
             <div class="ch-info-back">
-              <h3><%= link_to 'View Course Page', subject_path(subject.id) %></h3>
+              <h3><%= link_to 'View Topic Page', subject_path(subject.id), :class => "underline-link" %></h3>
             </div>  
           </div>
         </div>
       </div>
-
-      <%= link_to 'Go to Question Feed', subject, class: "btn btn-default" %>
     </li>
   
   <% end %>
