@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container landing">
   <div class="row" id="mainlanding">
     <div class="col-xs-2">
     </div> <!-- end left margin-->
@@ -21,10 +21,14 @@
           <a class="hiddenanchor" id="tologin"></a>
 	    <div id="wrapper">
               <div id="login" class="animate form">
-                <%= render template: 'devise/registrations/new' %>
+                <div class="registration">
+                  <%= render template: 'devise/registrations/new' %>
+                </div>
               </div>
               <div id="register" class="animate form">
-                <%= render template: 'devise/sessions/new' %>
+                <div class="session">
+                  <%= render template: 'devise/sessions/new' %>
+                </div>
               </div>
 	    </div> <!-- end wrapper -->  
       </section>
@@ -32,3 +36,4 @@
 
  </div>
 </div>
+

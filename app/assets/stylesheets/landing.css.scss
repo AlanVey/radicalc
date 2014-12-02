@@ -2,19 +2,17 @@
 
 /* Global Styles */
 
-.container {
-  background: #fff image-url('comptree.png') no-repeat;
-  background-size: cover;
+.landing{
+    background: #fff image-url('comptree.png') no-repeat;
+      background-size: cover;
+}
+
+.container{
   width: 100%;
   height: 100%;
   top: 0px;
   position: relative;
 
-}
-
-a {
-  color: #333;
-  text-decoration: none;
 }
 
 /* Welcome Section */
@@ -35,11 +33,10 @@ a {
 }
 
 #mainlanding {
-  margin-top: 130px;
+  margin-top: 60px;
   margin-bottom: 100px;
   padding-top: 40px;
   padding-bottom: 30px;
-  height: 600px;
   text-align: left;
   background-color: rgba(245,250,255,0.8);
 }
@@ -56,10 +53,10 @@ a {
 
 /* Login/Register Forms */
 
-
 a.hiddenanchor{
 	display: none;
 }
+
 /** The wrapper containing two forms **/
 #wrapper{
 	width: 60%;
@@ -178,59 +175,17 @@ input {
 
 
 /*styling both submit buttons */
-#wrapper p.button input{
-	width: auto;
-	cursor: pointer;	
-	background: rgb(61, 157, 179);
-	padding-left: 10px;	
-	padding-right: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
-	color: #fff;
-	font-size: 24px;	
-	border: 1px solid rgb(28, 108, 122);
-	
-	margin-bottom: 0px;	
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-	-webkit-border-radius: 3px;
-	   -moz-border-radius: 3px;
-	        border-radius: 3px;	
-	-webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	   -moz-box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	        box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	-webkit-transition: all 0.2s linear;
-	   -moz-transition: all 0.2s linear;
-	     -o-transition: all 0.2s linear;
-	        transition: all 0.2s linear;
-}
-#wrapper p.button input:hover{
-	background: rgb(74, 179, 198);
-}
-#wrapper p.button input:active,
-#wrapper p.button input:focus{
-	background: rgb(40, 137, 154);
-	position: relative;
-	top: 1px;
-	border: 1px solid rgb(12, 76, 87);	
-	-webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-	   -moz-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-	        box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
-}
+
 p.login.button,
 p.signin.button{
 	text-align: right;
-
+  font-style: normal;
 }
 
 p#forgotpass {
   margin-bottom: -20px;
+  font-style: normal;
+  font-size: 16px;
 }
 
 
@@ -238,6 +193,7 @@ p#forgotpass {
 
 p.change_link{
 	position: absolute;
+	font-style: normal;
 	color: rgb(127, 124, 124);
 	left: 0px;
 	height: 20px;

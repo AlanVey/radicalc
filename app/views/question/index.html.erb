@@ -1,0 +1,44 @@
+<div class="page-main">
+
+  <section class="header">
+    <h2>
+      <% @subject.get_ancestors.each do |s| %> 
+        <% if s == @subject.get_ancestors.first %>
+           <% if s == @subject.get_ancestors.last %>
+             <%= s.name %>
+           <% else %>
+             <%= s.name %> <p> << </p>
+           <% end %>
+        <% else %>
+           <% if s == @subject.get_ancestors.last %>
+             <p><%= link_to s.name, show_subject_path(s) %> </p>
+           <% else %>
+             <p><%= link_to s.name, show_subject_path(s) %> << </p>
+           <% end %>
+         <% end %>
+      <% end %>
+    </h2>
+  </section>
+
+<ul class="nav nav-tabs">
+  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > <%= link_to 'General Debate', questions_path(kind: 'General') %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>><%= link_to 'Technical Debate', questions_path(kind: 'Technical') %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Test')) %>><%= link_to 'Test Debate', questions_path(kind: 'Test') %></li>
+  <li class= <%= "active" if current_page?(tests_path) %>><%= link_to 'Tests', tests_path %></li>
+</ul>
+
+  <h3><%= @kind %> Questions</h3>
+  
+  <ul class="list-group">	
+    <% @questions.each do |q| %>
+        <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind), :class=>"list-group-item" %>
+	  <% end %>
+  </ul>
+  <br><br>
+
+	<%= link_to '<strong>+</strong> New Question'.html_safe, new_question_path(kind: @kind), :class => "btn btn-primary" %>
+  <br/><br/>
+  <%= link_to 'Back', subject_path, :class=>"btn btn-default" %>
+</div>
+
+<%= render 'layouts/sidemenu' %>

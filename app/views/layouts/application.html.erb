@@ -7,9 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="cbp-spmenu-push">
+
+
   
-<p id='notice'><%= notice %></p>
+<% if not notice.nil? %>
+  <div class="alert alert-info alert-dismissable" role="alert">
+    <p id="notice"><%= notice %><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></p>
+  </div>
+<% end %>
 <%= yield %>
+
+
+
+<script>  
+  var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+
+  showLeftPush = document.getElementById( 'showLeftPush' ),
+  body = document.body,
+  icon = document.getElementById('menuIcon');
+    
+  classie.add( showLeftPush, 'active' );
+  classie.add( body, 'cbp-spmenu-push-toright' );
+  classie.add( menuLeft, 'cbp-spmenu-open' );
+  
+  showLeftPush.onclick = function() {
+    classie.toggle( this, 'active' );
+    classie.toggle( body, 'cbp-spmenu-push-toright' );
+    classie.toggle( menuLeft, 'cbp-spmenu-open' );
+    classie.toggleClass( icon, 'glyphicon-circle-arrow-left');
+    classie.toggleClass( icon, 'glyphicon-list' );
+  };
+</script>
 
 </body>
 </html>

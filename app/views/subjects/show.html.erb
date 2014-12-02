@@ -1,0 +1,116 @@
+<div class="page-main">
+  <section class="header">
+    <h2>
+      <% @subject.get_ancestors.each do |s| %> 
+        <% if s == @subject.get_ancestors.first %>
+           <% if s == @subject.get_ancestors.last %>
+             <%= s.name %>
+           <% else %>
+             <%= s.name %> <p> << </p>
+           <% end %>
+        <% else %>
+           <% if s == @subject.get_ancestors.last %>
+             <p><%= link_to s.name, show_subject_path(s) %> </p>
+           <% else %>
+             <p><%= link_to s.name, show_subject_path(s) %> << </p>
+           <% end %>
+         <% end %>
+      <% end %>
+    </h2>
+  </section>
+
+  <section class="profile-section">
+    <div class="container profile-block">
+      <div class="row">
+        <div class="col-xs-6" id="profile-block-left">
+          <%= image_tag('topic.png', class: 'img-circle', id: 'profilepic') %>
+          <br/>
+          <%= link_to 'Edit Topic', edit_subject_path(@subject), :class => "btn btn-primary" %>
+        </div>
+
+        <div class="col-xs-6">
+          <p>
+            <strong>Topic Name:</strong>
+            <%= @subject.name %>
+          </p>
+
+          <p>
+            <strong>Admin:</strong>
+            <%= @subject.user.email %>
+          </p>   
+       
+          <p>
+            <strong>Description:</strong>
+            <%= @subject.body %>
+          </p>
+
+					<% if @subject.parent != nil %>
+						<p>
+						  <strong>Parent Topic:</strong>
+						  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
+						</p>
+					<% end %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br/>
+ 
+
+   <section>
+    <h2>Discussions and Tests</h2>
+
+    <p class="mini-p">
+    <%= link_to 'General Discussion', questions_path(kind: 'General'), :class => "btn btn-default" %> 
+    General questions about the course 
+    </p>
+     <br/>
+     
+    <p class="mini-p">
+    <%= link_to 'Technical Discussion', questions_path(kind: 'Technical'), :class => "btn btn-default" %>
+    Questions relating to technical content of the course
+    </p>
+    <br/>
+
+     <p class="mini-p">
+     <%= link_to 'Tests', tests_path, :class => "btn btn-default" %>
+    Assessed tests set by the course admin
+    </p>
+    <br/>
+
+    <p class="mini-p">
+     <%= link_to 'Test Discussion', questions_path(kind: 'Test'), :class => "btn btn-default" %>
+    Questions about the assessed tests
+    </p>
+    <br/>
+
+
+   </section>
+
+   <section>
+        <h2>Subtopics</h2>
+    <% if @subject.children.count > 0 %>
+        <ul class="list-group subtopics">
+        <% @subject.children.each do |child| %>
+            <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
+        <% end %>
+        </ul>
+        <% else %>
+        <p>This topic has no subtopics</p>
+    <% end %>
+   </section>
+  <p>
+    <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
+   
+<!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
+  </p>
+
+
+  <p class="mini-p">
+    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+  </p>
+</div>
+
+<%= render 'layouts/sidemenu' %>

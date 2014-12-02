@@ -11,12 +11,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022161055) do
+ActiveRecord::Schema.define(version: 20141129181312) do
+
+  create_table "answers", force: true do |t|
+    t.integer  "test_id"
+    t.integer  "user_id"
+    t.string   "value"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "uri"
+    t.integer  "debate_id"
+    t.string   "kind"
+    t.integer  "subject_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subject_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "subject_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "anc_desc_idx", unique: true, using: :btree
+  add_index "subject_hierarchies", ["descendant_id"], name: "desc_idx", using: :btree
 
   create_table "subjects", force: true do |t|
     t.string   "name"
     t.text     "body"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+  end
+
+  create_table "test_questions", force: true do |t|
+    t.string   "title"
+    t.string   "kind"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.integer  "test_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", force: true do |t|
+    t.integer  "subject_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

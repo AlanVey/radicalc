@@ -40,3 +40,13 @@ end
 
 # User authentication
 gem 'devise'
+# quaestio-it integration
+gem 'curb'
+#Hierarchical structure for subjects
+gem 'closure_tree'
+
+# For image uploads
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+

@@ -1,0 +1,48 @@
+<div class="page-main">
+
+<h2>Upload Answer</h2>
+
+<% unless @answer.value.nil? %>
+  <h3>Current Submission</h3>
+  <p>
+    <strong>File:</strong>
+    <%= @answer.value %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @answer.status %>
+  </p>
+<% end %>
+
+
+<h3>Upload new answer</h3>
+<%= form_for @answer, url: upload_answer_path(test_id:@test) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign"></span>
+      <span><strong><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</strong></span>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'File' %><br>
+    <%= f.file_field :value %>
+  </div>
+  <br/><br/>
+  <div class="actions">
+    <p><%= f.submit %></p>
+  </div>
+<% end %>
+
+<%= link_to 'Back', show_test_path(id:@test.subject.id), :class => "btn btn-default" %>
+
+</div>
+
+<%= render 'layouts/sidemenu' %>

@@ -1,0 +1,53 @@
+<DIV class="page-main">
+
+  <section class="header">
+    <h1>Edit Profile Page</h1>
+  </section>
+
+  <%= form_for(@profile) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <span class="glyphicon glyphicon-exclamation-sign"></span>
+				<span><strong><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</strong>
+
+        <ul>
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+        </span>
+      </div>
+    <% end %>
+
+    <div class="form-entry">
+      <p class = "mini-p">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %>
+      </p>
+    </div>
+
+    <div class="form-entry">
+      <p class = "mini-p">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
+      </p>
+    </div>
+
+    <div class="form-entry">
+      <p class = "mini-p">
+        <%= f.label :photo %><br>
+        <%= image_tag @profile.photo.display, :size => "300x300", :class => "img-circle", :id => "profilepic" %><br>
+        <%= f.file_field :photo %>
+      </p>
+    </div>
+
+    <div class="actions">
+      <p><%= f.submit %></p>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back To Profile', @profile, :class => "btn btn-default", :relative => true, :method => :get %>
+
+</DIV>
+
+<%= render 'layouts/sidemenu' %>

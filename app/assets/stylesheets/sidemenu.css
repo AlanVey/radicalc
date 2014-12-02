@@ -1,11 +1,67 @@
 /* General styles for all menus */
 
-#showLeftPush {
-  left:240px;
-  color: rgb(95, 155, 198);;
-  background: rgb(247, 247, 247);
+.account-dropdown-toggle, 
+.account-dropdown-toggle:focus,
+.account-dropdown-toggle:active  {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
 
-    font-size: 30px;
+.dropdown-menu {
+  background: rgb(230, 230, 230);
+  border: 2px solid rgba(147, 184, 189,0.8);
+  margin-left: 20px;
+  padding: 10px 15px 15px 15px;
+}
+
+.dropdown-menu li {
+    font-size: 16px;
+  padding: 0;
+}
+
+.divider {
+  border-top: 1px solid rgb(61, 157, 179);
+}
+
+.dropdown-menu > li > a {
+  padding: 0;
+  color: rgb(61, 157, 179);
+}
+
+.dropdown-menu > li > a:hover {
+  background: transparent;
+  color: rgb(57, 191, 215);
+}
+
+#showLeftPush {
+  position: absolute;
+  left:240px;
+  color: rgb(61, 157, 179);
+  background: rgb(247, 247, 247);
+  font-size: 30px;
+  border-bottom: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+  border-right: 1px solid rgba(147, 184, 189,0.8);
+	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	-webkit-box-shadow: 5px;
+	-moz-border-radius: 5px;
+		 border-radius: 5px;
+  outline: none;
+}
+
+#showLeftPush:hover {
+  color: rgba(26,89,120,0.9);
+  background: rgb(240, 240, 240);
 }
 
 .cbp-spmenu {
@@ -26,15 +82,40 @@
   margin: 5px;
 }
 
-.cbp-spmenu h3 {
+.profile-name {
   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-  background: rgb(61, 157, 179);
-
-
   font-weight: lighter;
-  margin-top:0;
+  color : white;
+}
+
+.profile-name:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.menu-link {
+	display: block;
+	color: rgb(95, 155, 198);
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.menu-link:hover {
+  color: rgba(26,89,120,0.9);
+  background: rgb(240, 240, 240);
+  text-decoration: none;
+}
+
+#my-profile {
+  word-wrap: break-word;
+  font-size: 30px;
+  font-weight: lighter;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px; 
   margin-bottom: 10px;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  background: rgb(61, 157, 179);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
 	        border-radius: 3px;	
@@ -53,71 +134,12 @@
 	        transition: all 0.2s linear;
 }
 
-.cbp-spmenu a {
-	display: block;
-	color: rgb(95, 155, 198);
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.cbp-spmenu a:hover {
-  color: rgba(26,89,120,0.9);
-  background: rgb(240, 240, 240);
-  text-decoration: none;
-}
-
-.cbp-spmenu a:active {
-	background: #afdefa;
-	color: #47a3da;
-}
-
-#my-profile {
-  font-size: 30px;
-  font-weight: lighter;
-  color: white;
-  padding: 20px;
-  margin: 0;
-  border: 0;
-  background: rgb(61, 157, 179);
-}
-
-#my-profile:hover {
-  text-decoration: underline;
-}
-
 .cbp-spmenu .glyphicon {
   margin-left: 5px;
   margin-right: 7px;
 }
 
 #logout {
-display: inline-block;
-  font-weight: 600;
-
-  color: rgb(29, 162, 193);
-background: transparent;
-border: 0;
-padding: 0;
-text-decoration: none;
-}
-
-#logoutbtn {
-	display: inline-block;
-	color: rgb(29, 162, 193);
-	background: rgb(247, 248, 241);
-	padding: 2px 6px;
-	  font-size: 18px;
-	margin-left: 10px;
-	text-decoration: none;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	border: 1px solid rgb(203, 213, 214);
-	-webkit-transition: all 0.4s linear;
-	-moz-transition: all 0.4s  linear;
-	-o-transition: all 0.4s linear;
-	-ms-transition: all 0.4s  linear;
-	transition: all 0.4s  linear;
   right: 10px;
   bottom: 15px;
   position: absolute;
@@ -129,7 +151,7 @@ text-decoration: none;
   background: transparent;
 }
 
-#logoutbtn:hover {
+.btn-default:hover {
   color: rgb(57, 191, 215);
 	background: rgb(247, 247, 247);
 	border: 1px solid rgb(74, 179, 198);
@@ -144,7 +166,7 @@ text-decoration: none;
 	z-index: 1000;
 }
 
-.cbp-spmenu-vertical a {
+.menu-link {
 	border-bottom: 1px solid #258ecd;
 	padding: 1em;
 }
@@ -170,13 +192,15 @@ text-decoration: none;
 /* Push classes applied to the body */
 
 .cbp-spmenu-push {
-	overflow-x: hidden;
+	overflow-x: visible;
 	position: relative;
 	left: 0;
+	min-width: 700px;
 }
 
 .cbp-spmenu-push-toright {
 	left: 240px;
+	width: 80%;
 }
 
 .cbp-spmenu-push-toleft {
@@ -192,25 +216,3 @@ text-decoration: none;
 	transition: all 0.3s ease;
 }
 
-/* Example media queries */
-
-@media screen and (max-height: 26.375em){
-
-	.cbp-spmenu-vertical {
-		font-size: 90%;
-		width: 190px;
-	}
-
-	.cbp-spmenu-left,
-	.cbp-spmenu-push-toleft {
-		left: -190px;
-	}
-
-	.cbp-spmenu-right {
-		right: -190px;
-	}
-
-	.cbp-spmenu-push-toright {
-		left: 190px;
-	}
-}
