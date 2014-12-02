@@ -480,3 +480,10 @@ h2 > p {
   margin-top: -20px;
   margin-bottom: 30px;
 }
+
+.badge_image {
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  padding: 0;
+}

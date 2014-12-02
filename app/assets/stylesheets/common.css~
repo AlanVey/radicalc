@@ -479,5 +479,10 @@ h2 > p {
 #create_q_div {
   margin-top: -20px;
   margin-bottom: 30px;
-  margin-left: 65%;
+}
+
+.badge_image {
+  height: 100px;
+  width: 100px;
+  margin: 0;
 }

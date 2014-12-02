@@ -46,15 +46,23 @@
   </section>
 
   <section>
+    <h2>Badges</h2>
+    <ul class="ch-grid">
+      <li><%= image_tag('answers_silver.png', class: 'badge_image', title: 'Answered 10 Questions') %></li>
+      <li><%= image_tag('100_test.png', class: 'badge_image') %></li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Proficiencies</h2>
-			<ul class="list-group subtopics">
+			
     <% if @subscriptions.count > 0 %>
-      
+      <ul class="ch-grid">
       <% @subscriptions.each do |s| %>
         <% if s.parent_id.nil? %>
-<li>
-    <div id="proficiency_chart_<%= s.name %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
-</li>
+					<li>
+    				<div id="proficiency_chart_<%= s.name %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+					</li>
         <% end %>
       <% end %>
       </ul>
