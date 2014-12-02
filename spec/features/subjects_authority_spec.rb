@@ -40,13 +40,13 @@ feature 'there are three users, one of which creates a subject' do
 
     sign_in @user2
     visit "/subjects/#{@subject.id}"
-    expect(page).to have_content 'New Subject'
+    expect(page).not_to have_content 'New Subject'
 
     log_out
 
     sign_in @user3
     visit "/subjects/#{@subject.id}"
-    expect(page).to have_content 'New Subject'
+    expect(page).not_to have_content 'New Subject'
   end
 
 end
