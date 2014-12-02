@@ -479,4 +479,5 @@ h2 > p {
 #create_q_div {
   margin-top: -20px;
   margin-bottom: 30px;
+  margin-left: 65%;
 }

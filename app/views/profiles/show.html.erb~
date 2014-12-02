@@ -44,7 +44,109 @@
       </div>
     </div>
   </section>
-</div>
 
-<% render 'layouts/sidemenu' %>
+  <section>
+    <h2>Proficiencies</h2>
+			<ul class="list-group subtopics">
+    <% if @subscriptions.count > 0 %>
+      
+      <% @subscriptions.each do |s| %>
+        <% if s.parent_id.nil? %>
+<li>
+    <div id="proficiency_chart_<%= s.name %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+</li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>You are not subscribed to any courses</p>
+    <% end %>
 
+  </section>
+
+</DIV>
+
+
+<%= render 'layouts/sidemenu' %>
+
+<% @subscriptions.each do |s| %>
+    <% if s.parent_id.nil? %>
+<script type="text/javascript">
+			$(function () {
+
+					$('#proficiency_chart_<%= s.name %>').highcharts({
+
+							chart: {
+							    polar: true,
+							    events: {
+							    load: applyGraphGradient
+							    }
+							},
+
+							title: {
+							    text: '<%= link_to s.name, s %>',
+                  useHTML: true
+							},
+
+							pane: {
+							    startAngle: 0,
+							    endAngle: 360
+							},
+
+							xAxis: {
+							    type: 'category',
+  								categories:
+									<% if s.children.count == 0 %>
+											['<%= s.name %>']
+                  <% else %>									
+									<%= raw s.children_names.to_json %>
+                  <% end %>
+							},
+
+							yAxis: {
+							    min: 0
+							},
+
+							plotOptions: {
+							    column: {
+							        pointPadding: 0,
+							        groupPadding: 0
+							    }
+							    
+							},
+
+							series: [{
+							    showInLegend: false,
+							    type: 'column',
+							    name: 'Proficiency',
+							    color: 'white',
+							    data: [ 
+									<% if s.children.count == 0 %>
+                     {y : 50, url : "#" }
+                  <% else %>
+                  <% s.children.each do |child| %>
+									{ y : 50,
+                    url : <%= raw show_subject_path(child.id).to_json %>
+                  }
+										<% if child != s.children.last %>
+											,
+										<% end %>
+                  <% end %>
+                  <% end %>
+									],
+							    pointPlacement: 'on',
+							    cursor: 'pointer',
+							    point: {
+							        events: {
+							            click: function () {
+															location.href = this.options.url;
+							            }
+							        }
+							    }
+							}]
+					});
+			});
+
+		</script>
+  <% end %>
+<% end %>
