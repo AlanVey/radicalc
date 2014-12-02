@@ -30,4 +30,23 @@ feature 'there are three users, one of which creates a subject' do
     expect(page).to have_content 'You do not have permission to see this page.'
   end
 
+
+  scenario 'only an admin can add subtopics' do
+    sign_in @user1
+    visit "/subjects/#{@subject.id}"
+    expect(page).to have_content 'New Subject'
+
+    log_out
+
+    sign_in @user2
+    visit "/subjects/#{@subject.id}"
+    expect(page).to have_content 'New Subject'
+
+    log_out
+
+    sign_in @user3
+    visit "/subjects/#{@subject.id}"
+    expect(page).to have_content 'New Subject'
+  end
+
 end
