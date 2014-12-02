@@ -107,16 +107,38 @@
 <!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
   </p>
 
+  <section>
+    <h2>Subscribed Users</h2>
+    <% if @subscribed_users.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @subscribed_users.each do |user| %>
+          <%= link_to user.email, show_profile_path(user.id) %> 
+          <% if user == current_user or @subject.user == current_user %>
+            <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete %>
+          <% end %>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>This topic has no subscribed users</p>
+    <% end %>
 
-  <p class="mini-p">
-    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+  </section>
+  <p>
+    <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
   </p>
+
+
+
 
 	<section>
 		<h2>Proficiency</h2>
     <div id="proficiency_chart" style="min-width: 310px; max-width: 400px; height: 400px; margin: 0 auto"></div>
 		
 	</section>
+
+  <p class="mini-p">
+    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+  </p>
 
 </div>
 
@@ -170,11 +192,12 @@
 
 							xAxis: {
 							    type: 'category',
-							    categories: [        
-									<% @subject.children.each do |child| %>
-            				<% child.name %>,
-									<% end %>
-									]
+  								categories:
+									<% if @subject.children.count == 0 %>
+											['<%= @subject.name %>']
+                  <% else %>									
+									<%= raw @subject.children_names.to_json %>
+                  <% end %>
 							},
 
 							yAxis: {
@@ -194,13 +217,26 @@
 							    type: 'column',
 							    name: 'Proficiency',
 							    color: 'white',
-							    data: [40,84,28,65],
+							    data: [ 
+									<% if @subject.children.count == 0 %>
+                     {y : 50, url : "#" }
+                  <% else %>
+                  <% @subject.children.each do |child| %>
+									{ y : 50,
+                    url : <%= raw show_subject_path(child.id).to_json %>
+                  }
+										<% if child != @subject.children.last %>
+											,
+										<% end %>
+                  <% end %>
+                  <% end %>
+									],
 							    pointPlacement: 'on',
 							    cursor: 'pointer',
 							    point: {
 							        events: {
 							            click: function () {
-							                alert('This will take you to the sub-category ' + this.category);
+															location.href = this.options.url;
 							            }
 							        }
 							    }

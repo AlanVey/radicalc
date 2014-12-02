@@ -10,7 +10,6 @@
 	      <p>Welcome to the RadiCalc homepage. Here you can see which topics you are currently subscribed to and which you have been invited to join.</p>
     </section>
 
-<% if @subscriptions.count > 0 %>
     <section class="awaiting">
       <h2>Awaiting Confirmation</h2>
       <div class="container">
@@ -44,8 +43,7 @@
   	      </li>
         <% end %>
 	    </ul>
-    </section>	
-   <% end %>		
+    </section>			
 
 	  <section class="mytopics">
       <h2>My Topics</h2>

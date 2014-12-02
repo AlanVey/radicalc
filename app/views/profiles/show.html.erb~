@@ -46,5 +46,5 @@
   </section>
 </div>
 
-<%= render 'layouts/sidemenu' %>
+<% render 'layouts/sidemenu' %>
 

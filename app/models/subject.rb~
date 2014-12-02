@@ -22,5 +22,4 @@ class Subject < ActiveRecord::Base
     self.children.each { |c| names << c.name }
     names
   end
-
 end

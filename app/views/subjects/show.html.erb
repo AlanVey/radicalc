@@ -128,9 +128,7 @@
   </p>
 
 
-  <p class="mini-p">
-    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
-  </p>
+
 
 	<section>
 		<h2>Proficiency</h2>
@@ -138,36 +136,15 @@
 		
 	</section>
 
+  <p class="mini-p">
+    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+  </p>
+
 </div>
 
 <%= render 'layouts/sidemenu' %>
 
 		<script type="text/javascript">
-			function applyGraphGradient() {
-			
-					// Options
-					var threshold = 50,
-							colorAbove = '#70B870',
-							colorBelow = '#EE4643';
-							
-					// internal
-					var someSeries = this.series[0];
-			
-					$.each(someSeries.points, function(){
-							if (this.y < threshold)
-							{
-							    $(this.graphic.element).attr('fill', colorBelow);
-							}
-							else
-							{
-							    $(this.graphic.element).attr('fill', colorAbove );
-							}
-					});
-			
-					delete someSeries.pointAttr.hover.fill;
-					delete someSeries.pointAttr[''].fill; 
-			}
-
 			$(function () {
 
 					$('#proficiency_chart').highcharts({
@@ -190,11 +167,12 @@
 
 							xAxis: {
 							    type: 'category',
-							    categories: [        
-									<% @subject.children.each do |child| %>
-            				'<% child.name %>',
-									<% end %>
-									]
+  								categories:
+									<% if @subject.children.count == 0 %>
+											['<%= @subject.name %>']
+                  <% else %>									
+									<%= raw @subject.children_names.to_json %>
+                  <% end %>
 							},
 
 							yAxis: {
@@ -214,13 +192,26 @@
 							    type: 'column',
 							    name: 'Proficiency',
 							    color: 'white',
-							    data: [40,84,28,65],
+							    data: [ 
+									<% if @subject.children.count == 0 %>
+                     {y : 50, url : "#" }
+                  <% else %>
+                  <% @subject.children.each do |child| %>
+									{ y : 50,
+                    url : <%= raw show_subject_path(child.id).to_json %>
+                  }
+										<% if child != @subject.children.last %>
+											,
+										<% end %>
+                  <% end %>
+                  <% end %>
+									],
 							    pointPlacement: 'on',
 							    cursor: 'pointer',
 							    point: {
 							        events: {
 							            click: function () {
-							                alert('This will take you to the sub-category ' + this.category);
+															location.href = this.options.url;
 							            }
 							        }
 							    }

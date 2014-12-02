@@ -39,5 +39,33 @@
   };
 </script>
 
+<script>
+function applyGraphGradient() {
+			
+					// Options
+					var threshold = 50,
+							colorAbove = '#70B870',
+							colorBelow = '#EE4643';
+							
+					// internal
+					var someSeries = this.series[0];
+			
+					$.each(someSeries.points, function(){
+							if (this.y < threshold)
+							{
+							    $(this.graphic.element).attr('fill', colorBelow);
+							}
+							else
+							{
+							    $(this.graphic.element).attr('fill', colorAbove );
+							}
+					});
+			
+					delete someSeries.pointAttr.hover.fill;
+					delete someSeries.pointAttr[''].fill; 
+			}
+
+</script>
+
 </body>
 </html>
