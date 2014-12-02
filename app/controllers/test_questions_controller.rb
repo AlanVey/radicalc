@@ -7,7 +7,7 @@ class TestQuestionsController < ApplicationController
                                        title: @test_question.title).uri
   end
 
-  def new
+  def new 
     @test_question = TestQuestion.new
   end
 

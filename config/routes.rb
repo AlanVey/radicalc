@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     
   # Question routes =========================================================
   get 'subjects/:id/question/:kind', to: 'question#index', as: 'questions'
-  get 'subjects/:id/question/:kind/new', to: 'question#new', as: 'new_question'
   get 'subjects/:id/question/:kind/show/:question_id', to: 'question#show', as: 'show_question'
   post 'subjects/:id/question/create/:kind', to: 'question#create', as: 'create_question'
 

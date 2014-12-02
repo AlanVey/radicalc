@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
+    @subscriptions = current_user.get_subscribed_subjects
   end
 
   def edit
@@ -10,6 +11,7 @@ class ProfilesController < ApplicationController
 
   def show_user
     @profile = Profile.find_by(user_id:params[:id])
+    @subscriptions = User.find(params[:id]).get_subscribed_subjects
     @external = true
     render :show
   end

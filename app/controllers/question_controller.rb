@@ -4,14 +4,11 @@ class QuestionController < ApplicationController
   def index
     @subject   = Subject.find(params[:id])
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])
+    @question = Question.new
   end
 
   def show
     @uri = Question.find(params[:question_id]).uri
-  end
-
-  def new
-    @question = Question.new
   end
 
   def create
