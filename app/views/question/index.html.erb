@@ -23,7 +23,6 @@
 <ul class="nav nav-tabs">
   <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > <%= link_to 'General Debate', questions_path(kind: 'General') %></li>
   <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>><%= link_to 'Technical Debate', questions_path(kind: 'Technical') %></li>
-  <li class= <%= "active" if current_page?(questions_path(kind: 'Test')) %>><%= link_to 'Test Debate', questions_path(kind: 'Test') %></li>
   <li class= <%= "active" if current_page?(tests_path) %>><%= link_to 'Tests', tests_path %></li>
 </ul>
 
