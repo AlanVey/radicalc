@@ -172,7 +172,7 @@
 							    type: 'category',
 							    categories: [        
 									<% @subject.children.each do |child| %>
-            				'<% child.name %>',
+            				<% child.name %>,
 									<% end %>
 									]
 							},

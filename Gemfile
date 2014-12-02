@@ -50,3 +50,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
+# highcharts
+gem 'highcharts-rails'
+
