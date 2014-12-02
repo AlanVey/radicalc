@@ -22,7 +22,7 @@ feature 'Someone visits the dashboard' do
 
     visit "/subjects/#{@subject.id}"
     expect(page).to have_content 'Name:'
-    expect(page).to have_content 'Description:'
+    expect(page).to have_content 'Body:'
     expect(page).to have_content 'User:'
   end
 

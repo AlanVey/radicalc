@@ -67,14 +67,6 @@
             <strong>Description:</strong>
             <%= @subject.body %>
           </p>
-
-					<% if @subject.parent != nil %>
-						<p>
-						  <strong>Parent Topic:</strong>
-						  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
-						</p>
-					<% end %>
-
         </div>
       </div>
     </div>
