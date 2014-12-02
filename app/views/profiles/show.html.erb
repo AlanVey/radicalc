@@ -44,6 +44,20 @@
       </div>
     </div>
   </section>
+
+  <section>
+    <h2>Subscribed Topics</h2>
+    <% if @subscriptions.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @subscriptions.each do |s| %>
+          <%= link_to s.name, s %> 
+      <% end %>
+      </ul>
+    <% else %>
+      <p>You are not subscribed to any courses</p>
+    <% end %>
+
+  </section>
   
 
   
