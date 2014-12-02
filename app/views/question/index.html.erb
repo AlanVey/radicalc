@@ -35,7 +35,8 @@
   </ul>
   <br><br>
 
-	<%= link_to '<strong>+</strong> New Question'.html_safe, new_question_path(kind: @kind), :class => "btn btn-primary" %>
+	<%= render 'new' %>
+  
   <br/><br/>
   <%= link_to 'Back', subject_path, :class=>"btn btn-default" %>
 </div>
