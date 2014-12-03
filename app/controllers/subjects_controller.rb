@@ -27,9 +27,6 @@ class SubjectsController < ApplicationController
       current_user.add_role :admin, @subject
 
       if @subject.parent != nil
-        p 'user has parent'
-        p User.with_role(:admin, @subject.parent).length
-        p User.with_role(:member, @subject.parent).length
         #add all admins and members from parent node
         for user in User.with_role(:admin, @subject.parent) do
           user.add_role :admin, @subject
