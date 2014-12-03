@@ -67,4 +67,22 @@ feature 'there are three users, one of which creates a subject' do
     expect(page).not_to have_content 'Add Students'
   end
 
+  scenario 'user invited to parent node can see children nodes' do
+    sign_in @user1
+    visit "/subjects/#{@subject.id}"
+    expect(page).to have_content 'New Subject'
+
+    click_link 'New Subject'
+    fill_in 'Name', with: 'Child'
+    fill_in 'Body', with: 'B'
+    click_button 'Create Subject'
+
+    log_out
+
+    sign_in @user2
+    visit "/subjects/#{@subject.id}"
+    click_link 'Child'
+    expect(page).to have_content 'Name:'
+  end
+
 end

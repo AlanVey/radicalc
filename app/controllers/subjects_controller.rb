@@ -25,6 +25,21 @@ class SubjectsController < ApplicationController
 
     if @subject.save
       current_user.add_role :admin, @subject
+
+      if @subject.parent != nil
+        p 'user has parent'
+        p User.with_role(:admin, @subject.parent).length
+        p User.with_role(:member, @subject.parent).length
+        #add all admins and members from parent node
+        for user in User.with_role(:admin, @subject.parent) do
+          user.add_role :admin, @subject
+        end
+        for user in User.with_role(:member, @subject.parent) do
+          p user
+          user.add_role :member, @subject
+        end
+      end
+
       Subscription.create(user_id:current_user.id, subject_id:@subject.id, status:'Subscribed')
       redirect_to @subject, notice: 'Subject was successfully created.'
     else
