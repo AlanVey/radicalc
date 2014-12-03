@@ -54,3 +54,6 @@ gem 'fog'
 gem 'authority'
 #for user roles
 gem 'rolify'
+
+# highcharts
+gem 'highcharts-rails'

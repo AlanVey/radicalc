@@ -1,27 +1,3 @@
-
-<% if @subject.readable_by?(current_user) %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
-
-<p>
-  <%= "This is a #{@subject.debate_type} node" %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @subject.body %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @subject.user.email %>
-</p>
-
-<% if @subject.parent != nil %>
-
 <div class="page-main">
   <section class="header">
     <h2>
@@ -67,6 +43,14 @@
             <strong>Description:</strong>
             <%= @subject.body %>
           </p>
+
+					<% if @subject.parent != nil %>
+						<p>
+						  <strong>Parent Topic:</strong>
+						  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
+						</p>
+					<% end %>
+
         </div>
       </div>
     </div>
@@ -96,6 +80,12 @@
     </p>
     <br/>
 
+    <p class="mini-p">
+     <%= link_to 'Test Discussion', questions_path(kind: 'Test'), :class => "btn btn-default" %>
+    Questions about the assessed tests
+    </p>
+    <br/>
+
 
    </section>
 
@@ -111,14 +101,11 @@
         <p>This topic has no subtopics</p>
     <% end %>
    </section>
-
   <p>
     <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
    
 <!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
   </p>
-
-<% end %>
 
   <section>
     <h2>Subscribed Users</h2>
@@ -136,37 +123,12 @@
     <% end %>
 
   </section>
-  <% if @subject.updatable_by?(current_user) %>
-      <p>
-        <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
-      </p>
-  <% end %>
+  <p>
+    <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+  </p>
 
 
-<% if @subject.children.count > 0 %>
-<p>
-  <strong>Children:</strong>
-  <% @subject.children.each do|child| %>
-      <p>
-        <%= link_to child.name, show_subject_path(child.id) %>
-      </p>
-  <% end %>
-</p>
-<% end %>
 
-<p>
-  <% if @subject.updatable_by?(current_user) %>
-      <%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
-  <% end %>
-<%= link_to 'Questions', questions_path(kind: 'General') %>
-</p>
-
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-
-    <p class="mini-p">
-      <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
-    </p>
-    </div>
 
 	<section>
 		<h2>Proficiency</h2>
@@ -183,6 +145,31 @@
 <%= render 'layouts/sidemenu' %>
 
 		<script type="text/javascript">
+			function applyGraphGradient() {
+			
+					// Options
+					var threshold = 50,
+							colorAbove = '#70B870',
+							colorBelow = '#EE4643';
+							
+					// internal
+					var someSeries = this.series[0];
+			
+					$.each(someSeries.points, function(){
+							if (this.y < threshold)
+							{
+							    $(this.graphic.element).attr('fill', colorBelow);
+							}
+							else
+							{
+							    $(this.graphic.element).attr('fill', colorAbove );
+							}
+					});
+			
+					delete someSeries.pointAttr.hover.fill;
+					delete someSeries.pointAttr[''].fill; 
+			}
+
 			$(function () {
 
 					$('#proficiency_chart').highcharts({
@@ -258,11 +245,3 @@
 			});
 
 		</script>
-
-<% else %>
-
-<p>
-  <strong>You do not have permission to see this page.</strong>
-</p>
-
-<% end %>

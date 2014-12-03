@@ -20,7 +20,7 @@
       </p>
 	  </div>
 
-	  <div class="actions" id="create_q_div">
+	  <div class="actions">
 	    <p><%= f.submit %></p>
 	  </div>
 
