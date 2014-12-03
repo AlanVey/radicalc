@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'home#index'
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
     
   # Question routes =========================================================
   get 'subjects/:id/question/:kind', to: 'question#index', as: 'questions'
-  get 'subjects/:id/question/:kind/new', to: 'question#new', as: 'new_question'
   get 'subjects/:id/question/:kind/show/:question_id', to: 'question#show', as: 'show_question'
   post 'subjects/:id/question/create/:kind', to: 'question#create', as: 'create_question'
 
@@ -35,6 +33,12 @@ Rails.application.routes.draw do
   post 'question/show/:test_id/answer/upload', to:'answers#upload', as:'upload_answer'
   patch 'question/show/:test_id/answer/upload', to:'answers#reupload'
 
+  # Subscriptions routes ======================================================
+  get 'subjects/:subject_id/subscription/new', to: 'subscriptions#new', as: 'new_subscription'
+  post 'subjects/:subject_id/subscription/new/:user_id', to: 'subscriptions#create', as: 'create_subscription'
+  post 'subjects/:subject_id/subscribe/:id', to: 'subscriptions#subscribe', as: 'subscribe'
+  delete 'subjects/:subject_id/unsubscribe/:id', to: 'subscriptions#unsubscribe', as: 'unsubscribe'
+
   # User routes ===============================================================
   devise_for :users, controllers: { registrations: 'registrations', 
                                     passwords: 'passwords', 
@@ -43,6 +47,7 @@ Rails.application.routes.draw do
   # User Profile routes ======================================================= 
   get '/profile/edit', to: 'profiles#edit', as: 'edit_profile'
   get '/profile', to:'profiles#show', as: 'profile'
+  get '/profile/show/:id', to: 'profiles#show_user', as: 'show_profile'
   patch '/profile', to: 'profiles#update', as: 'update_profile'
 
 end

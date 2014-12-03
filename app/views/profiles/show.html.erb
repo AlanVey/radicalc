@@ -11,7 +11,9 @@
           <%= image_tag @profile.photo.display, :size => "200x200", :class => "img-circle", :id => "profilepic" %>
           <br/>
 
+         <% unless @external %> 
           <%= link_to 'Edit Profile', edit_profile_path(@profile), :id => "Edit Profile", :class => "btn btn-primary", :relative => true, :method => :get %>
+         <% end %>
         </div>
 
         <div class="col-xs-6">
@@ -35,10 +37,26 @@
           
           <br/>
           <br/>
+         <% unless @external %> 
           <%= button_to "Account settings", edit_user_registration_path, :id => "Edit Profile", :class => "btn btn-default", :relative => true, :method => :get %>
+        <% end %>
         </div>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>Subscribed Topics</h2>
+    <% if @subscriptions.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @subscriptions.each do |s| %>
+          <%= link_to s.name, s %> 
+      <% end %>
+      </ul>
+    <% else %>
+      <p>You are not subscribed to any courses</p>
+    <% end %>
+
   </section>
   
 

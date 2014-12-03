@@ -49,4 +49,22 @@ feature 'there are three users, one of which creates a subject' do
     expect(page).not_to have_content 'New Subject'
   end
 
+  scenario 'only an admin can add users' do
+    sign_in @user1
+    visit "/subjects/#{@subject.id}"
+    expect(page).to have_content 'Add Students'
+
+    log_out
+
+    sign_in @user2
+    visit "/subjects/#{@subject.id}"
+    expect(page).not_to have_content 'Add Students'
+
+    log_out
+
+    sign_in @user3
+    visit "/subjects/#{@subject.id}"
+    expect(page).not_to have_content 'Add Students'
+  end
+
 end

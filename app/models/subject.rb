@@ -26,4 +26,11 @@ class Subject < ActiveRecord::Base
     [ self ] + self.ancestors
   end
 
+  def get_subscribed_users
+    User.where("id IN (?)", Subscription.where(subject_id:self.id, status: 'Subscribed').uniq.pluck(:user_id))
+  end
+
+  def get_invited_users
+    User.where("id IN (?)", Subscription.where(subject_id:self.id, status: 'Pending Approval').uniq.pluck(:user_id))
+  end
 end

@@ -96,12 +96,6 @@
     </p>
     <br/>
 
-    <p class="mini-p">
-     <%= link_to 'Test Discussion', questions_path(kind: 'Test'), :class => "btn btn-default" %>
-    Questions about the assessed tests
-    </p>
-    <br/>
-
 
    </section>
 
@@ -125,6 +119,29 @@
   </p>
 
 <% end %>
+
+  <section>
+    <h2>Subscribed Users</h2>
+    <% if @subscribed_users.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @subscribed_users.each do |user| %>
+          <%= link_to user.email, show_profile_path(user.id) %> 
+          <% if user == current_user or @subject.user == current_user %>
+            <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete %>
+          <% end %>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>This topic has no subscribed users</p>
+    <% end %>
+
+  </section>
+  <% if @subject.updatable_by?(current_user) %>
+      <p>
+        <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+      </p>
+  <% end %>
+
 
 <% if @subject.children.count > 0 %>
 <p>

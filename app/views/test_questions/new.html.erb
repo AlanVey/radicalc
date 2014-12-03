@@ -17,12 +17,12 @@
   <% end %>
 
   <div class="form-entry">
-    <%= f.label :title %><br>
+    <%= f.label 'Question' %><br>
     <%= f.text_field :title %>
   </div>
   <div class="form-entry">
-    <%= f.label :kind %><br>
-    <%= f.text_field :kind %>
+    <%= f.label 'Type of question' %><br>
+    <%= f.collection_select :kind, TestQuestion.kinds, "to_s", "to_s", {:include_blank => 'Select'} %>
   </div>
   <div class="form-entry">
     <%= f.label :answer %><br>

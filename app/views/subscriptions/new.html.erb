@@ -1,0 +1,53 @@
+<div class="page-main">
+  <h1>Add users to: <%= @subject.name %></h1>
+
+  <section>
+    <h2>Add Users</h2>
+    <% if @users.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @users.each do |user| %>
+          <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>All students registered with the site have been invited to join this topic</p>
+    <% end %>
+
+  </section>
+
+  <section>
+    <h2>Subscribed Users</h2>
+    <% if @subscribed_users.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @subscribed_users.each do |user| %>
+          <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %> 
+      <% end %>
+      </ul>
+    <% else %>
+      <p>This topic has no subscribed users</p>
+    <% end %>
+
+  </section>
+
+  <section>
+    <h2>Invited Users</h2>
+    <% if @invited_users.count > 0 %>
+      <ul class="list-group subtopics">
+      <% @invited_users.each do |user| %>
+          <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %> 
+      <% end %>
+      </ul>
+    <% else %>
+      <p>This topic has no invited students</p>
+    <% end %>
+
+  </section>
+
+
+  <p class="mini-p">
+    <%= link_to 'Back', @subject, :class => "btn btn-default" %>
+  </p>
+</div>
+
+<%= render 'layouts/sidemenu' %>
+
