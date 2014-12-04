@@ -16,7 +16,8 @@
         <select>
           <option></option>
           <% @users.each do |user| %>
-            <option><%= user.email %><%= button_to 'Invite', create_subscription_path(user_id:user.id) %></option>
+            <option><%= user.email %></option>
+            <%= user.email %><%= button_to 'Invite', create_subscription_path(user_id:user.id) %>
           <% end %>
         </select>
         
