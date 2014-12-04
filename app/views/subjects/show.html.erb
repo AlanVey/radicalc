@@ -138,7 +138,7 @@
   </section>
   <% if @subject.updatable_by?(current_user) %>
       <p>
-        <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+        <%= link_to '<strong>+</strong>Add Users'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
       </p>
   <% end %>
 

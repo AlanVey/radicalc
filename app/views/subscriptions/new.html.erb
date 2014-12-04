@@ -2,7 +2,7 @@
   <h1>Add users to: <%= @subject.name %></h1>
 
   <section>
-    <h2>Add Users</h2>
+    <h2>Add Members</h2>
     <% if @users.count > 0 %>
       <ul class="list-group subtopics">
       <% @users.each do |user| %>
@@ -23,6 +23,27 @@
         <input type="button" value="Invite" onclick="window.location()">
       </form>
         
+  </section>
+
+  <section>
+    <h2>Add Admins</h2>
+    <% if @users.count > 0 %>
+        <ul class="list-group subtopics">
+          <% @users.each do |user| %>
+              <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
+          <% end %>
+        </ul>
+    <% else %>
+        <p>All persons registered with the site are admins</p>
+    <% end %>
+
+    <select>
+      <option></option>
+      <% @users.each do |user| %>
+          <option><%= user.email %></option>
+      <% end %>
+    </select>
+
   </section>
 
   <section>
