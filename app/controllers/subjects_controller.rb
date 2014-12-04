@@ -32,7 +32,6 @@ class SubjectsController < ApplicationController
           user.add_role :admin, @subject
         end
         for user in User.with_role(:member, @subject.parent) do
-          p user
           user.add_role :member, @subject
         end
       end
