@@ -8,21 +8,19 @@
       <% @users.each do |user| %>
           <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
       <% end %>
+      
+        <select style="width:100%" value="Go "onclick="document.location = this.value">
+          <option></option>
+          <% @users.each do |user| %>
+            <option><%= user.email %></option>
+          <% end %>
+        </select> 
+      
       </ul>
     <% else %>
       <p>All students registered with the site have been invited to join this topic</p>
     <% end %>
 
-      <form>
-        <select>
-          <option></option>
-          <% @users.each do |user| %>
-            <option><%= user.email %></option>
-          <% end %>
-        </select>
-        <input type="button" value="Invite" onclick="window.location()">
-      </form>
-        
   </section>
 
   <section>
@@ -32,17 +30,18 @@
           <% @users.each do |user| %>
               <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
           <% end %>
+        
+        <select style="width:100%" value="Go "onclick="document.location = this.value">
+          <option></option>
+          <% @users.each do |user| %>
+            <option><%= user.email %></option>
+          <% end %>
+        </select>  
         </ul>
+        
     <% else %>
         <p>All persons registered with the site are admins</p>
     <% end %>
-
-    <select>
-      <option></option>
-      <% @users.each do |user| %>
-          <option><%= user.email %></option>
-      <% end %>
-    </select>
 
   </section>
 
@@ -54,15 +53,12 @@
             <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
         
-        <form>
-          <select>
-            <option></option>
-            <% @subscribed_users.each do |user| %>
-              <option><%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %></option>
+        <select style="width:100%" value="Go "onclick="document.location = this.value">
+          <option></option>
+          <% @subscribed_users.each do |user| %>
+            <option><%= user.email %></option>
           <% end %>
-          </select>
-          <input type="button" value="Go" onclick="window.location()">
-        </form>        
+        </select>        
           
       </ul>
     <% else %>
@@ -78,15 +74,12 @@
           <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
         
-        <form>
-          <select>
-            <option value=""></option>
-            <% @invited_users.each do |user| %>
-              <option><%= user.email %></option>
-            <% end %>
-          <input type="button" value="Go" onclick="window.location( )">
-          </select>
-        </form>
+         <select style="width:100%" value="Go "onclick="document.location = this.value">
+          <option></option>
+          <% @invited_users.each do |user| %>
+            <option><%= user.email %></option>
+          <% end %>
+        </select>
         
       </ul>
     <% else %>
