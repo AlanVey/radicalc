@@ -1,3 +1,4 @@
+<div class="page-main">
 
 <% if @subject.readable_by?(current_user) %>
 
@@ -22,7 +23,6 @@
 
 <% if @subject.parent != nil %>
 
-<div class="page-main">
   <section class="header">
     <h2>
       <% @subject.get_ancestors.each do |s| %> 
@@ -161,12 +161,11 @@
 <%= link_to 'Questions', questions_path(kind: 'General') %>
 </p>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Edit', edit_subject_path(@subject) %> 
 
     <p class="mini-p">
       <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
     </p>
-    </div>
 
 	<section>
 		<h2>Proficiency</h2>
