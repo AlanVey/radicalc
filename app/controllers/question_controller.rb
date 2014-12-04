@@ -1,8 +1,9 @@
 class QuestionController < ApplicationController
   before_action :set_kind
+  before_action :set_subject
+  before_action :check_observer
 
   def index
-    @subject   = Subject.find(params[:id])
     @questions = Question.where(subject_id: params[:id], kind: params[:kind])
     @question = Question.new
   end
@@ -43,5 +44,9 @@ class QuestionController < ApplicationController
       end
 
       question    
+    end
+
+    def set_subject
+      @subject   = Subject.find(params[:id])
     end
 end

@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :check_observer, only: [:show, :edit, :update, :destroy]
 
   def show
     @subscribed_users = @subject.get_subscribed_users
@@ -64,4 +65,6 @@ class SubjectsController < ApplicationController
     def subject_params
       params.require(:subject).permit(:name, :body, :parent_id, :debate_type)
     end
+
+
 end

@@ -1,4 +1,8 @@
 class SubscriptionsController < ApplicationController
+
+  before_action :set_subject
+  before_action :check_observer
+
   def new
     @subject          = Subject.find(params[:subject_id])
     @subscribed_users = @subject.get_subscribed_users
@@ -31,4 +35,9 @@ class SubscriptionsController < ApplicationController
     Subscription.find_by(subject_id:params[:subject_id], user_id:params[:id]).destroy
     redirect_to dashboard_path, notice: 'Successfully unsubscribed.' 
   end
+
+  def set_subject
+    @subject = Subject.find(params[:subject_id])
+  end
+
 end

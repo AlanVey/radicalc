@@ -1,5 +1,8 @@
 class TestController < ApplicationController
-  
+
+  before_action :set_subject
+  before_action :check_observer
+
   def index
     @subject = Subject.find(params[:id])
     @tests   = Test.where(subject_id: params[:id])
@@ -29,6 +32,10 @@ class TestController < ApplicationController
   private
     def test_params
       params.require(:test).permit(:title, :kind)
+    end
+
+    def set_subject
+      @subject = Subject.find(params[:id])
     end
 
 end
