@@ -13,12 +13,15 @@
       <p>All students registered with the site have been invited to join this topic</p>
     <% end %>
 
+      <form>
         <select>
           <option></option>
           <% @users.each do |user| %>
-            <option><%= user.email %></option><%= button_to 'Invite', create_subscription_path(user_id:user.id) %>
+            <option><%= user.email %></option>
           <% end %>
         </select>
+        <input type="button" value="Invite" onclick="window.location()">
+      </form>
         
   </section>
 
@@ -30,12 +33,15 @@
             <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
         
-        <select>
-          <option></option>
-          <% @subscribed_users.each do |user| %>
-            <option><%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %></option>
-        <% end %>
-        </select>
+        <form>
+          <select>
+            <option></option>
+            <% @subscribed_users.each do |user| %>
+              <option><%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %></option>
+          <% end %>
+          </select>
+          <input type="button" value="Go" onclick="window.location()">
+        </form>        
           
       </ul>
     <% else %>
@@ -51,19 +57,20 @@
           <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
         
-        <select>
-          <option></option>
-          <% @invited_users.each do |user| %>
-            <option><%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %></option>
-          <% end %>
-        </select>
+        <form>
+          <select>
+            <option value=""></option>
+            <% @invited_users.each do |user| %>
+              <option><%= user.email %></option>
+          <input type="button" value="Go" onclick="window.location(show_profile_path(user.id) )">
+            <% end %>
+          </select>
+        </form>
         
       </ul>
     <% else %>
       <p>This topic has no invited users</p>
     <% end %>
-
-
   </section>
 
 
