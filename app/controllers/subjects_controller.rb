@@ -24,10 +24,23 @@ class SubjectsController < ApplicationController
     @subject.user = current_user
 
     if @subject.save
+      current_user.add_role :admin, @subject
+
+      if @subject.parent != nil
+        #add all admins and members from parent node
+        for user in User.with_role(:admin, @subject.parent) do
+          user.add_role :admin, @subject
+        end
+        for user in User.with_role(:member, @subject.parent) do
+          p user
+          user.add_role :member, @subject
+        end
+      end
+
       Subscription.create(user_id:current_user.id, subject_id:@subject.id, status:'Subscribed')
-      redirect_to @subject, notice: 'Subject was successfully created.' 
+      redirect_to @subject, notice: 'Subject was successfully created.'
     else
-      render :new 
+      render :new
     end
   end
 
@@ -50,6 +63,6 @@ class SubjectsController < ApplicationController
     end
 
     def subject_params
-      params.require(:subject).permit(:name, :body)
+      params.require(:subject).permit(:name, :body, :parent_id, :debate_type)
     end
 end

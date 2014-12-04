@@ -27,7 +27,7 @@ gem 'spring',        group: :development
 # Remember to precompile assets before pushing
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+  #gem 'pg'
 end
 
 group :development, :test do
@@ -50,6 +50,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
+#for user privileges
+gem 'authority'
+#for user roles
+gem 'rolify'
+
 # highcharts
 gem 'highcharts-rails'
-

@@ -1,3 +1,27 @@
+
+<% if @subject.readable_by?(current_user) %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subject.name %>
+</p>
+
+<p>
+  <%= "This is a #{@subject.debate_type} node" %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @subject.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @subject.user.email %>
+</p>
+
+<% if @subject.parent != nil %>
+
 <div class="page-main">
   <section class="header">
     <h2>
@@ -43,14 +67,6 @@
             <strong>Description:</strong>
             <%= @subject.body %>
           </p>
-
-					<% if @subject.parent != nil %>
-						<p>
-						  <strong>Parent Topic:</strong>
-						  <%= link_to @subject.parent.name, show_subject_path(@subject.parent.id) %>
-						</p>
-					<% end %>
-
         </div>
       </div>
     </div>
@@ -95,11 +111,14 @@
         <p>This topic has no subtopics</p>
     <% end %>
    </section>
+
   <p>
     <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
    
 <!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
   </p>
+
+<% end %>
 
   <section>
     <h2>Subscribed Users</h2>
@@ -117,22 +136,43 @@
     <% end %>
 
   </section>
-  <p>
-    <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
-  </p>
+  <% if @subject.updatable_by?(current_user) %>
+      <p>
+        <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+      </p>
+  <% end %>
 
 
+<% if @subject.children.count > 0 %>
+<p>
+  <strong>Children:</strong>
+  <% @subject.children.each do|child| %>
+      <p>
+        <%= link_to child.name, show_subject_path(child.id) %>
+      </p>
+  <% end %>
+</p>
+<% end %>
 
+<p>
+  <% if @subject.updatable_by?(current_user) %>
+      <%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
+  <% end %>
+<%= link_to 'Questions', questions_path(kind: 'General') %>
+</p>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+
+    <p class="mini-p">
+      <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+    </p>
+    </div>
 
 	<section>
 		<h2>Proficiency</h2>
     <div id="proficiency_chart" style="min-width: 310px; max-width: 400px; height: 400px; margin: 0 auto"></div>
 		
 	</section>
-
-  <p class="mini-p">
-    <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
-  </p>
 
 </div>
 
@@ -214,3 +254,11 @@
 			});
 
 		</script>
+
+<% else %>
+
+<p>
+  <strong>You do not have permission to see this page.</strong>
+</p>
+
+<% end %>
