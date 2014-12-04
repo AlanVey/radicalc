@@ -9,4 +9,8 @@ class SubjectAuthorizer < ApplicationAuthorizer
     user.has_role? :admin, resource
   end
 
+  def examinable_by?(user)
+    user.has_role? :member, resource
+  end
+
 end

@@ -42,6 +42,7 @@ Authority.configure do |config|
   #   :create => 'creatable',
      :read   => 'readable',
      :update => 'updatable',
+     :examine => 'examinable'
   #   :delete => 'deletable'
   }
 
