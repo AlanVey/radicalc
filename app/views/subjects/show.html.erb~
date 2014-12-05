@@ -2,26 +2,7 @@
 
 <% if @subject.readable_by?(current_user) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
-
-<p>
-  <%= "This is a #{@subject.debate_type} node" %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @subject.body %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @subject.user.email %>
-</p>
-
-<% if @subject.parent != nil %>
+<!-- % if @subject.parent != nil % -->
 
   <section class="header">
     <h2>
@@ -49,7 +30,9 @@
         <div class="col-xs-6" id="profile-block-left">
           <%= image_tag('topic.png', class: 'img-circle', id: 'profilepic') %>
           <br/>
-          <%= link_to 'Edit Topic', edit_subject_path(@subject), :class => "btn btn-primary" %>
+          <% if @subject.updatable_by?(current_user) %>
+            <%= link_to 'Edit Topic', edit_subject_path(@subject), :class => "btn btn-primary" %>
+          <% end %>
         </div>
 
         <div class="col-xs-6">
@@ -107,18 +90,21 @@
             <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
         <% end %>
         </ul>
-        <% else %>
+    <% else %>
         <p>This topic has no subtopics</p>
     <% end %>
-   </section>
+   
 
   <p>
+   <% if @subject.updatable_by?(current_user) %>
     <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
-   
-<!-- <%= link_to 'Questions', questions_path(kind: 'General') %> -->
   </p>
+   <% end %>
 
-<% end %>
+    </section>
+  
+
+<!--% end %-->
 
   <section>
     <h2>Subscribed Users</h2>
@@ -136,42 +122,21 @@
     <% end %>
 
   </section>
-  <% if @subject.updatable_by?(current_user) %>
+  <% if @subject.updatable_by?(current_user) && @subject.parent == nil %>
       <p>
-        <%= link_to '<strong>+</strong>Add Students'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+        <%= link_to '<strong>+</strong>Add Users'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
       </p>
   <% end %>
 
-
-<% if @subject.children.count > 0 %>
-<p>
-  <strong>Children:</strong>
-  <% @subject.children.each do|child| %>
-      <p>
-        <%= link_to child.name, show_subject_path(child.id) %>
-      </p>
-  <% end %>
-</p>
-<% end %>
-
-<p>
-  <% if @subject.updatable_by?(current_user) %>
-      <%= link_to 'New Subject', new_subject_path(@subject.id) %><br>
-  <% end %>
-<%= link_to 'Questions', questions_path(kind: 'General') %>
-</p>
-
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-
-    <p class="mini-p">
-      <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
-    </p>
-
-	<section>
+	<section id="proficiency">
 		<h2>Proficiency</h2>
     <div id="proficiency_chart" style="min-width: 310px; max-width: 400px; height: 400px; margin: 0 auto"></div>
 		
 	</section>
+
+    <p class="mini-p">
+      <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
+    </p>
 
 </div>
 
@@ -227,11 +192,11 @@
 							    color: 'white',
 							    data: [ 
 									<% if @subject.children.count == 0 %>
-                     {y : 50, url : "#" }
+                     {y : 50, url : '#proficiency' }
                   <% else %>
                   <% @subject.children.each do |child| %>
 									{ y : 50,
-                    url : <%= raw show_subject_path(child.id).to_json %>
+                    url : <%= raw (show_subject_path(child.id).to_json) %>
                   }
 										<% if child != @subject.children.last %>
 											,

@@ -1,5 +1,5 @@
 <div class="page-main">
-  <h1>Add users to: <%= @subject.name %></h1>
+  <h1>Add users to <%= @subject.name %></h1>
 
   <section>
     <h2>Add Members</h2>
@@ -52,14 +52,15 @@
         <% @subscribed_users.each do |user| %>
             <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
-        
-        <select style="width:100%" value="Go "onclick="document.location = this.value">
+       <form> 
+        <select style="width:80%" name="subscribed">
           <option></option>
           <% @subscribed_users.each do |user| %>
-            <option><%= user.email %></option>
+           <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
-        </select>        
-          
+        </select>
+        <input type="button" name="submit" value="Go to profile"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+      </form>
       </ul>
     <% else %>
       <p>This topic has no subscribed users</p>
@@ -73,13 +74,16 @@
         <% @invited_users.each do |user| %>
           <%= link_to user.email, show_profile_path(user.id), :class=> "list-group-item" %><br>
         <% end %>
-        
-         <select style="width:100%" value="Go "onclick="document.location = this.value">
+        <form>
+         <select style="width:80%" name="invited" >
           <option></option>
           <% @invited_users.each do |user| %>
-            <option><%= user.email %></option>
+            <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
-        </select>
+					</select>
+					<input type="button" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
+        
+        </form>
         
       </ul>
     <% else %>

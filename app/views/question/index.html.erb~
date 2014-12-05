@@ -11,7 +11,7 @@
            <% end %>
         <% else %>
            <% if s == @subject.get_ancestors.last %>
-             <p><%= link_to s.name, show_subject_path(s) %> </p>
+             <p><%= link_to s.name, (show_subject_path(s)/questions_path(kind: @kind)).html_safe %> </p>
            <% else %>
              <p><%= link_to s.name, show_subject_path(s) %> << </p>
            <% end %>
@@ -27,17 +27,20 @@
 </ul>
 
   <h3><%= @kind %> Questions</h3>
-  
+
+  <%= render 'new' %>
+
   <ul class="list-group">	
+  <% if @questions.count > 0 %>
     <% @questions.each do |q| %>
         <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind), :class=>"list-group-item" %>
 	  <% end %>
+  <% else %>
+    <p>This topic has no <%= @kind %> questions</p>
+  <% end %>
   </ul>
   <br><br>
 
-	<%= render 'new' %>
-  
-  <br/><br/>
   <%= link_to 'Back', subject_path, :class=>"btn btn-default" %>
 </div>
 

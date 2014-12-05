@@ -11,9 +11,9 @@
            <% end %>
         <% else %>
            <% if s == @subject.get_ancestors.last %>
-             <p><%= link_to s.name, tests_path(id: s) %> </p>
+             <p><%= link_to s.name, show_subject_path(s) %> </p>
            <% else %>
-             <p><%= link_to s.name, tests_path(id: s) %> << </p>
+             <p><%= link_to s.name, show_subject_path(s) %> << </p>
            <% end %>
          <% end %>
       <% end %>

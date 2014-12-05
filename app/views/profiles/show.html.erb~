@@ -49,7 +49,7 @@
     <h2>Badges</h2>
     <ul class="ch-grid">
       <li><%= image_tag('answers_silver.png', class: 'badge_image', title: 'Answered 10 Questions') %></li>
-      <li><%= image_tag('100_test.png', class: 'badge_image') %></li>
+      <li><%= image_tag('100_test.png', class: 'badge_image', title: 'Achieved 100% in a test') %></li>
     </ul>
   </section>
 
@@ -61,7 +61,7 @@
       <% @subscriptions.each do |s| %>
         <% if s.parent_id.nil? %>
 					<li>
-    				<div id="proficiency_chart_<%= s.name %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+    				<div id="proficiency_chart_<%= s.id %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
 					</li>
         <% end %>
       <% end %>
@@ -82,7 +82,7 @@
 <script type="text/javascript">
 			$(function () {
 
-					$('#proficiency_chart_<%= s.name %>').highcharts({
+					$('#proficiency_chart_<%= s.id %>').highcharts({
 
 							chart: {
 							    polar: true,
@@ -130,7 +130,7 @@
 							    color: 'white',
 							    data: [ 
 									<% if s.children.count == 0 %>
-                     {y : 50, url : "#" }
+                     {y : 50, url : <%= raw s.to_json %> }
                   <% else %>
                   <% s.children.each do |child| %>
 									{ y : 50,
