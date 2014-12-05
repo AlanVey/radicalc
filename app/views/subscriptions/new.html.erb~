@@ -38,7 +38,7 @@
             <option value="<%= create_subscription_path(user_id:user.id)%>"><%= user.email %></option>
           <% end %>
         </select>
-        <input type="button" name="submit" value="Go to profile"  onclick="top.location.href = this.form.users.options[this.form.users.selectedIndex].value"></input>
+        <input type="button" name="submit" value="Invite"  onclick="top.location.href = this.form.users.options[this.form.users.selectedIndex].value"></input>
       </form>
      
         </ul>
@@ -54,12 +54,12 @@
     <% if @subscribed_users.count > 0 %>
       <form> 
         <select style="width:80%" name="subscribed">
-          <option></option>
+          <option selected="selected">Select a subscribed user</option>
           <% @subscribed_users.each do |user| %>
             <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
         </select>
-        <input type="button" name="submit" value="Go to profile"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+        <input type="button" name="submit" value="Go to profile" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
       </form>
     <% else %>
       <p>This topic has no subscribed users</p>
@@ -69,20 +69,24 @@
   <section>
     <h2>Invited Users</h2>
     <% if @invited_users.count > 0 %>
-      <form>
-        <select style="width:80%" name="invited" >
-          <option></option>
+
+        <form>
+         <select style="width:80%" name="invited" >
+          <option selected="selected">Select an invited user</option>
           <% @invited_users.each do |user| %>
             <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
-			</select>
-			<input type="button" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
-    </form>
+					</select>
+					<input type="button" class="btn btn-default" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
+        
+        </form>
+        
     <% else %>
       <p>This topic has no invited users</p>
     <% end %>
   </section>
 
+</br>
 
   <p class="mini-p">
     <%= link_to 'Back', @subject, :class => "btn btn-default" %>
