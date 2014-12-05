@@ -7,20 +7,17 @@ class TestQuestionsController < ApplicationController
                                        title: @test_question.title).uri
   end
 
-  def new 
-    @test_question = TestQuestion.new
-  end
-
   def create
     @test_question         = TestQuestion.new(test_question_params)
     @test_question.user    = current_user
     @test_question.test_id = params[:test_id]
+    @test_question.kind    = TestQuestion.kinds[0]
     @test_question.status  = 'Open'
 
     @question = create_question(@test_question.title, params[:id], 'Test Question')
 
     if @test_question.save and @question.save
-      redirect_to show_test_question_path(question_id: @test_question.id), 
+      redirect_to :back, 
         notice: 'Test question was successfully created.'
     else
       render :new, 

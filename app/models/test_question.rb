@@ -1,10 +1,10 @@
 class TestQuestion < ActiveRecord::Base
   belongs_to :test
   belongs_to :user
-  validates_presence_of :title, :kind, :answer, :user_id, :test_id, :status
+  validates_presence_of :title, :kind, :user_id, :test_id, :status
   validate :valid_kind?
 
-  @@kinds = ['Multiple Choice', 'PDF Upload Required']
+  @@kinds = ['PDF Upload Required']
 
   def valid_kind?
     unless @@kinds.include?(self.kind)

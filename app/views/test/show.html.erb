@@ -2,13 +2,6 @@
 
 <h2><%= @test.title %></h2>
 
-<p>
-  <strong>Kind:</strong>
-  <%= @test.kind %>
-</p>
-
-<h3>Listing Questions</h3>
-
 <table class="table">
   <thead>
     <tr>
@@ -32,9 +25,9 @@
 </table>
 
 <br>
-<% @subject = Subject.find(params[:id]) %>
 <% if @subject.updatable_by?(current_user) %>
-    <%= link_to '<strong>+</strong> New Test question'.html_safe, new_test_question_path, :class => "btn btn-primary" %><br><br>
+    <%= render 'test_questions/new' %>
+    <br><br>
     <%= link_to 'Answers (For teacher)', answers_path(test_id:@test.id), :class => "btn btn-primary" %>
 <% end %>
 <% if @subject.examinable_by?(current_user) %>
