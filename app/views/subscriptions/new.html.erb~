@@ -8,15 +8,19 @@
       <% @users.each do |user| %>
           <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
       <% end %>
-      
-        <select style="width:100%" value="Go "onclick="document.location = this.value">
-          <option></option>
-          <% @users.each do |user| %>
-            <option><%= user.email %></option>
-          <% end %>
-        </select> 
-      
       </ul>
+      
+        <form> 
+          <select style="width:80%" name="subscribed">
+            <option selected="selected">Invite a user</option>
+            <% @users.each do |user| %>
+              <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
+            <% end %>
+          </select>
+          <%= button_to 'Invite', create_subscription_path(user_id:this.form.options[this.form.selectedIndex].value) %>
+          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+      </form>     
+      
     <% else %>
       <p>All students registered with the site have been invited to join this topic</p>
     <% end %>
@@ -30,18 +34,17 @@
           <% @users.each do |user| %>
               <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
           <% end %>
-        
-      <form> 
-        <select style="width:80%" name="subscribed">
-          <option></option>
-          <% @users.each do |user| %>
-            <option value="<%= create_subscription_path(user_id:user.id)%>"><%= user.email %></option>
-          <% end %>
-        </select>
-        <input type="button" name="submit" value="Invite"  onclick="top.location.href = this.form.users.options[this.form.users.selectedIndex].value"></input>
-      </form>
-     
         </ul>
+
+        <form> 
+          <select style="width:80%" name="subscribed">
+            <option selected="selected">Invite an admin user</option>
+            <% @users.each do |user| %>
+              <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
+            <% end %>
+          </select>
+          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+      </form>     
         
     <% else %>
         <p>All persons registered with the site are admins</p>
@@ -70,23 +73,22 @@
     <h2>Invited Users</h2>
     <% if @invited_users.count > 0 %>
 
-        <form>
-         <select style="width:80%" name="invited" >
+      <form>
+        <select style="width:80%" name="invited" >
           <option selected="selected">Select an invited user</option>
           <% @invited_users.each do |user| %>
             <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
-					</select>
-					<input type="button" class="btn btn-default" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
-        
-        </form>
-        
+				</select>
+				<input type="button" class="btn btn-default" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
+      </form>
+      
     <% else %>
       <p>This topic has no invited users</p>
     <% end %>
   </section>
 
-</br>
+  </br>
 
   <p class="mini-p">
     <%= link_to 'Back', @subject, :class => "btn btn-default" %>
