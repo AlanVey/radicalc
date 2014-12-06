@@ -14,11 +14,10 @@
           <select style="width:80%" name="subscribed">
             <option selected="selected">Invite a user</option>
             <% @users.each do |user| %>
-              <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
+              <option value="<%= user.id %>"><%= user.email %></option>
             <% end %>
           </select>
-          <%= button_to 'Invite', create_subscription_path(user_id:this.form.options[this.form.selectedIndex].value) %>
-          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="create_subscription_path(this.form.subscribed.options[this.form.subscribed.selectedIndex].value)"></input>
       </form>     
       
     <% else %>
