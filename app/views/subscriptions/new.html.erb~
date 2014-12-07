@@ -10,16 +10,23 @@
       <% end %>
       </ul>
       
-        <form> 
-          <select style="width:80%" name="subscribed">
-            <option selected="selected">Invite a user</option>
+        <form method="post" id="formusers" action=""> 
+          <select style="width:80%" name="users" id="selectusers">
+            <option selected="selected" value="x">Invite a user</option>
             <% @users.each do |user| %>
-              <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
+              <option value="/<%= user.id %>" ><%= user.email %></option>
             <% end %>
           </select>
-          <%= button_to 'Invite', create_subscription_path(user_id:this.form.options[this.form.selectedIndex].value) %>
-          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
-      </form>     
+          <input type="hidden" name="submit" value="Invite" class="btn btn-default" id="submitusers"></input>
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+      </form>   
+
+			<script type="text/javascript">
+				document.getElementById('selectusers').onchange = function() {
+					document.getElementById('formusers').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value;
+					document.getElementById('submitusers').type = (this.value == "x") ? "hidden" : "submit";
+				}
+			</script>  
       
     <% else %>
       <p>All students registered with the site have been invited to join this topic</p>
@@ -36,15 +43,23 @@
           <% end %>
         </ul>
 
-        <form> 
-          <select style="width:80%" name="subscribed">
-            <option selected="selected">Invite an admin user</option>
+				<form method="post" id="formadmins" action=""> 
+          <select style="width:80%" name="admins" id="selectadmins">
+            <option selected="selected" value="x">Invite an admin</option>
             <% @users.each do |user| %>
-              <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
+              <option value="/<%= user.id %>" ><%= user.email %></option>
             <% end %>
           </select>
-          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
-      </form>     
+          <input type="hidden" name="submit" value="Invite" class="btn btn-default" id="submitadmins"></input>
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+      </form>   
+
+			<script type="text/javascript">
+				document.getElementById('selectadmins').onchange = function() {
+					document.getElementById('formadmins').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value;
+					document.getElementById('submitadmins').type = (this.value == "x") ? "hidden" : "submit";
+				}
+			</script>      
         
     <% else %>
         <p>All persons registered with the site are admins</p>
