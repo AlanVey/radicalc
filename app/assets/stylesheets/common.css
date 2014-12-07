@@ -464,6 +464,12 @@ a.list-group-item:hover {
   width: 70%;
 }
 
+.align-right {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+
 select {
   background: white;
   height: 40px;

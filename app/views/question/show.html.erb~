@@ -1,5 +1,5 @@
 <div class="page-main">
-  <h3><%= @question.title %></h3>
+  <h3><%= @question %></h3>
   <%= link_to 'Back', questions_path(kind: @kind), :class => "btn btn-default" %>
   <br/><br/>
   <iframe src= <%= @uri %> width=770 height=900></iframe><br>

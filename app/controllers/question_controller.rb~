@@ -10,7 +10,7 @@ class QuestionController < ApplicationController
 
   def show
     @uri = Question.find(params[:question_id]).uri
-    @question = Question.find(params[:question_id])
+    @question = Question.new
   end
 
   def create
