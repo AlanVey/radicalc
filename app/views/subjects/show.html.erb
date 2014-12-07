@@ -117,24 +117,27 @@
   <section>
     <h2>Subscribed Users</h2>
     <% if @subscribed_users.count > 0 %>
+     
       <ul class="list-group subtopics">
-      <% @subscribed_users.each do |user| %>
-         <li class="list-group-item">
-					<%= link_to user.email, show_profile_path(user.id) %> 
-          <% if user == current_user or @subject.user == current_user %>
-            <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-default align-right" %>
-          <% end %>
-				</li>
-      <% end %>
+        <% @subscribed_users.each do |user| %>
+          <li class="list-group-item">
+					  <%= link_to user.email, show_profile_path(user.id) %> 
+            <% if user == current_user or @subject.user == current_user %>
+              <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-default align-right" %>
+            <% end %>
+				  </li>
+        <% end %>
       </ul>
+    
     <% else %>
       <p>This topic has no subscribed users</p>
     <% end %>
-  <% if @subject.updatable_by?(current_user) && @subject.get_ancestors.count == 1 %>
+    
+    <% if @subject.updatable_by?(current_user) && @subject.get_ancestors.count == 1 %>
       <p>
         <%= link_to '<strong>+</strong>Add Users'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
       </p>
-  <% end %>
+    <% end %>
   </section>
 
 

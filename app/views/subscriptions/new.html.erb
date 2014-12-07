@@ -4,23 +4,11 @@
   <section>
     <h2>Add Members</h2>
     <% if @users.count > 0 %>
-      <ul class="list-group subtopics">
-      <% @users.each do |user| %>
-          <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
-      <% end %>
-      </ul>
       
         <form method="post" id="formusers" action=""> 
           <select style="width:80%" name="users" id="selectusers">
             <option selected="selected" value="x">Invite a user</option>
             <% @users.each do |user| %>
-<<<<<<< HEAD
-              <option value="<%= user.id %>"><%= user.email %></option>
-            <% end %>
-          </select>
-          <input type="button" name="submit" value="Invite" class="btn btn-default"  onclick="create_subscription_path(user_id:this.form.subscribed.options[this.form.subscribed.selectedIndex].value)"></input>
-      </form>     
-=======
               <option value="/<%= user.id %>" ><%= user.email %></option>
             <% end %>
           </select>
@@ -34,7 +22,6 @@
 					document.getElementById('submitusers').type = (this.value == "x") ? "hidden" : "submit";
 				}
 			</script>  
->>>>>>> 38aa6ad972889af4bae0528dbaf43a9de5b39e3c
       
     <% else %>
       <p>There are no more users to invite as members</p>
@@ -45,12 +32,7 @@
   <section>
     <h2>Add Admins</h2>
     <% if @users.count > 0 %>
-        <ul class="list-group subtopics">
-          <% @users.each do |user| %>
-              <%= user.email %> <%= button_to 'Invite', create_subscription_path(user_id:user.id) %><br>
-          <% end %>
-        </ul>
-
+      
 				<form method="post" id="formadmins" action=""> 
           <select style="width:80%" name="admins" id="selectadmins">
             <option selected="selected" value="x">Invite an admin</option>
@@ -78,15 +60,24 @@
   <section>
     <h2>Subscribed Users</h2>
     <% if @subscribed_users.count > 0 %>
-      <form> 
-        <select style="width:80%" name="subscribed">
-          <option selected="selected">Select a subscribed user</option>
+      <form method="get" id="formsubscribed" action=""> 
+        <select style="width:80%" name="subscribed" id="selectsubscribed">
+          <option selected="selected" value="x">Select a subscribed user</option>
           <% @subscribed_users.each do |user| %>
             <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
         </select>
-        <input type="button" name="submit" value="Go to profile" class="btn btn-default"  onclick="top.location.href = this.form.subscribed.options[this.form.subscribed.selectedIndex].value"></input>
+        <input type="hidden" name="submit" value="Go to profile" class="btn btn-default" id="submitsubscribed"></input>
+			  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
       </form>
+      
+      <script type="text/javascript">
+				document.getElementById('selectsubscribed').onchange = function() {
+					document.getElementById('formsubscribed').action = this.value;
+					document.getElementById('submitsubscribed').type = (this.value == "x") ? "hidden" : "submit";
+				}
+			</script>      
+            
     <% else %>
       <p>This topic has no subscribed users</p>
     <% end %>
@@ -96,15 +87,23 @@
     <h2>Invited Users</h2>
     <% if @invited_users.count > 0 %>
 
-      <form>
-        <select style="width:80%" name="invited" >
-          <option selected="selected">Select an invited user</option>
+      <form method="get" id="forminvited" action=""> 
+        <select style="width:80%" name="invited" id="selectinvited">
+          <option selected="selected" value="x">Select an invited user</option>
           <% @invited_users.each do |user| %>
             <option value="../../../profile/show/<%= user.id %>"><%= user.email %></option>
           <% end %>
-				</select>
-				<input type="button" class="btn btn-default" name="submit" value="Go to profile"  onclick="top.location.href = this.form.invited.options[this.form.invited.selectedIndex].value"></input>
+        </select>
+        <input type="hidden" name="submit" value="Go to profile" class="btn btn-default" id="submitinvited"></input>
+			  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
       </form>
+      
+      <script type="text/javascript">
+				document.getElementById('selectinvited').onchange = function() {
+					document.getElementById('forminvited').action = this.value;
+					document.getElementById('submitinvited').type = (this.value == "x") ? "hidden" : "submit";
+				}
+			</script>      
       
     <% else %>
       <p>This topic has no invited users</p>

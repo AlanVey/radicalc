@@ -109,35 +109,54 @@
 
 <!--% end %-->
 
-  <section>
-    <h2>Subscribed Users</h2>
-    <% if @subscribed_users.count > 0 %>
-      <ul class="list-group subtopics">
-      <% @subscribed_users.each do |user| %>
-         <li class="list-group-item">
-					<%= link_to user.email, show_profile_path(user.id) %> 
-          <% if user == current_user or @subject.user == current_user %>
-            <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-default align-right" %>
-          <% end %>
-				</li>
-      <% end %>
-      </ul>
-    <% else %>
-      <p>This topic has no subscribed users</p>
-    <% end %>
-
-  </section>
-  <% if @subject.updatable_by?(current_user) && @subject.get_ancestors.count == 1 %>
-      <p>
-        <%= link_to '<strong>+</strong>Add Users'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
-      </p>
-  <% end %>
-
 	<section id="proficiency">
 		<h2>Proficiency</h2>
     <div id="proficiency_chart" style="min-width: 310px; max-width: 400px; height: 400px; margin: 0 auto"></div>
-		
 	</section>
+
+  <section>
+    <h2>Subscribed Users</h2>
+    <% if @subscribed_users.count > 0 %>
+     
+      <ul class="list-group subtopics">
+        <% @subscribed_users.each do |user| %>
+          <li class="list-group-item">
+					  <%= link_to user.email, show_profile_path(user.id) %> 
+            <% if user == current_user or @subject.user == current_user %>
+              <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-default align-right" %>
+            <% end %>
+				  </li>
+        <% end %>
+      </ul>
+      
+      <form method="post" id="subscribedusers" action=""> 
+          <select style="width:80%" name="s-users" id="selectadmins">
+            <option selected="selected" value="x">Invite an admin</option>
+            <% @users.each do |user| %>
+              <option value="/<%= user.id %>" ><%= user.email %></option>
+            <% end %>
+          </select>
+          <input type="hidden" name="submit" value="Invite" class="btn btn-default" id="submitadmins"></input>
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+      </form>   
+
+			<script type="text/javascript">
+				document.getElementById('selectadmins').onchange = function() {
+					document.getElementById('formadmins').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value;
+					document.getElementById('submitadmins').type = (this.value == "x") ? "hidden" : "submit";
+				}
+    
+    <% else %>
+      <p>This topic has no subscribed users</p>
+    <% end %>
+    
+    <% if @subject.updatable_by?(current_user) && @subject.get_ancestors.count == 1 %>
+      <p>
+        <%= link_to '<strong>+</strong>Add Users'.html_safe, new_subscription_path(subject_id:@subject.id), :class=>"btn btn-primary" %><br>
+      </p>
+    <% end %>
+  </section>
+
 
     <p class="mini-p">
       <%= link_to 'Back', dashboard_path, :class => "btn btn-default" %>
