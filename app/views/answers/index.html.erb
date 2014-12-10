@@ -7,7 +7,8 @@
     <tr>
       <th>User</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th>Score</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -16,8 +17,14 @@
       <tr>
         <td><%= answer.user.email %></td>
         <td><%= answer.status %></td>
+        <td><%= answer.display_score(@test) %></td>
         <% unless answer.value.nil? %>
           <td><%= link_to 'Download', answer.value.url, :target => '_blank', :class => "btn btn-primary" %></td>
+          <% if answer.get_score(@test).nil? %>
+            <td><%= link_to 'Mark Answer', new_score_path(test_id: @test.id, answer_id: answer.id), :class => "btn btn-primary" %></td>
+          <% else %>
+          <td><%= link_to 'Change Mark', edit_score_path(test_id: @test.id, id: answer.get_score(@test).id), :class => "btn btn-primary" %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

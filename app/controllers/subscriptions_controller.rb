@@ -1,7 +1,7 @@
 class SubscriptionsController < ApplicationController
 
   before_action :set_subject
-  before_action :check_observer
+  before_action :check_observer, except: [:subscribe]
 
   def new
     @subject          = Subject.find(params[:subject_id])
@@ -28,7 +28,9 @@ class SubscriptionsController < ApplicationController
     @subscription.status = 'Subscribed'
     @subscription.save
 
-    redirect_to Subject.find(params[:subject_id]), notice: 'You successfully subscribed'
+    current_user.add_role :member, @subject
+
+    redirect_to @subject, notice: 'You successfully subscribed'
   end 
 
   def unsubscribe
