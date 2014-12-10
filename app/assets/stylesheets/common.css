@@ -263,6 +263,7 @@ h2:after{
 	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 	cursor: default;
   margin: 0 auto;
+  margin-bottom: 15px;
 }
 
 button {
@@ -463,9 +464,48 @@ a.list-group-item:hover {
   width: 70%;
 }
 
+.align-right {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+}
+
+select {
+  background: white;
+  height: 40px;
+  font-size: 16px;
+  color: rgb(95, 155, 198); 
+  padding-left: 10px;
+}
+
+option {
+
+}
+
+option:hover {
+	background: rgb(247, 248, 241);
+}
+
 h2 > p {
   display: inline;
   font-size: 25px;
   font-style: normal;
   color: rgba(26,89,120,0.9);
 }
+
+.new_q_field {
+  width: 70%;
+  height: 40px;
+  padding-left: 10px;
+}
+
+#create_q_div {
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.badge_image {
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  padding: 0;

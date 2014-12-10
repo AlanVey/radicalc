@@ -1,21 +1,19 @@
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :check_observer, only: [:show, :edit, :update, :destroy]
 
-  # GET /subjects/1
   def show
+    @subscribed_users = @subject.get_subscribed_users
   end
 
-  # GET /subjects/new
   def new
     @subject = Subject.new(parent_id: params[:parent_id])
   end
 
-  # GET /subjects/1/edit
   def edit
   end
 
-  # POST /subjects
   def create
     if params[:subject][:parent_id].to_i > 0
       parent = Subject.find_by_id(params[:subject].delete(:parent_id))
@@ -26,45 +24,47 @@ class SubjectsController < ApplicationController
 
     @subject.user = current_user
 
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, 
-                      notice: 'Subject was successfully created.' }
-      else
-        format.html { render :new }
+    if @subject.save
+      current_user.add_role :admin, @subject
+
+      if @subject.parent != nil
+        #add all admins and members from parent node
+        for user in User.with_role(:admin, @subject.parent) do
+          user.add_role :admin, @subject
+        end
+        for user in User.with_role(:member, @subject.parent) do
+          user.add_role :member, @subject
+        end
       end
+
+      Subscription.create(user_id:current_user.id, subject_id:@subject.id, status:'Subscribed')
+      redirect_to @subject, notice: 'Subject was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /subjects/1
   def update
-    respond_to do |format|
-      if @subject.update(subject_params)
-        format.html { redirect_to @subject, 
-               notice: "Subject: #{@subject.name} was successfully updated." }
-      else
-        format.html { render :edit }
-      end
+    if @subject.update(subject_params)
+      redirect_to @subject, notice: "Subject: #{@subject.name} was successfully updated." 
+    else
+      render :edit 
     end
   end
 
-  # DELETE /subjects/1
   def destroy
     @subject.destroy
-    respond_to do |format|
-      format.html { redirect_to dashboard_path, 
-                    notice: "Subject: #{@subject.name} was successfully destroyed." }
-    end
+    redirect_to dashboard_path, notice: "Subject: #{@subject.name} was successfully destroyed." 
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_subject
       @subject = Subject.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :body)
+      params.require(:subject).permit(:name, :body, :parent_id, :debate_type)
     end
+
+
 end

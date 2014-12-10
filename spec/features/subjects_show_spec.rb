@@ -6,6 +6,7 @@ feature 'Someone visits the first subject\'s page' do
     @user = FactoryGirl.create(:user)
     sign_in @user
     @subject = FactoryGirl.create(:subject, user_id: @user.id)
+    @user.add_role :admin, @subject
     visit "/subjects/#{@subject.id}"
 
     click_link 'New Subject'

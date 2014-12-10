@@ -1,17 +1,17 @@
 class TestController < ApplicationController
-  
+  before_action :set_subject
+  before_action :check_observer
+
   def index
+    @test    = Test.new
     @subject = Subject.find(params[:id])
     @tests   = Test.where(subject_id: params[:id])
   end
 
-  def new
-    @test = Test.new
-  end
-
   def show
-    @test      = Test.find(params[:test_id])
-    @questions = TestQuestion.where(test_id: @test.id)
+    @test          = Test.find(params[:test_id])
+    @questions     = TestQuestion.where(test_id: @test.id)
+    @test_question = TestQuestion.new
   end
 
   def create
@@ -29,6 +29,10 @@ class TestController < ApplicationController
   private
     def test_params
       params.require(:test).permit(:title, :kind)
+    end
+
+    def set_subject
+      @subject = Subject.find(params[:id])
     end
 
 end
