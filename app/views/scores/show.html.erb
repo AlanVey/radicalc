@@ -1,3 +1,5 @@
+<div class="page-main">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +17,10 @@
   <%= @score.value %>
 </p>
 
-<%= link_to 'Edit', edit_score_path(@score) %> |
-<%= link_to 'Back', scores_path %>
+<%= link_to 'Edit', edit_score_path(@score), :class => "btn btn-primary" %>
+<br><br>
+<%= link_to 'Back', scores_path, :class =>"btn btn-defualt" %>
+
+</div>
+
+<%= render 'layouts/sidemenu' %>
