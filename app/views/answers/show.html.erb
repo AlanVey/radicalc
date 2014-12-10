@@ -17,7 +17,7 @@
 
 
 <h3>Upload new answer</h3>
-<%= form_for @answer, url: upload_answer_path(test_id:@test) do |f| %>
+<%= form_for @answer, url: upload_answer_path do |f| %>
   <% if @answer.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <span class="glyphicon glyphicon-exclamation-sign"></span>
@@ -41,7 +41,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', show_test_path(id:@test.subject.id), :class => "btn btn-default" %>
+<%= link_to 'Back', show_test_path(id: @test.subject), :class => "btn btn-default" %>
 
 </div>
 

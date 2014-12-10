@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -30,6 +31,12 @@ Rails.application.routes.draw do
   get 'question/show/:test_id/answer/show', to:'answers#show', as:'show_answer'
   post 'question/show/:test_id/answer/upload', to:'answers#upload', as:'upload_answer'
   patch 'question/show/:test_id/answer/upload', to:'answers#reupload'
+
+  # Scores routes =============================================================
+  get 'question/show/:test_id/answers/:answer_id/new_score', to:'scores#new', as:'new_score'
+  get 'question/show/:test_id/score/:id/edit_score', to:'scores#edit', as:'edit_score'
+  post 'question/show/:test_id/answers/:answer_id/create_score', to:'scores#create', as:'create_score'
+  patch 'question/show/:test_id/score/:id/update_score', to:'scores#update', as:'update_score'
 
   # Subscriptions routes ======================================================
   get 'subjects/:subject_id/subscription/new', to: 'subscriptions#new', as: 'new_subscription'

@@ -20,7 +20,7 @@ class TestQuestionsController < ApplicationController
       redirect_to :back, 
         notice: 'Test question was successfully created.'
     else
-      render :new, 
+      redirect_to :back, 
         notice: 'An error occured'
     end
   end
@@ -40,7 +40,7 @@ class TestQuestionsController < ApplicationController
       quaestio = Quaestio.new
       question = Question.new
 
-      if quaestio.newDebate(title)
+      if quaestio.newDebate(title, current_user.profile.first_name, current_user.profile.last_name)
         question.title      = title
         question.user       = current_user
         question.subject_id = subject_id

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :questions
   has_many :answers
+  has_many :scores
 
   def get_subscribed_subjects
     Subject.where("id IN (?)", Subscription.where(user_id:self.id, status: 'Subscribed').uniq.pluck(:subject_id))

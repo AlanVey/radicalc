@@ -12,11 +12,12 @@ class AnswersController < ApplicationController
   end
 
   def upload
-    @answer         = Answer.new
+    @test   = Test.find(params[:test_id])
+    @answer         = Answer.new(answer_params)
     @answer.user    = current_user
     @answer.test_id = params[:test_id]
     @answer.status  = 'Submitted' 
-    if @answer.save(answer_params)
+    if @answer.save
       redirect_to :back, notice: 'Answer was successfully uploaded.'
     else
       render :show
