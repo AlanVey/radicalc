@@ -37,7 +37,7 @@ class SubjectsController < ApplicationController
         end
       end
 
-      Subscription.create(user_id:current_user.id, subject_id:@subject.id, status:'Subscribed')
+      Subscription.create(user_id:current_user.id, subject_id:@subject.id, privilege: 'admin', status:'Subscribed')
       redirect_to @subject, notice: 'Subject was successfully created.'
     else
       render :new
