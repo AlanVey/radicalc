@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     resource_saved = resource.save
     yield resource if block_given?
-    if resource_saved and create_profile
+    if resource_saved and create_profile and create_quaestio_user(params[:user][:profile][:first_name], params[:user][:profile][:last_name], resource.email)
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
@@ -36,5 +36,9 @@ class RegistrationsController < Devise::RegistrationsController
       @profile.last_name  = params[:user][:profile][:last_name]
       @profile.user_id    = resource.id
       @profile.save
+    end
+
+    def create_quaestio_user(firstname, lastname, email)
+      Quaestio.new.createUser(firstname, lastname, email)
     end
 end
