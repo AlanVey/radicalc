@@ -14,7 +14,7 @@ class QuestionController < ApplicationController
   end
 
   def create
-    @question = create_question(@kind)
+    @question = create_question(@kind, current_user.profile.first_name, current_user.profile.last_name)
 
     if @question.save
       redirect_to questions_path(kind: @kind), 
@@ -31,11 +31,11 @@ class QuestionController < ApplicationController
       @kind = params[:kind]
     end
 
-    def create_question(kind)
+    def create_question(kind, firstname, lastname)
       quaestio = Quaestio.new
       question = Question.new
 
-      if quaestio.newDebate(params[:question][:title])
+      if quaestio.newDebate(params[:question][:title], firstname, lastname)
         question.title      = params[:question][:title]
         question.user       = current_user
         question.subject_id = params[:id]
