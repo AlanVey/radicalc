@@ -4,7 +4,7 @@
 
 <%= render partial: 'form', locals: { url: update_score_path } %>
 
-<%= link_to 'Back', answers_path(test_id: @test.id), :class => "btn btn-default" %>
+<%= link_to 'Back', answers_path(test_id: @test.id) %>
 
 </div>
 

@@ -18,7 +18,7 @@
 
 			<script type="text/javascript">
 				document.getElementById('selectusers').onchange = function() {
-					document.getElementById('formusers').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value;
+					document.getElementById('formusers').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value + "/member";
 					document.getElementById('submitusers').type = (this.value == "x") ? "hidden" : "submit";
 				}
 			</script>  
@@ -46,7 +46,7 @@
 
 			<script type="text/javascript">
 				document.getElementById('selectadmins').onchange = function() {
-					document.getElementById('formadmins').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value;
+					document.getElementById('formadmins').action = "/subjects/<%= @subject.id %>/subscription/new" + this.value + "/admin";
 					document.getElementById('submitadmins').type = (this.value == "x") ? "hidden" : "submit";
 				}
 			</script>      
