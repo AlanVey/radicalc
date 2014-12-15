@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   # Subscriptions routes ======================================================
   get 'subjects/:subject_id/subscription/new', to: 'subscriptions#new', as: 'new_subscription'
-  post 'subjects/:subject_id/subscription/new/:user_id', to: 'subscriptions#create', as: 'create_subscription'
+  post 'subjects/:subject_id/subscription/new/:user_id/:privilege', to: 'subscriptions#create', as: 'create_subscription'
   post 'subjects/:subject_id/subscribe/:id', to: 'subscriptions#subscribe', as: 'subscribe'
   delete 'subjects/:subject_id/unsubscribe/:id', to: 'subscriptions#unsubscribe', as: 'unsubscribe'
 

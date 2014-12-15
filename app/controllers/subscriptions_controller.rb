@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
     @subscription            = Subscription.new
     @subscription.user_id    = params[:user_id]
     @subscription.subject_id = params[:subject_id]
+    @subscription.privilege  = params[:privilege]
     @subscription.status     = 'Pending Approval'
 
     if @subscription.save
@@ -28,7 +29,7 @@ class SubscriptionsController < ApplicationController
     @subscription.status = 'Subscribed'
     @subscription.save
 
-    current_user.add_role :member, @subject
+    current_user.add_role @subscription.privilege, @subject
 
     redirect_to @subject, notice: 'You successfully subscribed'
   end 

@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="form-entry">
-    <p class="mini-p"><%= f.label :value %><br>
-    <%= f.text_field :value %></p>
+    <p class="mini-p"><%= f.label :value %></p>
+    <%= f.text_field :value %>
   </div>
   <div class="actions">
     <p><%= f.submit %></p>
