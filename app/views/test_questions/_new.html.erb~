@@ -16,7 +16,7 @@
 
   <div class="form-entry">
     <%= f.label 'Question' %><br>
-    <%= f.text_field :title, :required=>"required" %>
+    <%= f.text_field :title %>
   </div>
   <div class="actions">
     <p><%= f.submit %></p>
