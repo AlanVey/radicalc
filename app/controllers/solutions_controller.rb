@@ -4,6 +4,7 @@ class SolutionsController < ApplicationController
     @test   = Test.find(params[:test_id])
     @solution = Solution.where(user_id:current_user.id, test_id:params[:test_id])
     @solution = @solution.empty? ? Solution.new : @solution.first
+    @subject = Subject.where(id:@test.subject_id)
   end
 
   def upload
