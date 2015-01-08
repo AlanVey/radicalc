@@ -1,0 +1,44 @@
+<div class="page-main">
+
+  <h2>Upload Solution</h2>
+
+  <% unless @solution.value.nil? %>
+      <h3>Current Submission</h3>
+      <p>
+        <strong>File:</strong>
+        <%= @solution.value %>
+      </p>
+
+  <% end %>
+
+
+  <h3>Upload new solution</h3>
+  <%= form_for @solution, url: upload_solution_path do |f| %>
+      <% if @solution.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span><strong><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</strong></span>
+
+            <ul>
+              <% @solution.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label 'File' %><br>
+        <%= f.file_field :value %>
+      </div>
+      <br/><br/>
+      <div class="actions">
+        <p><%= f.submit %></p>
+      </div>
+  <% end %>
+
+  <%= link_to 'Back', show_test_path(id: @test.subject), :class => "btn btn-default" %>
+
+</div>
+
+<%= render 'layouts/sidemenu' %>

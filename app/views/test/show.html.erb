@@ -29,6 +29,7 @@
     <%= render 'test_questions/new' %>
     <br><br>
     <%= link_to 'Answers (For teacher)', answers_path(test_id:@test.id), :class => "btn btn-primary" %>
+    <%= link_to 'Upload Solution', solutions_path(test_id:@test.id), :class => "btn btn-primary" %>
 <% end %>
 <% if @subject.examinable_by?(current_user) %>
     <%= link_to 'Answers (For Student)', show_answer_path(test_id:@test.id), :class => "btn btn-primary" %>
