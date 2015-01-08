@@ -1,5 +1,11 @@
 class SolutionsController < ApplicationController
 
+  def index
+    @test    = Test.find(params[:test_id])
+    #I am assuming there can be only one solution
+    @solution = Solution.where(test_id:params[:test_id]).first
+  end
+
   def show
     @test   = Test.find(params[:test_id])
     @solution = Solution.where(user_id:current_user.id, test_id:params[:test_id])

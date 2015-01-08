@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   patch 'question/show/:test_id/score/:id/update_score', to:'scores#update', as:'update_score'
 
   # Solutions routes ============================================================
+  get 'question/show/:test_id/solutions', to:'solutions#index', as:'solutions'
   get 'question/show/:test_id/solution', to:'solutions#show', as:'show_solution'
   post 'question/show/:test_id/solution/upload', to:'solutions#upload', as:'upload_solution'
   patch 'question/show/:test_id/solution/upload', to:'solutions#reupload'
