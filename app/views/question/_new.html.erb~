@@ -16,7 +16,7 @@
 	  <div class="form-entry">
       <p class="mini-p">
 	      <strong>New </strong><%= f.label 'Question' %><br>
-	      <%= f.text_area :title, placeholder: "Ask your question here", :class=> "new_q_field", :required=>"required" %>
+	      <%= f.text_area :title, placeholder: "Ask your question here", :class=> "new_q_field" %>
       </p>
 	  </div>
 

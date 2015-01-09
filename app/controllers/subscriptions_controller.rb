@@ -30,6 +30,11 @@ class SubscriptionsController < ApplicationController
     @subscription.save
 
     current_user.add_role @subscription.privilege, @subject
+    #subscribe user to all descendants
+    descendants = @subject.descendants
+    for descendant in descendants do
+      current_user.add_role @subscription.privilege, descendant
+    end
 
     redirect_to @subject, notice: 'You successfully subscribed'
   end 
