@@ -28,7 +28,7 @@
     <div class="container profile-block">
       <div class="row">
         <div class="col-xs-6" id="profile-block-left">
-          <%= image_tag('topic.png', class: 'img-circle', id: 'profilepic') %>
+          <%= image_tag @subject.icon.display, :size => "300x300", :class => "img-circle ch-img" %>
           <br/>
           <% if @subject.user != current_user %>
             <%= link_to 'Unsubscribe?', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-primary" %>

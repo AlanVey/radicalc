@@ -4,7 +4,7 @@
       <h3><%= subject.name %></h3>
       
       <div class="ch-item">
-        <%= image_tag('topic.png', class: 'img-circle ch-img') %>
+        <%= image_tag subject.icon.display, :size => "300x300", :class => "img-circle ch-img" %>
         <div class="ch-info-wrap">
           <div class="ch-info">
             <div class="ch-info-front"></div>

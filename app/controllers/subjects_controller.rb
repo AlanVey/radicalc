@@ -63,7 +63,7 @@ class SubjectsController < ApplicationController
     end
 
     def subject_params
-      params.require(:subject).permit(:name, :body, :parent_id, :debate_type)
+      params.require(:subject).permit(:name, :body, :parent_id, :debate_type, :icon)
     end
 
 

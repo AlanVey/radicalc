@@ -31,6 +31,13 @@
     </p>
   </div>
 
+  <div class="form-entry">
+    <p class = "mini-p">
+      <%= f.label :icon %><br>
+      <%= image_tag @subject.icon.display, :size => "300x300", :class => "img-circle ch-img" %><br>
+      <%= f.file_field :icon %>
+    </p>
+  </div>
 
   <div class="actions">
     <p><%= f.submit %></p>
