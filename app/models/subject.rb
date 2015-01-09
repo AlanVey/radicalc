@@ -1,6 +1,6 @@
 class Subject < ActiveRecord::Base
   validates_presence_of :name, :body, :user_id
-  mount_uploader :icon, ProfilePicUploader
+  mount_uploader :icon, SubjectPicUploader
 
   resourcify
   include Authority::Abilities
