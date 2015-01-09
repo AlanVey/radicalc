@@ -1,0 +1,14 @@
+<div class="page-main">
+
+  <h2>Solution for <%= @test.title %></h2>
+
+  <% unless @solution.nil? %>
+      <td><%= "Solution proposed by: " + @solution.user.email %></td>
+      <br>
+      <% unless @solution.value.nil? %>
+          <td><%= link_to 'Download', @solution.value.url, :target => '_blank', :class => "btn btn-primary" %></td>
+      <% end %>
+  <% end %>
+</div>
+
+<%= render 'layouts/sidemenu' %>

@@ -17,3 +17,6 @@
 
 #Ignore idea files
 /.idea
+
+#Ignore all uploads
+/public/uploads/*

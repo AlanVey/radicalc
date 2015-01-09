@@ -38,6 +38,12 @@ Rails.application.routes.draw do
   post 'question/show/:test_id/answers/:answer_id/create_score', to:'scores#create', as:'create_score'
   patch 'question/show/:test_id/score/:id/update_score', to:'scores#update', as:'update_score'
 
+  # Solutions routes ============================================================
+  get 'question/show/:test_id/solutions', to:'solutions#index', as:'solutions'
+  get 'question/show/:test_id/solution', to:'solutions#show', as:'show_solution'
+  post 'question/show/:test_id/solution/upload', to:'solutions#upload', as:'upload_solution'
+  patch 'question/show/:test_id/solution/upload', to:'solutions#reupload'
+
   # Subscriptions routes ======================================================
   get 'subjects/:subject_id/subscription/new', to: 'subscriptions#new', as: 'new_subscription'
   post 'subjects/:subject_id/subscription/new/:user_id/:privilege', to: 'subscriptions#create', as: 'create_subscription'
@@ -54,5 +60,6 @@ Rails.application.routes.draw do
   get '/profile', to:'profiles#show', as: 'profile'
   get '/profile/show/:id', to: 'profiles#show_user', as: 'show_profile'
   patch '/profile', to: 'profiles#update', as: 'update_profile'
+
 
 end
