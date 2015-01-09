@@ -33,8 +33,11 @@
 <% end %>
 <% if @subject.examinable_by?(current_user) %>
     <%= link_to 'Upload Answer', show_answer_path(test_id:@test.id), :class => "btn btn-primary" %>
-    <%= link_to 'Download Solution', solutions_path(test_id:@test.id), :class => "btn btn-primary" %>
 <% end %>
+<% if @subject.examinable_by?(current_user) or @subject.updatable_by?(current_user) %>
+  <%= link_to 'Download Solution', solutions_path(test_id:@test.id), :class => "btn btn-primary" %>
+<% end %>
+
 <br><br>
 <%= link_to 'Back', tests_path, :class => "btn btn-default" %>
 
