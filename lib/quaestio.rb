@@ -1,10 +1,12 @@
 require 'curb'
+require 'json'
 
 class Quaestio
 
   def initialize
     @debate_id  = nil
     @uri        = nil
+    @json       = nil
   end
 
   def newDebate(question, firstname, lastname)
@@ -35,9 +37,12 @@ class Quaestio
     c.response_code == 200
   end
 
-  def getUserStats
-    param = { username: (firstname + lastname) }
-    Curl::Easy.perform(USER_STATS + '?' + param.to_query)
+  def getUserStats(firstname, lastname)
+    c = initCurb(USER_STATS + "?username=#{ firstname + lastname }")
+
+    c.perform
+
+    @json = JSON.parse(c.body_str)
 
     c.response_code == 200
   end
@@ -49,6 +54,10 @@ class Quaestio
 
   def uri
     @uri
+  end
+
+  def json
+    @json
   end
 
   private
