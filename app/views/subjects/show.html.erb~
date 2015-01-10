@@ -51,7 +51,7 @@
             <strong>Description:</strong>
             <%= @subject.body %>
           </p>
-          <br/><br/>
+          <br/><br/><br/>
           <% if @subject.updatable_by?(current_user) %>
             <%= link_to 'Edit Topic', edit_subject_path(@subject), :class => "btn btn-default" %>
           <% end %>

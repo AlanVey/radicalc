@@ -12,6 +12,11 @@
   text-align: center;
 }
 
+#send-message{
+position: relative;
+
+}
+
 .col-xs-4 {
 text-align: center;
 min-width: 170px;
