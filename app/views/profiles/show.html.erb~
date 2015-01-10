@@ -47,7 +47,7 @@
 
   <section>
     <h2>Badges</h2>
-<p>Achievement badges. Hover over a badge to see what it has been awarded for</p>
+<p>Your achievement badges. Hover over a badge to see what it has been awarded for</p>
     <ul class="ch-grid">
       <li><%= image_tag('answers_silver.png', class: 'badge_image', title: 'Answered 10 Questions') %></li>
       <li><%= image_tag('100_test.png', class: 'badge_image', title: 'Achieved 100% in a test') %></li>
@@ -56,7 +56,7 @@
 
   <section>
     <h2>Proficiencies</h2>
-	<p>Proficiencies in each subscribed topic. Hover to see the exact score. Click to go to the topic page.		
+			
     <% if @subscriptions.count > 0 %>
       <ul class="ch-grid">
       <% @subscriptions.each do |s| %>

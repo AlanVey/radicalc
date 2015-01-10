@@ -37,7 +37,7 @@
         <h1 class="modal-title" id="myModalLabel">Frequently Asked Questions</h1>
       </div>
       <div class="modal-body">
-        <ul id="faqList">
+        <ul>
 					<li><p>
 						<strong>How can I check my proficiencies?</strong><br/>
 						Your proficiencies in all your subscribed topics can be found on your profile page. Also if you go to the topic page itself, you can see your proficiency in that topic in the Proficiency section.

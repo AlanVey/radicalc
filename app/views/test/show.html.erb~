@@ -28,7 +28,7 @@
 <% if @subject.updatable_by?(current_user) %>
     <%= render 'test_questions/new' %>
     <br><br>
-    <%= link_to 'Download Student Answers', answers_path(test_id:@test.id), :class => "btn btn-primary" %></br></br>
+    <%= link_to 'Download Student Answers', answers_path(test_id:@test.id), :class => "btn btn-primary" %></br>
     <%= link_to 'Upload Solution', show_solution_path(test_id:@test.id), :class => "btn btn-primary" %>
 <% end %>
 <% if @subject.examinable_by?(current_user) %>
