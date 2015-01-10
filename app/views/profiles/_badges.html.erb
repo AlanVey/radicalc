@@ -1,0 +1,11 @@
+<ul class="ch-grid">
+  <% if @questionsCount >= 1 %>
+    <li><%= image_tag('answers_silver.png', class: 'badge_image', title: 'Answered 10 Questions') %></li>
+  <% end %>
+  <% if @answersCount >= 1 %>
+    <li><%= image_tag('100_test.png', class: 'badge_image', title: 'Achieved 100% in a test') %></li>
+  <% end %>
+  <% if @commentsCount >= 1 %>
+    <li><%= image_tag('100_test.png', class: 'badge_image', title: 'Achieved 100% in a test') %></li>
+  <% end %>
+</ul>

@@ -47,6 +47,26 @@ class Quaestio
     c.response_code == 200
   end
 
+  def getQuestionCount(firstname, lastname)
+    Question.where(user_id: Profile.find_by(first_name: firstname, last_name: lastname).user.id).count
+  end
+
+  def getAnswerCount(firstname, lastname)
+    getUserStats(firstname, lastname)
+    @json['answersCount']
+  end
+
+  def getCommentCount(firstname, lastname)
+    getUserStats(firstname, lastname)
+    @json['commentsCount']
+  end
+
+  def getUserProficiencyForTopic(firstname, lastname)
+    getUserStats(firstname, lastname)
+    @json['overallScore']
+    0.5
+  end
+
 
   def debate_id
     @debate_id
