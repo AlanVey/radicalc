@@ -1,6 +1,6 @@
 <ul class="ch-grid">
 <% @badges = false %>
-  <% if @questionsCount >= 5 and @questionsCount < 15 %>
+  <% if @questionsCount >= 1 and @questionsCount < 15 %>
     <li><%= image_tag('questions_bronze.png', class: 'badge_image', title: 'Asked 5 Questions') %></li>
     <% @badges = true %>
   <% end %>
