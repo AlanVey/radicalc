@@ -61,5 +61,8 @@ Rails.application.routes.draw do
   get '/profile/show/:id', to: 'profiles#show_user', as: 'show_profile'
   patch '/profile', to: 'profiles#update', as: 'update_profile'
 
+  # Cloudship =================================================================
+
+  get '/loaderio-1309bf729c6673e820ae839e4abbe0b1', to: 'home#index'
 
 end
