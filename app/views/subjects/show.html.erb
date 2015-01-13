@@ -184,7 +184,8 @@
 							},
 
 							yAxis: {
-							    min: 0
+							    min: 0,
+									max: 100
 							},
 
 							plotOptions: {
@@ -202,10 +203,10 @@
 							    color: 'white',
 							    data: [ 
 									<% if @subject.children.count == 0 %>
-                     {y : 50, url : '#proficiency' }
+                     {y : <%= rand(30..80) %>, url : '#proficiency' }
                   <% else %>
                   <% @subject.children.each do |child| %>
-									{ y : 50,
+									{ y : <%= rand(30..80) %>,
                     url : <%= raw (show_subject_path(child.id).to_json) %>
                   }
 										<% if child != @subject.children.last %>
