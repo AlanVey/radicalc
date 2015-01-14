@@ -2,7 +2,7 @@
   <h3><%= @question.title %></h3>
   <%= link_to 'Back', questions_path(kind: @kind), :class => "btn btn-default" %>
   <br/><br/>
-  <iframe src= <%= @uri %> width=800 height=900></iframe><br>
+  <iframe frameBorder="0" src= <%= @uri %> width=800 height=900></iframe><br>
   
 </div>
 

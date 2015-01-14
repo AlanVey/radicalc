@@ -30,7 +30,7 @@
 
 <% if @tests.count > 0 %>
 	<% @tests.each do |test| %>
-		  <%= link_to test.title, show_test_path(test_id: test.id) %>
+		  <%= link_to test.title, show_test_path(test_id: test.id), :class=>"list-group-item" %>
 	<% end %>
 <% else %>
   <p>This topic has no tests</p>
