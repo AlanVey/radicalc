@@ -23,7 +23,9 @@
           <% if answer.get_score(@test).nil? %>
             <td><%= link_to 'Mark Answer', new_score_path(test_id: @test.id, answer_id: answer.id), :class => "btn btn-primary" %></td>
           <% else %>
-          <td><%= link_to 'Change Mark', edit_score_path(test_id: @test.id, id: answer.get_score(@test).id), :class => "btn btn-primary" %></td>
+            <td>
+              <%= link_to 'Change Mark', edit_score_path(test_id: @test.id, id: answer.get_score(@test).id), :class => "btn btn-primary" %>
+            </td>
           <% end %>
         <% end %>
       </tr>

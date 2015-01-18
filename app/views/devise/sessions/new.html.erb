@@ -1,3 +1,5 @@
+<!-- Sign in form in Landing Page -->
+
 <h1>Sign in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,13 +20,17 @@
     <p class="mini-p"><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
 
-<p id="forgotpass"><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <p id="forgotpass"><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
-<p class="signin button"><%= f.submit "Sign in" %></p>
+
+  <p class="signin button">
+    <%= f.submit "Sign in" %>
+  </p>
+
 <% end %>
 
 
-<% end -%>
+<% end %>
 
 <p class="change_link">Not a member yet?
   <a href="#tologin" class="to_login"> Join us </a>

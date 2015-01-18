@@ -47,8 +47,8 @@
 
   <section>
     <h2>Badges</h2>
-<p>Achievement badges. Hover over a badge to see what it has been awarded for</p>
-  <%= render 'badges' %>
+      <p>Achievement badges. Hover over a badge to see what it has been awarded for</p>
+      <%= render 'badges' %>
   </section>
 
   <section>
@@ -58,9 +58,9 @@
       <ul class="ch-grid">
       <% @subscriptions.each do |s| %>
         <% if s.parent_id.nil? %>
-					<li>
-    				<div id="proficiency_chart_<%= s.id %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
-					</li>
+		  <li>
+    		<div id="proficiency_chart_<%= s.id %>" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+		  </li>
         <% end %>
       <% end %>
       </ul>
@@ -75,85 +75,92 @@
 
 <%= render 'layouts/sidemenu' %>
 
+<!-- Proficiency Chart Scripts -->
+
 <% @subscriptions.each do |s| %>
     <% if s.parent_id.nil? %>
-<script type="text/javascript">
-			$(function () {
 
-					$('#proficiency_chart_<%= s.id %>').highcharts({
+    <script type="text/javascript">  
+      $(function () {
+        $('#proficiency_chart_<%= s.id %>').highcharts({
 
-							chart: {
-							    polar: true,
-							    events: {
-							    load: applyGraphGradient
-							    }
-							},
+        chart: {
+            polar: true,
+            events: {
+            load: applyGraphGradient
+            }
+        },
 
-							title: {
-							    text: '<%= link_to s.name, s %>',
-                  useHTML: true
-							},
+        title: {
+            text: '<%= link_to s.name, s %>',
+            useHTML: true
+        },
 
-							pane: {
-							    startAngle: 0,
-							    endAngle: 360
-							},
+        pane: {
+            startAngle: 0,
+            endAngle: 360
+        },
 
-							xAxis: {
-							    type: 'category',
-  								categories:
-									<% if s.children.count == 0 %>
-											['<%= s.name %>']
-                  <% else %>									
-									<%= raw s.children_names.to_json %>
-                  <% end %>
-							},
+        xAxis: {
+            type: 'category',
+            categories:
+                <% if s.children.count == 0 %>
+                        ['<%= s.name %>']
+                <% else %>									
+                  <%= raw s.children_names.to_json %>
+                <% end %>
+        },
 
-							yAxis: {
-							    min: 0,
-									max: 100
-							},
+        yAxis: {
+          min: 0,
+          max: 100
+        },
 
-							plotOptions: {
-							    column: {
-							        pointPadding: 0,
-							        groupPadding: 0
-							    }
-							    
-							},
+        plotOptions: {
+            column: {
+                pointPadding: 0,
+                groupPadding: 0
+            }
+        },
 
-							series: [{
-							    showInLegend: false,
-							    type: 'column',
-							    name: 'Proficiency',
-							    color: 'white',
-							    data: [ 
-									<% if s.children.count == 0 %>
-                     {y : <%= rand(30..80) %>, url : <%= raw show_subject_path(s).to_json %> }
-                  <% else %>
-                  <% s.children.each do |child| %>
-									{ y : <%= rand(30..80) %>,
-                    url : <%= raw show_subject_path(child.id).to_json %>
+        series: [{
+            showInLegend: false,
+            type: 'column',
+            name: 'Proficiency',
+            color: 'white',
+
+            data: [ 
+                <% if s.children.count == 0 %>
+                  {
+                    y : <%= rand(30..80) %>, 
+                    url : <%= raw show_subject_path(s).to_json %> 
                   }
-										<% if child != s.children.last %>
-											,
-										<% end %>
+                <% else %>
+                  <% s.children.each do |child| %>
+                    { 
+                      y : <%= rand(30..80) %>,
+                      url : <%= raw show_subject_path(child.id).to_json %>
+                    }
+                    <% if child != s.children.last %>
+                        ,
+                    <% end %>
                   <% end %>
-                  <% end %>
-									],
-							    pointPlacement: 'on',
-							    cursor: 'pointer',
-							    point: {
-							        events: {
-							            click: function () {
-															location.href = this.options.url;
-							            }
-							        }
-							    }
-							}]
-					});
-			});
+                <% end %>
+              ],
 
-		</script>
+            pointPlacement: 'on',
+            cursor: 'pointer',
+            point: {
+              events: {
+                  click: function () {
+                    location.href = this.options.url;
+                  }
+              }
+            }
+          }]
+        });
+      });
+
+    </script>
   <% end %>
 <% end %>

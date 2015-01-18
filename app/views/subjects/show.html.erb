@@ -89,33 +89,30 @@
    </section>
 
    <section>
-        <h2>Subtopics</h2>
-    <% if @subject.children.count > 0 %>
-        <ul class="list-group subtopics">
-        <% @subject.children.each do |child| %>
-            <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
+      <h2>Subtopics</h2>
+        <% if @subject.children.count > 0 %>
+            <ul class="list-group subtopics">
+            <% @subject.children.each do |child| %>
+                <%= link_to child.name, show_subject_path(child.id), :class=> "list-group-item" %>
+            <% end %>
+            </ul>
+        <% else %>
+            <p>This topic has no subtopics</p>
         <% end %>
-        </ul>
-    <% else %>
-        <p>This topic has no subtopics</p>
-    <% end %>
-   
 
-  <p>
-   <% if @subject.updatable_by?(current_user) %>
-    <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
-  </p>
-   <% end %>
+      <p>
+       <% if @subject.updatable_by?(current_user) %>
+        <%= link_to '<strong>+</strong>Add Subtopic'.html_safe, new_subject_path(@subject.id), :class=>"btn btn-primary" %><br>
+       <% end %>
+      </p>
 
-    </section>
+  </section>
   
 
-<!--% end %-->
-
-	<section id="proficiency">
-		<h2>Proficiency</h2>
+  <section id="proficiency">
+	<h2>Proficiency</h2>
     <div id="proficiency_chart" style="min-width: 310px; max-width: 400px; height: 400px; margin: 0 auto"></div>
-	</section>
+  </section>
 
   <section>
     <h2>Subscribed Users</h2>
@@ -124,11 +121,11 @@
       <ul class="list-group subtopics">
         <% @subscribed_users.each do |user| %>
           <li class="list-group-item">
-					  <%= link_to user.email, show_profile_path(user.id) %> 
+            <%= link_to user.email, show_profile_path(user.id) %> 
             <% if user == current_user or @subject.user == current_user %>
               <%= link_to 'Unsubscribe', unsubscribe_path(subject_id:@subject.id, id:current_user.id), method: :delete, :class => "btn btn-default align-right" %>
             <% end %>
-				  </li>
+          </li>
         <% end %>
       </ul>
     
@@ -152,83 +149,87 @@
 
 <%= render 'layouts/sidemenu' %>
 
-		<script type="text/javascript">
-			$(function () {
+<!-- Proficiency Chart Script -->
 
-					$('#proficiency_chart').highcharts({
+<script type="text/javascript">
+  $(function () {
+    $('#proficiency_chart').highcharts({
 
-							chart: {
-							    polar: true,
-							    events: {
-							    load: applyGraphGradient
-							    }
-							},
+      chart: {
+          polar: true,
+          events: {
+          load: applyGraphGradient
+          }
+      },
 
-							title: {
-							    text: '<%= @subject.name %>'
-							},
+      title: {
+          text: '<%= @subject.name %>'
+      },
 
-							pane: {
-							    startAngle: 0,
-							    endAngle: 360
-							},
+      pane: {
+          startAngle: 0,
+          endAngle: 360
+      },
 
-							xAxis: {
-							    type: 'category',
-  								categories:
-									<% if @subject.children.count == 0 %>
-											['<%= @subject.name %>']
-                  <% else %>									
-									<%= raw @subject.children_names.to_json %>
-                  <% end %>
-							},
+      xAxis: {
+          type: 'category',
+          categories:
+            <% if @subject.children.count == 0 %>
+                      ['<%= @subject.name %>']
+            <% else %>									
+              <%= raw @subject.children_names.to_json %>
+            <% end %>
+      },
 
-							yAxis: {
-							    min: 0,
-									max: 100
-							},
+      yAxis: {
+          min: 0,
+          max: 100
+      },
 
-							plotOptions: {
-							    column: {
-							        pointPadding: 0,
-							        groupPadding: 0
-							    }
-							    
-							},
+      plotOptions: {
+          column: {
+              pointPadding: 0,
+              groupPadding: 0
+          }
+      },
 
-							series: [{
-							    showInLegend: false,
-							    type: 'column',
-							    name: 'Proficiency',
-							    color: 'white',
-							    data: [ 
-									<% if @subject.children.count == 0 %>
-                     {y : <%= rand(30..80) %>, url : '#proficiency' }
-                  <% else %>
-                  <% @subject.children.each do |child| %>
-									{ y : <%= rand(30..80) %>,
+      series: [{
+          showInLegend: false,
+          type: 'column',
+          name: 'Proficiency',
+          color: 'white',
+          data: [ 
+              <% if @subject.children.count == 0 %>
+                {
+                  y : <%= rand(30..80) %>, 
+                  url : '#proficiency' 
+                }
+              <% else %>
+                <% @subject.children.each do |child| %>
+                  { 
+                    y : <%= rand(30..80) %>,
                     url : <%= raw (show_subject_path(child.id).to_json) %>
                   }
-										<% if child != @subject.children.last %>
-											,
-										<% end %>
+                  <% if child != @subject.children.last %>
+                      ,
                   <% end %>
-                  <% end %>
-									],
-							    pointPlacement: 'on',
-							    cursor: 'pointer',
-							    point: {
-							        events: {
-							            click: function () {
-															location.href = this.options.url;
-							            }
-							        }
-							    }
-							}]
-					});
-			});
+                <% end %>
+              <% end %>
+          ],
+          pointPlacement: 'on',
+          cursor: 'pointer',
+          point: {
+            events: {
+              click: function () {
+                location.href = this.options.url;
+              }
+            }
+          }
+      }]
+    });
+  });
 
-		</script>
+</script>
 
 <% else %>
 

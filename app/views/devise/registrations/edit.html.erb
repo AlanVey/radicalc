@@ -1,3 +1,5 @@
+<!-- Change Account Settings Page -->
+
 <DIV class="page-main">
 
   <section class="header">
@@ -7,26 +9,51 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="form-entry"><p class="mini-p"><%= f.label :email %></p>
-    <%= f.email_field :email, autofocus: true %></div>
+    <div class="form-entry">
+      <p class="mini-p">
+        <%= f.label :email %>
+      </p>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div class="form-entry">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="form-entry">
+        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+      </div>
     <% end %>
     
-    <div class="form-entry"><p class="mini-p"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></p>
-      <%= f.password_field :current_password, autocomplete: "off", required: "required" %></div>
+    <div class="form-entry">
+      <p class="mini-p">
+        <%= f.label :current_password %> 
+        <i>(we need your current password to confirm your changes)</i>
+      </p>
+      <%= f.password_field :current_password, autocomplete: "off", required: "required" %>
+    </div>
 
-    <div class="form-entry"><p class="mini-p"><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></p>
-      <%= f.password_field :password, autocomplete: "off" %></div>
+    <div class="form-entry">
+      <p class="mini-p">
+        <%= f.label :password %> 
+        <i>(leave blank if you don't want to change it)</i>
+      </p>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
 
-    <div class="form-entry"><p class="mini-p"><%= f.label :password_confirmation %></p>
-      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <div class="form-entry">
+      <p class="mini-p">
+        <%= f.label :password_confirmation %>
+      </p>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
 
     <p><%= f.submit "Update" %></p>
+  
   <% end %>
 
-  <p class="mini-p"><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p></br>
+  <p class="mini-p">
+    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  </p>
+  
+  </br>
 
   <%= link_to 'Back To Profile', :back, :class => "btn btn-default", :relative => true, :method => :get %>
 
