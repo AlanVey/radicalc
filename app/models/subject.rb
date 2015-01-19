@@ -28,7 +28,7 @@ class Subject < ActiveRecord::Base
   end
 
   def calculate_proficiency(user)
-    0.85 * calc_test_proficiency(user) + 0.15 * calc_q_proficiency(user)
+    (((0.85 * calc_test_proficiency(user)) + (0.15 * calc_q_proficiency(user).to_f)) * 100).to_i
   end
 
   private
@@ -40,11 +40,12 @@ class Subject < ActiveRecord::Base
         average = average + test.scores.find_by(user_id: user.id).as_decimal
       end
 
-      average / self.tests.count unless average == 0
+      average = average / self.tests.count unless average == 0
+      average
     end
 
     def calc_q_proficiency(user)
-      Quaestio.new.getUserProficiency(user.first_name, user.last_name)
+      Quaestio.new.getUserProficiency(user.profile.first_name, user.profile.last_name)
     end
 
 end

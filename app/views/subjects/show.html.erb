@@ -201,13 +201,13 @@
           data: [ 
               <% if @subject.children.count == 0 %>
                 {
-                  y : <%= rand(30..80) %>, 
+                  y : <%= @subject.calculate_proficiency(current_user) %>, 
                   url : '#proficiency' 
                 }
               <% else %>
                 <% @subject.children.each do |child| %>
                   { 
-                    y : <%= rand(30..80) %>,
+                    y : <%= child.calculate_proficiency(current_user)  %>,
                     url : <%= raw (show_subject_path(child.id).to_json) %>
                   }
                   <% if child != @subject.children.last %>

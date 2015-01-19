@@ -132,13 +132,13 @@
             data: [ 
                 <% if s.children.count == 0 %>
                   {
-                    y : <%= rand(30..80) %>, 
+                    y : <%= s.calculate_proficiency(@profile.user) %>, 
                     url : <%= raw show_subject_path(s).to_json %> 
                   }
                 <% else %>
                   <% s.children.each do |child| %>
                     { 
-                      y : <%= rand(30..80) %>,
+                      y : <%= child.calculate_proficiency(@profile.user) %>,
                       url : <%= raw show_subject_path(child.id).to_json %>
                     }
                     <% if child != s.children.last %>

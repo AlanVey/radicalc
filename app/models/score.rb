@@ -3,6 +3,6 @@ class Score < ActiveRecord::Base
   belongs_to :test
 
   def as_decimal
-    self.to_f / 100 
+    self.value.to_f / 100 
   end
 end
