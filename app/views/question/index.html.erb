@@ -21,9 +21,15 @@
   </section>
 
 <ul class="nav nav-tabs">
-  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > <%= link_to 'General Debate', questions_path(kind: 'General') %></li>
-  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>><%= link_to 'Technical Debate', questions_path(kind: 'Technical') %></li>
-  <li class= <%= "active" if current_page?(tests_path) %>><%= link_to 'Tests', tests_path %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> >
+    <%= link_to 'General Debate', questions_path(kind: 'General') %>
+  </li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>>
+    <%= link_to 'Technical Debate', questions_path(kind: 'Technical') %>
+  </li>
+  <li class= <%= "active" if current_page?(tests_path) %>>
+    <%= link_to 'Tests', tests_path %>
+  </li>
 </ul>
 
   <h3><%= @kind %> Questions</h3>
@@ -31,13 +37,13 @@
   <%= render 'new' %>
 
   <ul class="list-group">	
-  <% if @questions.count > 0 %>
-    <% @questions.each do |q| %>
-        <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind), :class=>"list-group-item" %>
-	  <% end %>
-  <% else %>
-    <p>This topic has no <%= @kind %> questions</p>
-  <% end %>
+    <% if @questions.count > 0 %>
+      <% @questions.each do |q| %>
+          <%= link_to q.title, show_question_path(question_id: q.id, kind: @kind), :class=>"list-group-item" %>
+      <% end %>
+    <% else %>
+      <p>This topic has no <%= @kind %> questions</p>
+    <% end %>
   </ul>
   <br><br>
 

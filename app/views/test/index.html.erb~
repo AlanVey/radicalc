@@ -21,31 +21,24 @@
   </section>
 
 <ul class="nav nav-tabs">
-  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > 
-    <%= link_to 'General Debate', questions_path(kind: 'General') %>
-  </li>
-  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>>
-    <%= link_to 'Technical Debate', questions_path(kind: 'Technical') %>
-  </li>
-  <li class= <%= "active" if current_page?(tests_path) %>>
-    <%= link_to 'Tests', tests_path %>
-  </li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'General')) %> > <%= link_to 'General Debate', questions_path(kind: 'General') %></li>
+  <li class= <%= "active" if current_page?(questions_path(kind: 'Technical')) %>><%= link_to 'Technical Debate', questions_path(kind: 'Technical') %></li>
+  <li class= <%= "active" if current_page?(tests_path) %>><%= link_to 'Tests', tests_path %></li>
 </ul>
 
 <h3>Listing Tests</h3>
 
-  <% if @tests.count > 0 %>
-      <% @tests.each do |test| %>
-            <%= link_to test.title, show_test_path(test_id: test.id), :class=>"list-group-item" %>
-      <% end %>
-  <% else %>
-    <p>This topic has no tests</p>
-  <% end %>
+<% if @tests.count > 0 %>
+	<% @tests.each do |test| %>
+		  <%= link_to test.title, show_test_path(test_id: test.id) %>
+	<% end %>
+<% else %>
+  <p>This topic has no tests</p>
+<% end %>
 
 <br><br>
 
 <%= render 'new' %><br>
-  
 <%= link_to 'Back', show_subject_path, class: 'btn btn-default' %>
 
 </div>

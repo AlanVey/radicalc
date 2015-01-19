@@ -34,7 +34,9 @@
   	            <div class="ch-info">
                   <div class="ch-info-front"></div>
                   <div class="ch-info-back">
-  	                <h3><%= link_to 'Subscribe', subscribe_path(subject_id:s.id, id: current_user.id), class: 'underline-link', :method => :post %></h3>
+  	                <h3>
+                      <%= link_to 'Subscribe', subscribe_path(subject_id:s.id, id: current_user.id), class: 'underline-link', :method => :post %>
+                    </h3>
                   </div>	
                 </div>
   	          </div>

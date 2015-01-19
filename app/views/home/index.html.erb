@@ -1,7 +1,8 @@
 <div class="container landing">
   <div class="row" id="mainlanding">
+    
     <div class="col-xs-2">
-    </div> <!-- end left margin-->
+    </div>
     
     <div class="col-xs-5" id="welcome">
       <h1>Welcome to RadiCalc!</h1>
@@ -11,29 +12,33 @@
           <li>Discuss material with lecturers and other students</li>
           <li>Access online assessments</li>
           <li>Boost your proficiency by responding to people's questions</li>
-					<li>Earn different achievement badges as you improve!</li>
+          <li>Earn different achievement badges as you improve!</li>
         </ul>
       </p>
     </div> <!-- end welcome section-->
     
     <div class="col-xs-5">
       <section>	
-          <a class="hiddenanchor" id="toregister"></a>
-          <a class="hiddenanchor" id="tologin"></a>
-	    <div id="wrapper">
+        <a class="hiddenanchor" id="toregister"></a>
+        <a class="hiddenanchor" id="tologin"></a>
+	    
+        <div id="wrapper">
+          
               <div id="login" class="animate form">
                 <div class="registration">
                   <%= render template: 'devise/registrations/new' %>
                 </div>
               </div>
+          
               <div id="register" class="animate form">
                 <div class="session">
                   <%= render template: 'devise/sessions/new' %>
                 </div>
               </div>
+          
 	    </div> <!-- end wrapper -->  
       </section>
-   </div>  <!-- end reg/login forms -->
+    </div>  <!-- end reg/login forms -->
 
  </div>
 </div>
