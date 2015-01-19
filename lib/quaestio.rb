@@ -64,7 +64,6 @@ class Quaestio
   def getUserProficiency(firstname, lastname)
     getUserStats(firstname, lastname)
     @json['overallScore'].to_f
-    1
   end
 
 
