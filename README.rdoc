@@ -1,16 +1,4 @@
-Workflow
+For more information please read the report in doc/report.pdf
 
-check out the dev branch
-
-create a new branch with `git checkout -b my_feature_name`
-
-create tests
-
-make changes and commits. It is ok to push with `git push origin my_feature_name` even if tests dont pass
-
-once feature is complete and tests pass, submit a pull request back into dev
-
-another team member must review the code and provide feedback
-
-if the code is ready to ship, the reviewer marks a :ship: and merges the pull request
+RadiCalc is a web based social networking E-Learning platform designed to improve communication be- tween students and lecturers about their university courses. Users are able to create topics which they can invite other users to subscribe to. Each topic has space for open discussions about general issues and technical course material. Course administrators can create assessments for students to complete so they are better prepared for exams. The site also provides users with proficiency graphs for each of their subscribed topics. Our application provides a clearer picture to lecturers of how well their students are understanding the course, and also help students to improve their proficiency through discussion.
 
