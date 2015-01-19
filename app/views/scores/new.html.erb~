@@ -1,5 +1,0 @@
-<h1>New score</h1>
-
-<%= render partial: 'form', locals: { url: create_score_path } %>
-
-<%= link_to 'Back', answers_path(test_id: @test.id) %>
