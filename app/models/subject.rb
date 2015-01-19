@@ -37,7 +37,8 @@ class Subject < ActiveRecord::Base
       average = 0
 
       self.tests.each do |test|
-        average = average + test.scores.find_by(user_id: user.id).as_decimal
+        score   = test.scores.find_by(user_id: user.id)
+        average = average + score.as_decimal unless score.nil?
       end
 
       average = average / self.tests.count unless average == 0
