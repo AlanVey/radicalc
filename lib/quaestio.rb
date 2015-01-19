@@ -12,9 +12,9 @@ class Quaestio
   def newDebate(question, firstname, lastname)
     c     = initCurb(NEW_DEBATE)
     form1 = Curl::PostField.content("question", question)
-    form1 = Curl::PostField.content("username", firstname + lastname)
+    form2 = Curl::PostField.content("username", firstname + lastname)
 
-    c.http_post(NEW_DEBATE, form1)
+    c.http_post(NEW_DEBATE, form1, form2)
     
     if c.response_code == 200
       @uri        = c.body_str[URI.regexp]
@@ -61,10 +61,9 @@ class Quaestio
     @json['commentsCount']
   end
 
-  def getUserProficiencyForTopic(firstname, lastname)
+  def getUserProficiency(firstname, lastname)
     getUserStats(firstname, lastname)
-    @json['overallScore']
-    0.5
+    @json['overallScore'].to_f
   end
 
 

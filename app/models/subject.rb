@@ -6,6 +6,7 @@ class Subject < ActiveRecord::Base
   include Authority::Abilities
   belongs_to :user
   has_many :questions
+  has_many :tests
   acts_as_tree
 
   def get_ancestors
@@ -25,5 +26,25 @@ class Subject < ActiveRecord::Base
     self.children.each { |c| names << c.name }
     names
   end
+
+  def calculate_proficiency(user)
+    0.85 * calc_test_proficiency(user) + 0.15 * calc_q_proficiency(user)
+  end
+
+  private
+
+    def calc_test_proficiency(user)
+      average = 0
+
+      self.tests.each do |test|
+        average = average + test.scores.find_by(user_id: user.id).as_decimal
+      end
+
+      average / self.tests.count unless average == 0
+    end
+
+    def calc_q_proficiency(user)
+      Quaestio.new.getUserProficiency(user.first_name, user.last_name)
+    end
 
 end
