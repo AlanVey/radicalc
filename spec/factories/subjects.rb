@@ -5,6 +5,5 @@ FactoryGirl.define do
     name "MyString"
     body "MyText"
     user_id 1
-    debate_type "technical"
   end
 end
