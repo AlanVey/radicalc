@@ -21,7 +21,7 @@ feature 'Someone visits the dashboard' do
     expect(page).to have_content 'Welcome to the RadiCalc homepage.'
   end
 
-  scenario 'and looks at her topics' do
+  scenario 'and looks at the FAQ' do
     visit '/dashboard'
     click_link 'Help and FAQ'
     expect(page).to have_content 'Frequently Asked Questions'
