@@ -19,14 +19,6 @@ RSpec.describe Subject, :type => :model do
     expect(FactoryGirl.build(:subject, user_id: nil)).not_to be_valid
   end
 
-  it 'has a debate_type' do
-    expect(FactoryGirl.build(:subject, debate_type: nil)).not_to be_valid
-  end
-
-  it 'has a type which is either technical or management' do
-    expect(FactoryGirl.build(:subject, debate_type: "useless")).not_to be_valid
-  end
-
   it { is_expected.to be_a_closure_tree }
 
 end

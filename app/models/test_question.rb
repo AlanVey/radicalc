@@ -8,7 +8,7 @@ class TestQuestion < ActiveRecord::Base
 
   def valid_kind?
     unless @@kinds.include?(self.kind)
-      erros.add(:kind, 'Not a valid kind')
+      errors.add(:kind, 'Not a valid kind')
     end
   end
 
