@@ -5,6 +5,26 @@ RSpec.describe Question, :type => :model do
     expect(FactoryGirl.create(:question)).to be_valid
   end
 
+  it 'can have a user_id' do
+    expect(FactoryGirl.build(:question, user_id: 1)).to be_valid
+  end
+
+  it 'can have a subject_id' do
+    expect(FactoryGirl.build(:question, subject_id: 1)).to be_valid
+  end
+
+  it 'can have a debate_id' do
+    expect(FactoryGirl.build(:question, debate_id: 1)).to be_valid
+  end
+
+  it 'can have a uri' do
+    expect(FactoryGirl.build(:question, uri: "uri")).to be_valid
+  end
+
+  it 'can have a title' do
+    expect(FactoryGirl.build(:question, title: nil)).not_to be_valid
+  end
+
   it 'has a user_id' do
     expect(FactoryGirl.build(:question, user_id: nil)).not_to be_valid
   end
