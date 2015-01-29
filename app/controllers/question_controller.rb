@@ -9,7 +9,12 @@ class QuestionController < ApplicationController
   end
 
   def show
-    @uri = Question.find(params[:question_id]).uri
+    debate_id = Question.find(params[:question_id]).debate_id
+    quaestio  = Quaestio.new
+
+    quaestio.modifyDebate(debate_id, current_user.profile.first_name, current_user.profile.last_name)
+
+    @uri      = quaestio.uri
     @question = Question.find(params[:question_id])
   end
 

@@ -3,6 +3,8 @@ require 'json'
 
 class Quaestio
 
+  attr_reader :debate_id, :uri, :json
+
   def initialize
     @debate_id  = nil
     @uri        = nil
@@ -19,6 +21,21 @@ class Quaestio
     if c.response_code == 200
       @uri        = c.body_str[URI.regexp]
       @debate_id  = @uri[/\d+/]
+      true
+    else
+      false
+    end
+  end
+
+  def modifyDebate(debate_id, firstname, lastname)
+    c     = initCurb(MODIFY_DEBATE)
+    form1 = Curl::PostField.content("debate_id", debate_id)
+    form2 = Curl::PostField.content("username", firstname + lastname)
+
+    c.http_post(MODIFY_DEBATE, form1, form2)
+
+    if c.response_code == 200
+      @uri = c.body_str[URI.regexp]
       true
     else
       false
@@ -66,25 +83,13 @@ class Quaestio
     @json['overallScore'].to_f
   end
 
-
-  def debate_id
-    @debate_id
-  end
-
-  def uri
-    @uri
-  end
-
-  def json
-    @json
-  end
-
   private
 
-    BASE_URI    = 'http://www.quaestio-it.com/api/generic/'
-    CREATE_USER = BASE_URI + 'createUser'
-    NEW_DEBATE  = BASE_URI + 'newDebate'
-    USER_STATS  = BASE_URI + 'getUserStats'
+    BASE_URI       = 'http://www.quaestio-it.com/api/generic/'
+    CREATE_USER    = BASE_URI + 'createUser'
+    NEW_DEBATE     = BASE_URI + 'newDebate'
+    MODIFY_DEBATE  = BASE_URI + 'modifyDebate'
+    USER_STATS     = BASE_URI + 'getUserStats'
 
     def initCurb(uri)
       Curl::Easy.new(uri)

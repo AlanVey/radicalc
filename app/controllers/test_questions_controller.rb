@@ -2,9 +2,14 @@ class TestQuestionsController < ApplicationController
 
   def show
     @test_question  = TestQuestion.find(params[:question_id])
-    @uri            = Question.find_by(subject_id: params[:id], 
+    quaestio        = Quaestio.new
+    debate_id       = Question.find_by(subject_id: params[:id], 
                                        kind: 'Test Question', 
-                                       title: @test_question.title).uri
+                                       title: @test_question.title).debate_id
+
+    quaestio.modifyDebate(debate_id, current_user.profile.first_name, current_user.profile.last_name)
+
+    @uri = quaestio.uri
   end
 
   def create
