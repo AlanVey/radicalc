@@ -10,9 +10,21 @@ feature 'Someone visits the dashboard' do
     visit '/dashboard'
 
     click_link 'Add a New Topic'
-    # first(:link, 'Add a New Topic').click
 
     expect(page).to have_content 'Create new subject!'
+  end
+
+
+  scenario 'and looks at her topics' do
+    visit '/dashboard'
+    click_link 'My Topics'
+    expect(page).to have_content 'Welcome to the RadiCalc homepage.'
+  end
+
+  scenario 'and looks at the FAQ' do
+    visit '/dashboard'
+    click_link 'Help and FAQ'
+    expect(page).to have_content 'Frequently Asked Questions'
   end
 
   scenario 'and wants to see a subject' do
